@@ -45,6 +45,7 @@ public class CardPerson : Card
             {
                 cardsImpact.Add(cardImpact);
                 Debug.Log(string.Format("Card attack action: {0}", cardImpact.cardName));
+                transform.SetParent(DefaultParent);
                 animator.Play("OnDragStart");
                 SoundOnAttack.Play();
                 Debug.Log(string.Format("SoundOnAttack time: {0}", SoundOnAttack.clip.length.ToString()));
@@ -58,6 +59,26 @@ public class CardPerson : Card
     {
         Debug.Log("PlayAttackAnimation()");
         animator.Play("Attack");
+        Invoke("SetCurrentParent", GetClipLength("Attack"));
+    }
+    public void SetDefaultParent() 
+    {
+        transform.SetParent(DefaultParent);
+    }
+    public void SetCurrentParent()
+    {
+        transform.SetParent(CurrentParent);
+    }
+
+    public float GetClipLength(string name) 
+    {
+        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in clips)
+        {
+            if (clip.name.Equals(name))
+                return clip.length;
+        }
+        return 0f;
     }
     public void PlayHitSound()
     {

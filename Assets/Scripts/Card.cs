@@ -7,7 +7,9 @@ using TMPro;
 public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     Camera MainCamera;
+    Camera SecondCamera;
     Vector3 offset;
+    Vector3 oldPos;
     Vector3 resize = new Vector3(1.3f, 1.3f, 1.3f);
     public Transform DefaultParent;
     public Transform CurrentParent;
@@ -73,6 +75,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     void Awake ()
     {
         MainCamera = Camera.allCameras[0]; //TODO Костыль, перописать по нормальному
+        SecondCamera = Camera.allCameras[1]; //TODO Костыль, перописать по нормальному
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -80,7 +83,11 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         {
             //transform.localScale = resize;
             animator.Play("OnDragStart");
-            offset = transform.position - MainCamera.ScreenToWorldPoint(eventData.position);
+            var mousePos = Input.mousePosition;
+            mousePos.z = 10; // select distance = 10 units from the camera
+            offset = MainCamera.ScreenToWorldPoint(mousePos);
+            offset.z = 0;
+            oldPos = offset;
             CurrentParent = transform.parent;
             transform.SetParent(DefaultParent);
             GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -91,8 +98,15 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         if (deployManager.Reinforcement > 0 && isMoveable == true)
         {
-            Vector3 newPos = MainCamera.ScreenToWorldPoint(eventData.position);
-            transform.position = newPos + offset;
+            var mousePos = Input.mousePosition;
+            Vector3 newPos = MainCamera.ScreenToWorldPoint(mousePos);
+            newPos.z = 0;
+            Vector3 difference = newPos - offset;
+            Quaternion target = Quaternion.Euler(difference.y * 10, -difference.x * 10, 0);
+            transform.rotation = target;
+            //Дичь, переделать
+            transform.position = transform.position + ((newPos - offset) * 11.5f);
+            offset = newPos;
         }
     }
 
@@ -101,6 +115,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         if (isMoveable == true)
         {
             Debug.Log("DragEnd");
+            Quaternion target = Quaternion.Euler(0, 0, 0);
+            transform.rotation = target;
             animator.Play("OnDragEnd");
             transform.localScale = new Vector3(1f, 1f, 1f);
             transform.SetParent(CurrentParent);
