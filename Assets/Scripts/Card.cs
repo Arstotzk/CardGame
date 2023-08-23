@@ -27,8 +27,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 HealthText.text = "0";
                 SoundOnDeath.Play();
-                animator.Play("Death");
-                Invoke("Delete", 3); //Переделать на сброс карты в стопку сброса
+                animator.Play("OnDrugStart");
+                Invoke("Death", SoundOnDeath.clip.length); //Переделать на сброс карты в стопку сброса
                 isDead = true;
             }
             else 
@@ -129,6 +129,11 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public void Delete() 
     {
         Destroy(gameObject);
+    }
+    public void Death()
+    {
+        animator.Play("Burning");
+        Invoke("Delete", 0.5f); //Переделать на сброс карты в стопку сброса
     }
 
 }
