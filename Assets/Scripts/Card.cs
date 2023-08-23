@@ -75,7 +75,6 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     void Awake ()
     {
         MainCamera = Camera.allCameras[0]; //TODO Костыль, перописать по нормальному
-        SecondCamera = Camera.allCameras[1]; //TODO Костыль, перописать по нормальному
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -99,13 +98,17 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         if (deployManager.Reinforcement > 0 && isMoveable == true)
         {
             var mousePos = Input.mousePosition;
+            mousePos.z = 10;
             Vector3 newPos = MainCamera.ScreenToWorldPoint(mousePos);
             newPos.z = 0;
             Vector3 difference = newPos - offset;
             Quaternion target = Quaternion.Euler(difference.y * 10, -difference.x * 10, 0);
             transform.rotation = target;
+            Debug.Log("mousePos:" + mousePos);
+            Debug.Log("newPos:" + newPos);
+            Debug.Log("eventData.position:" + eventData.position);
             //Дичь, переделать
-            transform.position = transform.position + ((newPos - offset) * 11.5f);
+            transform.position = transform.position + ((newPos - offset) * 10f);
             offset = newPos;
         }
     }
