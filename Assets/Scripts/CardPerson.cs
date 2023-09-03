@@ -78,6 +78,49 @@ public class CardPerson : Card
         }
         return false;
     }
+
+    public float GetFutureActionTime() 
+    {
+        float actionTime = 0.0f;
+        if (!futureIsDead)
+        {
+            cardsImpact = new List<CardPerson>();
+            var attackLocations = attackPattern.GetAttackLocations();
+            foreach (var attackLocation in attackLocations)
+            {
+                var rowLocation = attackLocation.Item1;
+                var columnLocation = attackLocation.Item2;
+                CardPerson cardImpact = null;
+                if (!isEnemy)
+                    cardImpact = battleManager.GetCardAt(-1 + columnLocation + column, -3 + rowLocation + row);
+                else
+                    cardImpact = battleManager.GetCardAt(-1 + columnLocation + column, 1 + rowLocation + row);
+
+                if (cardImpact && ((isEnemy && !cardImpact.isEnemy) || (!isEnemy && cardImpact.isEnemy)))
+                {
+                    cardsImpact.Add(cardImpact);
+                }
+            }
+            if (cardsImpact.Count > 0)
+                actionTime += GetClipAttackLength();
+            foreach (var cardImpact in cardsImpact)
+            {
+                float longestDeathSound = 0.0f;
+                if (GetFutureIsDead(cardImpact))
+                {
+                    if(longestDeathSound < cardImpact.GetClipDeathLength())
+                        longestDeathSound = cardImpact.GetClipDeathLength();
+                }
+                actionTime += longestDeathSound;
+            }
+        }
+        return actionTime;
+    }
+    public bool GetFutureIsDead(Card cardImpact)
+    {
+        cardImpact.futureHealth -= Attack;
+        return cardImpact.futureIsDead;
+    }
     public void PlayAttackAnimation()
     {
         Debug.Log("PlayAttackAnimation()");
@@ -106,7 +149,7 @@ public class CardPerson : Card
         }
         return 0f;
     }
-    public void PlayHitSound()
+    public void PlayHit()
     {
         SoundAttack.Play();
         foreach (var cardImpact in cardsImpact) 
@@ -115,5 +158,14 @@ public class CardPerson : Card
             Debug.Log(cardImpact.cardName);
             cardImpact.health -= Attack;
         }
+    }
+    public float GetClipDeathLength() 
+    {
+        return SoundOnDeath.clip.length;
+    }
+
+    public float GetClipAttackLength()
+    {
+        return SoundOnAttack.clip.length;
     }
 }

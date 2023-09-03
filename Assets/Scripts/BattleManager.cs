@@ -87,7 +87,7 @@ public class BattleManager : MonoBehaviour
             {
                 StartCoroutine(ExecCardAction(card, seconds));
                 //изменить на функцию которая будет расчитывать необходимое время на анимации карты
-                seconds += 5f;
+                seconds += card.GetFutureActionTime();
             }
         }
         timer.TimerStart(seconds);

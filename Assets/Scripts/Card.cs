@@ -22,6 +22,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         get => _health;
         set 
         {
+            futureHealth = value;
             _health = value;
             if (value <= 0)
             {
@@ -63,6 +64,18 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public AudioSource SoundAttack;
     public AudioSource SoundGetDammage;
+
+    public int _futureHealth;
+    public int futureHealth { 
+        get => _futureHealth;
+        set 
+        {
+            _futureHealth = value;
+            if (value <= 0)
+                futureIsDead = true;
+        } 
+    }
+    public bool futureIsDead;
     public virtual void Start()
     {
         HealthText.text = health.ToString();
@@ -71,6 +84,9 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         rceText.text = reinforcement.ToString();
         cardNameText.text = cardName;
         animator = GetComponent<Animator>();
+
+        futureHealth = _health;
+        futureIsDead = isDead;
     }
     void Awake ()
     {
