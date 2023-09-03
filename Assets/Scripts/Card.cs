@@ -27,7 +27,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             {
                 HealthText.text = "0";
                 SoundOnDeath.Play();
-                animator.Play("OnDrugStart");
+                //animator.Play("OnDrugStart");
                 Invoke("Death", SoundOnDeath.clip.length); //Переделать на сброс карты в стопку сброса
                 isDead = true;
             }

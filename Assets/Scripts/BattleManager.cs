@@ -12,6 +12,7 @@ public class BattleManager : MonoBehaviour
     public CardsRow allyFront;
     public CardsRow allyBack;
     public CardPerson[,] cardsArray;
+    public Timer timer;
 
     public void Start()
     {
@@ -19,20 +20,23 @@ public class BattleManager : MonoBehaviour
     }
     public void BattleStart()
     {
-        deployManager.SetNotMovableHand();
-        deployManager.SetNotMovableField();
-        Debug.Log("BattleStart");
+        if (!timer.timerOn)
+        {
+            deployManager.SetNotMovableHand();
+            deployManager.SetNotMovableField();
+            Debug.Log("BattleStart");
 
-        var cards = GetCardList();
-        cards = OrderCardList(cards);
-        FillCardsArray();
-        ExecCardsActions(cards);
+            var cards = GetCardList();
+            cards = OrderCardList(cards);
+            FillCardsArray();
+            ExecCardsActions(cards);
 
-        //Battle End
-        
-        deployManager.AddMaxReinforcement(1);
-        deployManager.ResetReinforcement();
-        deployManager.SetMovableHand();
+            //Battle End
+
+            deployManager.AddMaxReinforcement(1);
+            deployManager.ResetReinforcement();
+            deployManager.SetMovableHand();
+        }
     }
 
     public List<CardPerson> GetCardList()
@@ -69,17 +73,29 @@ public class BattleManager : MonoBehaviour
     }
     public List<CardPerson> OrderCardList(List<CardPerson> cards) 
     {
-        cards.OrderByDescending(c => c.Initiative).ThenBy(c => c._health).ThenBy(c => c.Attack);
+        cards = cards.OrderByDescending(c => c.Initiative).ThenBy(c => c._health).ThenBy(c => c.Attack).ToList();
         return cards;
     }
     public void ExecCardsActions(List<CardPerson> cards)
     {
         Debug.Log("ExecCardsActions");
+        float seconds = 0f;
         foreach (var card in cards) 
         {
             Debug.Log("CardAction");
-            card.Action();
+            if (card.IsAnyToAction())
+            {
+                StartCoroutine(ExecCardAction(card, seconds));
+                //изменить на функцию которая будет расчитывать необходимое время на анимации карты
+                seconds += 5f;
+            }
         }
+        timer.TimerStart(seconds);
+    }
+    public IEnumerator ExecCardAction(CardPerson card, float seconds) 
+    {
+        yield return new WaitForSeconds(seconds);
+        card.Action();
     }
     public CardPerson GetCardAt(int column, int row) 
     {

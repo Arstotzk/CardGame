@@ -29,36 +29,62 @@ public class CardPerson : Card
     }
     public void Action()
     {
-        cardsImpact = new List<CardPerson>();
+        if (!isDead)
+        {
+            cardsImpact = new List<CardPerson>();
+            var attackLocations = attackPattern.GetAttackLocations();
+            foreach (var attackLocation in attackLocations)
+            {
+                var rowLocation = attackLocation.Item1;
+                var columnLocation = attackLocation.Item2;
+                CardPerson cardImpact = null;
+                if (!isEnemy)
+                    cardImpact = battleManager.GetCardAt(-1 + columnLocation + column, -3 + rowLocation + row);
+                else
+                    cardImpact = battleManager.GetCardAt(-1 + columnLocation + column, 1 + rowLocation + row);
+
+                if (cardImpact && ((isEnemy && !cardImpact.isEnemy) || (!isEnemy && cardImpact.isEnemy)))
+                {
+                    cardsImpact.Add(cardImpact);
+                    Debug.Log(string.Format("Card attack action: {0}", cardImpact.cardName));
+                    transform.SetParent(DefaultParent);
+                    animator.Play("OnDragStart");
+                    SoundOnAttack.Play();
+                    Debug.Log(string.Format("SoundOnAttack time: {0}", SoundOnAttack.clip.length.ToString()));
+                    Invoke("PlayAttackAnimation", SoundOnAttack.clip.length);
+                }
+            }
+            Debug.Log(string.Format("Card action: {0}", cardName));
+        }
+
+    }
+    public bool IsAnyToAction() 
+    {
         var attackLocations = attackPattern.GetAttackLocations();
-        foreach (var attackLocation in attackLocations) 
+        foreach (var attackLocation in attackLocations)
         {
             var rowLocation = attackLocation.Item1;
             var columnLocation = attackLocation.Item2;
             CardPerson cardImpact = null;
             if (!isEnemy)
-                cardImpact = battleManager.GetCardAt(-1 + columnLocation + column, 1 - rowLocation + row);
+                cardImpact = battleManager.GetCardAt(-1 + columnLocation + column, -3 + rowLocation + row);
             else
-                cardImpact = battleManager.GetCardAt(-1 + columnLocation + column, -3 - rowLocation + row);
+                cardImpact = battleManager.GetCardAt(-1 + columnLocation + column, 1 + rowLocation + row);
 
-            if (cardImpact)
+            if (cardImpact && ((isEnemy && !cardImpact.isEnemy) || (!isEnemy && cardImpact.isEnemy)))
             {
-                cardsImpact.Add(cardImpact);
-                Debug.Log(string.Format("Card attack action: {0}", cardImpact.cardName));
-                transform.SetParent(DefaultParent);
-                animator.Play("OnDragStart");
-                SoundOnAttack.Play();
-                Debug.Log(string.Format("SoundOnAttack time: {0}", SoundOnAttack.clip.length.ToString()));
-                Invoke("PlayAttackAnimation", SoundOnAttack.clip.length);
+                return true;
             }
         }
-        Debug.Log(string.Format("Card action: {0}", cardName));
-
+        return false;
     }
     public void PlayAttackAnimation()
     {
         Debug.Log("PlayAttackAnimation()");
-        animator.Play("Attack");
+        if (isEnemy)
+            animator.Play("AttackEnemy");
+        else
+            animator.Play("Attack");
         Invoke("SetCurrentParent", GetClipLength("Attack"));
     }
     public void SetDefaultParent() 
