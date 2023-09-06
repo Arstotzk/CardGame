@@ -88,6 +88,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         futureHealth = _health;
         futureIsDead = isDead;
     }
+
+    public GameObject enterObject;
     void Awake ()
     {
         MainCamera = Camera.allCameras[0]; //TODO Костыль, перописать по нормальному
@@ -96,6 +98,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         if (deployManager.Reinforcement > 0 && isMoveable == true)
         {
+            deployManager.isPlayerDrugCard = true;
             //transform.localScale = resize;
             animator.Play("OnDragStart");
             var mousePos = Input.mousePosition;
@@ -109,7 +112,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public virtual void OnDrag(PointerEventData eventData)
     {
         if (deployManager.Reinforcement > 0 && isMoveable == true)
         {
@@ -129,10 +132,11 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public virtual void OnEndDrag(PointerEventData eventData)
     {
-        if (isMoveable == true)
+        if (isMoveable == true && deployManager.isPlayerDrugCard == true)
         {
+            deployManager.isPlayerDrugCard = false;
             Debug.Log("DragEnd");
             Quaternion target = Quaternion.Euler(0, 0, 0);
             transform.rotation = target;
@@ -151,5 +155,6 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         animator.Play("Burning");
         Invoke("Delete", 0.5f); //Переделать на сброс карты в стопку сброса
     }
+
 
 }

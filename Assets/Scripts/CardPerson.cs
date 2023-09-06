@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 class column
 {
@@ -11,6 +12,7 @@ public class CardPerson : Card
     public AttackPattern attackPattern;
     public GameObject attackPatternIcon;
     public List<CardPerson> cardsImpact;
+    public List<Place> attackPlaces;
 
     public override void Start()
     {
@@ -116,6 +118,44 @@ public class CardPerson : Card
         }
         return actionTime;
     }
+    public List<Place> GetCurrentAttackPlaces() 
+    {
+        var places = new List<Place>();
+        var attackLocations = attackPattern.GetAttackLocations();
+        foreach (var attackLocation in attackLocations)
+        {
+            var rowLocation = attackLocation.Item1;
+            var columnLocation = attackLocation.Item2;
+            Place place = null;
+            if (!isEnemy)
+                place = battleManager.GetPlaceAt(-1 + columnLocation + column, -3 + rowLocation + row);
+            else
+                place = battleManager.GetPlaceAt(-1 + columnLocation + column, 1 + rowLocation + row);
+            if(place != null)
+                places.Add(place);
+        }
+        return places;
+    }
+
+    public void ShowAttackPlaces()
+    {
+        attackPlaces = GetCurrentAttackPlaces();
+        foreach (var place in attackPlaces) 
+        {
+            if(place != null)
+                place.StartAttackShow();
+        }
+    }
+    public void StopShowAttackPlaces()
+    {
+        foreach (var place in attackPlaces)
+        {
+            if (place != null)
+                place.StopAttackShow();
+        }
+        attackPlaces = new List<Place>();
+    }
+
     public bool GetFutureIsDead(Card cardImpact)
     {
         cardImpact.futureHealth -= Attack;
@@ -167,5 +207,51 @@ public class CardPerson : Card
     public float GetClipAttackLength()
     {
         return SoundOnAttack.clip.length;
+    }
+    public override void OnDrag(PointerEventData eventData)
+    {
+
+        base.OnDrag(eventData);
+
+        if (deployManager.Reinforcement > 0 && isMoveable == true)
+        {
+            Place place;
+            eventData.pointerEnter.TryGetComponent<Place>(out place);
+            Debug.Log(place);
+            if (enterObject != eventData.pointerEnter)
+            {
+                column = 0;
+                row = 0;
+                StopShowAttackPlaces();
+            }
+            if (place != null && enterObject != eventData.pointerEnter)
+            {
+                Debug.Log(eventData.pointerEnter);
+                enterObject = eventData.pointerEnter;
+                column = place.column;
+                row = place.row;
+
+                ShowAttackPlaces();
+            }
+        }
+
+    }
+    public override void OnEndDrag(PointerEventData eventData)
+    {
+        base.OnEndDrag(eventData);
+        if (isMoveable == true && deployManager.isPlayerDrugCard == true)
+        {
+            StopShowAttackPlaces();
+        }
+    }
+    public void OnMouseEnter()
+    {
+        if(!deployManager.isPlayerDrugCard)
+            ShowAttackPlaces();
+    }
+    public void OnMouseExit()
+    {
+        if (!deployManager.isPlayerDrugCard)
+            StopShowAttackPlaces();
     }
 }

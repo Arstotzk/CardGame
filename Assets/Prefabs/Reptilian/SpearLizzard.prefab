@@ -1121,6 +1121,7 @@ GameObject:
   - component: {fileID: 8036177531215923799}
   - component: {fileID: 7088471562064434130}
   - component: {fileID: 296122312509795843}
+  - component: {fileID: 1161314065066633578}
   m_Layer: 6
   m_Name: SpearLizzard
   m_TagString: Untagged
@@ -1248,6 +1249,9 @@ MonoBehaviour:
   SoundOnDeath: {fileID: 3315630227239789112}
   SoundAttack: {fileID: 296122312509795843}
   SoundGetDammage: {fileID: 0}
+  _futureHealth: 0
+  futureIsDead: 0
+  enterObject: {fileID: 0}
   attackPattern:
     rows:
     - row: 000100
@@ -1255,6 +1259,7 @@ MonoBehaviour:
     - row: 000000
   attackPatternIcon: {fileID: 7908782490114218235}
   cardsImpact: []
+  attackPlaces: []
 --- !u!95 &6706020903661506752
 Animator:
   serializedVersion: 4
@@ -1672,6 +1677,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!61 &1161314065066633578
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8350551261482733002}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 95, y: 115}
+  m_EdgeRadius: 0
 --- !u!1 &8350551261485993674
 GameObject:
   m_ObjectHideFlags: 0

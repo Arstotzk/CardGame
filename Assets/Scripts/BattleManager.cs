@@ -12,11 +12,15 @@ public class BattleManager : MonoBehaviour
     public CardsRow allyFront;
     public CardsRow allyBack;
     public CardPerson[,] cardsArray;
+    public Place[,] cardPlaces;
     public Timer timer;
 
     public void Start()
     {
         cardsArray = new CardPerson[5, 4];
+        cardPlaces = new Place[5, 4];
+        FillCardPlaces();
+        FillCardsArray();
     }
     public void BattleStart()
     {
@@ -29,13 +33,11 @@ public class BattleManager : MonoBehaviour
             var cards = GetCardList();
             cards = OrderCardList(cards);
             FillCardsArray();
-            ExecCardsActions(cards);
+            var seconds = ExecCardsActions(cards);
 
             //Battle End
 
-            deployManager.AddMaxReinforcement(1);
-            deployManager.ResetReinforcement();
-            deployManager.SetMovableHand();
+            StartCoroutine(ResetReinforsmentToDeployManager(seconds));
         }
     }
 
@@ -47,6 +49,24 @@ public class BattleManager : MonoBehaviour
         cards.AddRange(allyFront.GetCardInRow().Where(c => c != null));
         cards.AddRange(allyBack.GetCardInRow().Where(c => c != null));
         return cards;
+    }
+    public void FillCardPlaces() 
+    {
+        var cardPlacesList = new List<Place>();
+        foreach (GameObject cardPlace in GetCardPlacesList())
+        {
+            var place = cardPlace.GetComponent<Place>();
+            cardPlaces[place.column, place.row] = place;
+        }
+    }
+    public List<GameObject> GetCardPlacesList()
+    {
+        var list = new List<GameObject>();
+        list.AddRange(enemyBack.GetCardPlace());
+        list.AddRange(enemyFront.GetCardPlace());
+        list.AddRange(allyFront.GetCardPlace());
+        list.AddRange(allyBack.GetCardPlace());
+        return list;
     }
     public void FillCardsArray()
     {
@@ -76,7 +96,7 @@ public class BattleManager : MonoBehaviour
         cards = cards.OrderByDescending(c => c.Initiative).ThenBy(c => c._health).ThenBy(c => c.Attack).ToList();
         return cards;
     }
-    public void ExecCardsActions(List<CardPerson> cards)
+    public float ExecCardsActions(List<CardPerson> cards)
     {
         Debug.Log("ExecCardsActions");
         float seconds = 0f;
@@ -91,11 +111,20 @@ public class BattleManager : MonoBehaviour
             }
         }
         timer.TimerStart(seconds);
+        return seconds;
     }
     public IEnumerator ExecCardAction(CardPerson card, float seconds) 
     {
         yield return new WaitForSeconds(seconds);
         card.Action();
+    }
+
+    public IEnumerator ResetReinforsmentToDeployManager(float seconds) 
+    {
+        yield return new WaitForSeconds(seconds);
+        deployManager.AddMaxReinforcement(1);
+        deployManager.ResetReinforcement();
+        deployManager.SetMovableHand();
     }
     public CardPerson GetCardAt(int column, int row) 
     {
@@ -104,6 +133,17 @@ public class BattleManager : MonoBehaviour
             return cardsArray[column, row];
         }
         catch 
+        {
+            return null;
+        }
+    }
+    public Place GetPlaceAt(int column, int row)
+    {
+        try
+        {
+            return cardPlaces[column, row];
+        }
+        catch
         {
             return null;
         }

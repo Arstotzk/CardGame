@@ -19,6 +19,8 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
                 if (card && (transform.childCount == 0 || isMultiCard)
                     && isEnemy == false && card.deployManager.Reinforcement >= card.reinforcement)
                 {
+                    if (card.deployManager.Reinforcement < 0)
+                        return;
                     card.CurrentParent = transform;
                     if (!isHand)
                     {

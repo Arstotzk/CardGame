@@ -23,10 +23,13 @@ public class DeployManager : MonoBehaviour
     public GameObject hand;
     public GameObject firstLineGround;
     public GameObject secondLineGround;
+
+    public bool isPlayerDrugCard;
     // Start is called before the first frame update
     void Start()
     {
         Reinforcement = maxReinforcement;
+        isPlayerDrugCard = false;
         SetMovableHand();
     }
 

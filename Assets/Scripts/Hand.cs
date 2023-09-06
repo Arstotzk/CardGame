@@ -15,7 +15,7 @@ public class Hand : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     bool pointerExit = false;
     public float interpolationRatio;
     public GameObject hand;
-    private Vector3 positionApper = new Vector3(0, (float)5, 0);
+    private Vector3 positionApper = new Vector3(0, (float)0.6, 0);
     public void OnPointerEnter (PointerEventData eventData)
     {
          //Debug.Log("Work " + interpolationRatio);
