@@ -15,6 +15,9 @@ public class BattleManager : MonoBehaviour
     public Place[,] cardPlaces;
     public Timer timer;
 
+    public SoundManager smSlavic;
+    public SoundManager smReptilian;
+
     public void Start()
     {
         cardsArray = new CardPerson[5, 4];
@@ -26,6 +29,7 @@ public class BattleManager : MonoBehaviour
     {
         if (!timer.timerOn)
         {
+
             deployManager.SetNotMovableHand();
             deployManager.SetNotMovableField();
             Debug.Log("BattleStart");
@@ -33,11 +37,30 @@ public class BattleManager : MonoBehaviour
             var cards = GetCardList();
             cards = OrderCardList(cards);
             FillCardsArray();
+            FillCardsSounds(cards);
             var seconds = ExecCardsActions(cards);
 
             //Battle End
 
             StartCoroutine(ResetReinforsmentToDeployManager(seconds));
+        }
+    }
+    public void FillCardsSounds(List<CardPerson> cards) 
+    {
+        foreach (var card in cards) 
+        {
+            if (card.isEnemy)
+            {
+                card.SoundOnAttack.clip = smReptilian.GetOnAttackSoundClip();
+                card.SoundOnDeck.clip = smReptilian.GetOnDeckSoundClip();
+                card.SoundOnDeath.clip = smReptilian.GetOnDieSoundClip();
+            }
+            else
+            {
+                card.SoundOnAttack.clip = smSlavic.GetOnAttackSoundClip();
+                card.SoundOnDeck.clip = smSlavic.GetOnDeckSoundClip();
+                card.SoundOnDeath.clip = smSlavic.GetOnDieSoundClip();
+            }
         }
     }
 
