@@ -1245,6 +1245,7 @@ MonoBehaviour:
   attackPatternIcon: {fileID: 2598432086119827094}
   cardsImpact: []
   attackPlaces: []
+  isUniqueAttack: 1
 --- !u!95 &2407350143700658653
 Animator:
   serializedVersion: 4
@@ -1371,7 +1372,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 636fc8e7cbfeb0e43a1703b3d66bc6b2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e0e18119657607b4c915a285eccef256, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

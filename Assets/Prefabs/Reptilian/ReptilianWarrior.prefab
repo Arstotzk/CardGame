@@ -1229,7 +1229,7 @@ MonoBehaviour:
   column: 0
   row: 0
   _health: 6
-  Attack: 3
+  Attack: 2
   Initiative: 3
   reinforcement: 1
   cardName: "\u0420\u0435\u043F\u0442\u0438\u043B\u044C\u0441\u043A\u0438\u0439 \u0432\u043E\u0438\u043D"
@@ -1260,6 +1260,7 @@ MonoBehaviour:
   attackPatternIcon: {fileID: 7908782490114218235}
   cardsImpact: []
   attackPlaces: []
+  isUniqueAttack: 0
 --- !u!95 &6706020903661506752
 Animator:
   serializedVersion: 4

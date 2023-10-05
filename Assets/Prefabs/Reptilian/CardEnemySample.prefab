@@ -1122,6 +1122,7 @@ GameObject:
   - component: {fileID: 7088471562064434130}
   - component: {fileID: 296122312509795843}
   - component: {fileID: 2932385339953315999}
+  - component: {fileID: 1303935757}
   m_Layer: 6
   m_Name: CardEnemySample
   m_TagString: Untagged
@@ -1260,6 +1261,7 @@ MonoBehaviour:
   attackPatternIcon: {fileID: 7908782490114218235}
   cardsImpact: []
   attackPlaces: []
+  isUniqueAttack: 0
 --- !u!95 &6706020903661506752
 Animator:
   serializedVersion: 4
@@ -1678,6 +1680,32 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
 --- !u!61 &2932385339953315999
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8350551261482733002}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 95, y: 115}
+  m_EdgeRadius: 0
+--- !u!61 &1303935757
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

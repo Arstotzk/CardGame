@@ -57,7 +57,8 @@ public class BattleManager : MonoBehaviour
             }
             else
             {
-                card.SoundOnAttack.clip = smSlavic.GetOnAttackSoundClip();
+                if (!card.isUniqueAttack)
+                    card.SoundOnAttack.clip = smSlavic.GetOnAttackSoundClip();
                 card.SoundOnDeck.clip = smSlavic.GetOnDeckSoundClip();
                 card.SoundOnDeath.clip = smSlavic.GetOnDieSoundClip();
             }

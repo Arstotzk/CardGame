@@ -13,6 +13,7 @@ public class CardPerson : Card
     public GameObject attackPatternIcon;
     public List<CardPerson> cardsImpact;
     public List<Place> attackPlaces;
+    public bool isUniqueAttack = false;
 
     public override void Start()
     {

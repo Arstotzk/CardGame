@@ -16,6 +16,7 @@ public class Hand : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public float interpolationRatio;
     public GameObject hand;
     private Vector3 positionApper = new Vector3(0, (float)0.6, 0);
+    public SoundManager smSlavic;
     public void OnPointerEnter (PointerEventData eventData)
     {
          //Debug.Log("Work " + interpolationRatio);
@@ -81,10 +82,22 @@ public class Hand : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void Start() 
     {
         mainPosititon = hand.transform.position;
+        FillCardsSounds(GetComponentsInChildren<CardPerson>());
     }
     public bool CheckPointerOnHand(bool _pointerEnter, bool _pointerExit) 
     {
         if (_pointerEnter == true) { return true; }
         return true;
+    }
+
+    public void FillCardsSounds(CardPerson[] cards)
+    {
+        foreach (var card in cards)
+        {
+                if (!card.isUniqueAttack)
+                    card.SoundOnAttack.clip = smSlavic.GetOnAttackSoundClip();
+                card.SoundOnDeck.clip = smSlavic.GetOnDeckSoundClip();
+                card.SoundOnDeath.clip = smSlavic.GetOnDieSoundClip();
+        }
     }
 }
