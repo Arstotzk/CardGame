@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Card : MonoBehaviour
 {
     Camera MainCamera;
     Camera SecondCamera;
@@ -92,9 +92,9 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public GameObject enterObject;
     void Awake ()
     {
-        MainCamera = Camera.allCameras[0]; //TODO Костыль, перописать по нормальному
+        MainCamera = Camera.main;
     }
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnBeginDrag()
     {
         if (deployManager.Reinforcement > 0 && isMoveable == true)
         {
@@ -132,7 +132,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         }
     }
 
-    public virtual void OnEndDrag(PointerEventData eventData)
+    public virtual void OnEndDrag()
     {
         if (isMoveable == true && deployManager.isPlayerDrugCard == true)
         {
@@ -155,6 +155,71 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         animator.Play("Burning");
         Invoke("Delete", 0.5f); //Переделать на сброс карты в стопку сброса
     }
+
+    public void OnMouseDown()
+    {
+        var mousePos = Input.mousePosition;
+        offset = transform.position - MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
+        oldPos = offset;
+        transform.SetParent(DefaultParent);
+        CurrentParent = transform.parent;
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0.001f);
+        Debug.Log("MouseDown");
+    }
+    public void OnMouseUp()
+    {
+        RaycastHit hit;
+
+        var mousePos = Input.mousePosition;
+        Vector3 newPos = MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
+        if (Physics.Raycast(newPos + offset, -Vector3.up, out hit))
+            print("Found an object - distance: " + hit.distance);
+
+        Debug.Log("MouseUp");
+    }
+    public void OnMouseDrag()
+    {
+        var mousePos = Input.mousePosition;
+        Vector3 newPos = MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
+        Vector3 difference = newPos - oldPos;
+        Quaternion target = Quaternion.Euler(difference.y * 15, -difference.x * 15, 0);
+        transform.rotation = target;
+
+        transform.position = newPos + offset;
+        //Debug.Log("MouseDrag: " + newPos + "; " + offset);
+        oldPos = newPos;
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit[] raycastHits = Physics.RaycastAll(ray);
+        foreach (var hit in raycastHits)
+        {
+            Debug.Log("Ray");
+            Debug.DrawLine(ray.origin, ray.origin + ray.direction * 10000, Color.red);
+        }
+    //    if (Physics.RaycastAll(newPos + offset, -Vector3.up, out hit))
+    //        print("Found an object - distance: " + hit.distance);
+    }
+    public void OnMouseEnter()
+    {
+        var hand = CurrentParent.GetComponentInChildren<Hand>();
+        if (hand != null)
+            hand.OnMouseEnter();
+    }
+    public void OnMouseExit()
+    {
+        var hand = CurrentParent.GetComponent<Hand>();
+        if (hand != null)
+            hand.OnMouseExit();
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("OnTriggerEnter2D");
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("OnTriggerEnter");
+    }
+
 
 
 }

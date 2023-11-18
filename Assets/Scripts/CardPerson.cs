@@ -237,22 +237,24 @@ public class CardPerson : Card
         }
 
     }
-    public override void OnEndDrag(PointerEventData eventData)
+    public override void OnEndDrag()
     {
-        base.OnEndDrag(eventData);
+        base.OnEndDrag();
         if (isMoveable == true && deployManager.isPlayerDrugCard == true)
         {
             StopShowAttackPlaces();
         }
     }
-    public void OnMouseEnter()
-    {
-        if(!deployManager.isPlayerDrugCard)
-            ShowAttackPlaces();
-    }
-    public void OnMouseExit()
-    {
-        if (!deployManager.isPlayerDrugCard)
-            StopShowAttackPlaces();
-    }
+
+    //public void OnMouseEnter()
+    //{
+    //    if (!deployManager.isPlayerDrugCard)
+    //        ShowAttackPlaces();
+    //}
+    //public void OnMouseExit()
+    //{
+    //    if (!deployManager.isPlayerDrugCard)
+    //        StopShowAttackPlaces();
+    //}
+
 }

@@ -39,4 +39,16 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
             }
         }
     }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("OnTriggerEnter2D");
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("OnTriggerEnter");
+    }
+    public void OnMouseEnter()
+    {
+        Debug.Log("DropCardMouseEnter");
+    }
 }
