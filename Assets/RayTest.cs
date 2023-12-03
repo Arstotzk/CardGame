@@ -20,7 +20,7 @@ public class RayTest : MonoBehaviour
         RaycastHit[] raycastHits = Physics.RaycastAll(ray);
         foreach (var hit in raycastHits)
         {
-            Debug.Log("Ray: " + ray);
+            //Debug.Log("Hit: " + hit);
         }
     }
 }
