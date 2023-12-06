@@ -1098,10 +1098,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4192219943228298148}
+  - component: {fileID: 6918614959929754302}
   - component: {fileID: 4192219943228298154}
   - component: {fileID: 4192219943228298149}
   - component: {fileID: 4192219943228298152}
-  - component: {fileID: 6918614959929754302}
   - component: {fileID: 2407350143700658653}
   - component: {fileID: 5297640340404832790}
   - component: {fileID: 2934220478579914313}
@@ -1147,6 +1147,55 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 95, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6918614959929754302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4192219943228298151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10633bc0be622764caf5fa357369b16f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultParent: {fileID: 0}
+  CurrentParent: {fileID: 0}
+  column: 0
+  row: 0
+  _health: 1
+  Attack: 2
+  Initiative: 2
+  reinforcement: 1
+  cardName: "\u041B\u0443\u0447\u043D\u0438\u0437\u0430\u0440"
+  HealthText: {fileID: 4192219943777670848}
+  AttackText: {fileID: 4192219942713766338}
+  InitiativeText: {fileID: 4192219943231557797}
+  rceText: {fileID: 4192219942360013211}
+  cardNameText: {fileID: 4192219942408453022}
+  deployManager: {fileID: 0}
+  battleManager: {fileID: 0}
+  isMoveable: 0
+  isDead: 0
+  isEnemy: 0
+  animator: {fileID: 0}
+  SoundOnDeck: {fileID: 5297640340404832790}
+  SoundOnAttack: {fileID: 2934220478579914313}
+  SoundOnDeath: {fileID: 3387863935719616733}
+  SoundAttack: {fileID: 1889954402033784441}
+  SoundGetDammage: {fileID: 0}
+  _futureHealth: 0
+  futureIsDead: 0
+  enterObject: {fileID: 0}
+  attackPattern:
+    rows:
+    - row: 010101
+    - row: 000000
+    - row: 000000
+  attackPatternIcon: {fileID: 2598432086119827094}
+  cardsImpact: []
+  attackPlaces: []
+  isUniqueAttack: 1
 --- !u!222 &4192219943228298154
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1197,55 +1246,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 1
---- !u!114 &6918614959929754302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4192219943228298151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10633bc0be622764caf5fa357369b16f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DefaultParent: {fileID: 0}
-  CurrentParent: {fileID: 0}
-  column: 0
-  row: 0
-  _health: 1
-  Attack: 2
-  Initiative: 2
-  reinforcement: 1
-  cardName: "\u041B\u0443\u0447\u043D\u0438\u0437\u0430\u0440"
-  HealthText: {fileID: 4192219943777670848}
-  AttackText: {fileID: 4192219942713766338}
-  InitiativeText: {fileID: 4192219943231557797}
-  rceText: {fileID: 4192219942360013211}
-  cardNameText: {fileID: 4192219942408453022}
-  deployManager: {fileID: 0}
-  battleManager: {fileID: 0}
-  isMoveable: 0
-  isDead: 0
-  isEnemy: 0
-  animator: {fileID: 0}
-  SoundOnDeck: {fileID: 5297640340404832790}
-  SoundOnAttack: {fileID: 2934220478579914313}
-  SoundOnDeath: {fileID: 3387863935719616733}
-  SoundAttack: {fileID: 1889954402033784441}
-  SoundGetDammage: {fileID: 0}
-  _futureHealth: 0
-  futureIsDead: 0
-  enterObject: {fileID: 0}
-  attackPattern:
-    rows:
-    - row: 010101
-    - row: 000000
-    - row: 000000
-  attackPatternIcon: {fileID: 2598432086119827094}
-  cardsImpact: []
-  attackPlaces: []
-  isUniqueAttack: 1
 --- !u!95 &2407350143700658653
 Animator:
   serializedVersion: 4

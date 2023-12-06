@@ -209,30 +209,24 @@ public class CardPerson : Card
     {
         return SoundOnAttack.clip.length;
     }
-    public override void OnDrag(PointerEventData eventData)
+    public override void OnMouseDrag()
     {
-
-        base.OnDrag(eventData);
+        base.OnMouseDrag();
 
         if (deployManager.Reinforcement > 0 && isMoveable == true)
         {
-            Place place;
-            eventData.pointerEnter.TryGetComponent<Place>(out place);
-            Debug.Log(place);
-            if (enterObject != eventData.pointerEnter)
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit[] raycastHits = Physics.RaycastAll(ray);
+            foreach (var hit in raycastHits)
             {
-                column = 0;
-                row = 0;
-                StopShowAttackPlaces();
-            }
-            if (place != null && enterObject != eventData.pointerEnter)
-            {
-                Debug.Log(eventData.pointerEnter);
-                enterObject = eventData.pointerEnter;
-                column = place.column;
-                row = place.row;
-
-                ShowAttackPlaces();
+                var place = hit.transform.gameObject.GetComponent<Place>();
+                if (place != null)
+                {
+                    column = place.column;
+                    row = place.row;
+                    var plac = hit.transform.gameObject.GetComponent<Place>();
+                    plac.isCursored = true;
+                }
             }
         }
 
@@ -246,15 +240,17 @@ public class CardPerson : Card
         }
     }
 
-    //public void OnMouseEnter()
-    //{
-    //    if (!deployManager.isPlayerDrugCard)
-    //        ShowAttackPlaces();
-    //}
-    //public void OnMouseExit()
-    //{
-    //    if (!deployManager.isPlayerDrugCard)
-    //        StopShowAttackPlaces();
-    //}
+    public override void OnMouseEnter()
+    {
+        base.OnMouseEnter();
+        if (!deployManager.isPlayerDrugCard)
+            ShowAttackPlaces();
+    }
+    public override void OnMouseExit()
+    {
+        base.OnMouseExit();
+        if (!deployManager.isPlayerDrugCard)
+            StopShowAttackPlaces();
+    }
 
 }

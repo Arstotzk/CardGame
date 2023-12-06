@@ -160,78 +160,65 @@ public class Card : MonoBehaviour
 
     public void OnMouseDown()
     {
-        animator.Play("OnDragStart");
-        var mousePos = Input.mousePosition;
-        offset = transform.position - MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
-        oldPos = offset;
-        transform.SetParent(DefaultParent);
-        CurrentParent = transform.parent;
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0.001f);
-        Debug.Log("MouseDown");
+        if (deployManager.Reinforcement > 0 && isMoveable == true)
+        {
+            deployManager.isPlayerDrugCard = true;
+            animator.Play("OnDragStart");
+            var mousePos = Input.mousePosition;
+            offset = transform.position - MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
+            oldPos = offset;
+            transform.SetParent(DefaultParent);
+            CurrentParent = transform.parent;
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0.001f);
+        }
     }
     public void OnMouseUp()
     {
-
-        //RaycastHit hit;
-
-        //var mousePos = Input.mousePosition;
-        //Vector3 newPos = MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
-        //if (Physics.Raycast(newPos + offset, -Vector3.up, out hit))
-        //    print("Found an object - distance: " + hit.distance);
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit[] raycastHits = Physics.RaycastAll(ray);
-        foreach (var hit in raycastHits)
+        if (deployManager.Reinforcement > 0 && isMoveable == true)
         {
-            var place = hit.transform.gameObject.GetComponent<DropCardToPlace>();
-            if (place != null)
+            deployManager.isPlayerDrugCard = false;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit[] raycastHits = Physics.RaycastAll(ray);
+            foreach (var hit in raycastHits)
             {
-                CurrentParent = hit.transform;
-                transform.SetParent(CurrentParent);
-                place.CardAdded();
+                var place = hit.transform.gameObject.GetComponent<DropCardToPlace>();
+                if (place != null)
+                {
+                    CurrentParent = hit.transform;
+                    transform.SetParent(CurrentParent);
+                    place.CardAdded();
+                    var plac = hit.transform.gameObject.GetComponent<Place>();
+                    plac.isCursored = false;
+                }
             }
-            Debug.Log("Ray");
-            //Debug.DrawLine(ray.origin, ray.origin + ray.direction * 10000, Color.red);
+            animator.Play("OnDragEnd");
         }
-        animator.Play("OnDragEnd");
-        Debug.Log("MouseUp");
     }
-    public void OnMouseDrag()
+    public virtual void OnMouseDrag()
     {
-        var mousePos = Input.mousePosition;
-        Vector3 newPos = MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
-        Vector3 difference = newPos - oldPos;
-        Quaternion target = Quaternion.Euler(difference.y * 15, -difference.x * 15, 0);
-        transform.rotation = target;
+        if (deployManager.Reinforcement > 0 && isMoveable == true)
+        {
+            var mousePos = Input.mousePosition;
+            Vector3 newPos = MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
+            Vector3 difference = newPos - oldPos;
+            Quaternion target = Quaternion.Euler(difference.y * 15, -difference.x * 15, 0);
+            transform.rotation = target;
 
-        var zFixedPosition = newPos + offset;
-        zFixedPosition.z = -0.001f;
-        transform.position = zFixedPosition;
-        //Debug.Log("MouseDrag: " + newPos + "; " + offset);
-        oldPos = newPos;
-
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //RaycastHit[] raycastHits = Physics.RaycastAll(ray);
-        //foreach (var hit in raycastHits)
-        //{
-        //    var place = hit.transform.gameObject.GetComponent<Place>();
-        //    if (place != null)
-        //    {
-        //        CurrentParent = hit.transform;
-        //    }
-        //    //Debug.Log("Ray");
-        //    //Debug.DrawLine(ray.origin, ray.origin + ray.direction * 10000, Color.red);
-        //}
-    //    if (Physics.RaycastAll(newPos + offset, -Vector3.up, out hit))
-    //        print("Found an object - distance: " + hit.distance);
+            var zFixedPosition = newPos + offset;
+            zFixedPosition.z = -0.001f;
+            transform.position = zFixedPosition;
+            //Debug.Log("MouseDrag: " + newPos + "; " + offset);
+            oldPos = newPos;
+        }
     }
-    public void OnMouseEnter()
+    public virtual void OnMouseEnter()
     {
         var hand = CurrentParent.GetComponentInChildren<Hand>();
         if (hand != null)
             hand.OnMouseEnter();
     }
-    public void OnMouseExit()
+    public virtual void OnMouseExit()
     {
         var hand = CurrentParent.GetComponent<Hand>();
         if (hand != null)
