@@ -170,6 +170,19 @@ public class Card : MonoBehaviour
             transform.SetParent(DefaultParent);
             CurrentParent = transform.parent;
             transform.position = new Vector3(transform.position.x, transform.position.y, 0.001f);
+
+            //забрали карту из руки
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit[] raycastHits = Physics.RaycastAll(ray);
+            foreach (var hit in raycastHits)
+            {
+                var place = hit.transform.gameObject.GetComponent<DropCardToPlace>();
+                if (place != null)
+                {
+                    place.CardRemove();
+                    var plac = hit.transform.gameObject.GetComponent<Place>();
+                }
+            }
         }
     }
     public void OnMouseUp()
@@ -180,6 +193,7 @@ public class Card : MonoBehaviour
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit[] raycastHits = Physics.RaycastAll(ray);
+            var isMoveToPlace = false;
             foreach (var hit in raycastHits)
             {
                 var place = hit.transform.gameObject.GetComponent<DropCardToPlace>();
@@ -187,10 +201,19 @@ public class Card : MonoBehaviour
                 {
                     CurrentParent = hit.transform;
                     transform.SetParent(CurrentParent);
-                    place.CardAdded();
+                    place.CardAdded(this);
                     var plac = hit.transform.gameObject.GetComponent<Place>();
-                    plac.isCursored = false;
+                    //Не нравится, нужно по умному сделать нормально проверять что это место под карту\ничего\рука
+                    if (plac != null)
+                    {
+                        plac.isCursored = false;
+                        isMoveToPlace = true;
+                    }
                 }
+            }
+            if (isMoveToPlace == false) 
+            {
+                deployManager.PutCardFromBufferToHand(this);
             }
             animator.Play("OnDragEnd");
         }

@@ -10,12 +10,24 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
     public bool isHand = false;
 
     public Vector3 mainPosititon;
+    public Vector3[] mainPositions;
     public int interpolationFramesCount = 60; // Number of frames to completely interpolate between the 2 positions
     public int elapsedFrames = 0;
-    public bool cardAdded = false;
+    public int[] elspsedFramesCards;
+    public bool isCardChanged = false;
+    public Card addedCard;
+    public Card[] movedCards;
     public float interpolationRatio;
     private Vector3 positionApper;
+    public Vector3 center;
 
+    public float cardWidth = 1.5f;
+    public float widthBetweenCards = 0.0f;
+
+    public void Start()
+    {
+        center = transform.position;
+    }
     public void OnDrop(PointerEventData eventData)
     {
         Card cardParam = eventData.pointerDrag.GetComponent<Card>();
@@ -51,12 +63,38 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
         }
     }
 
-    public void CardAdded() 
+    public void CardAdded(Card card)
     {
-        var card = GetComponentInChildren<Card>();
-        cardAdded = true;
+        addedCard = card;
+        isCardChanged = true;
         mainPosititon = card.transform.position;
-        positionApper = transform.position;
+        //positionApper = center;
+        movedCards = GetNumberCards();
+        if (isMultiCard)
+        {
+            elspsedFramesCards = new int[movedCards.Length];
+            for (int i = 0; i < elspsedFramesCards.Length; i++) { elspsedFramesCards[i] = 0; }
+            mainPositions = new Vector3[movedCards.Length];
+            for (int i = 0; i < mainPositions.Length; i++)
+            {
+                mainPositions[i] = movedCards[i].transform.position;
+            }
+        }
+    }
+    public void CardRemove() 
+    {
+        isCardChanged = true;
+        movedCards = GetNumberCards();
+        if (isMultiCard)
+        {
+            elspsedFramesCards = new int[movedCards.Length];
+            for (int i = 0; i < elspsedFramesCards.Length; i++) { elspsedFramesCards[i] = 0; }
+            mainPositions = new Vector3[movedCards.Length];
+            for (int i = 0; i < mainPositions.Length; i++)
+            {
+                mainPositions[i] = movedCards[i].transform.position;
+            }
+        }
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -73,21 +111,125 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
 
     public void Update()
     {
-        if (cardAdded)
+        if (isCardChanged && isMultiCard == false)
         {
-            var card = GetComponentInChildren<Card>();
-            interpolationRatio = (float)elapsedFrames / interpolationFramesCount;
-            Vector3 interpolatedPosition = Vector3.Lerp(mainPosititon, positionApper, interpolationRatio);
-            elapsedFrames = (elapsedFrames + 1) % (interpolationFramesCount + 1);
-            interpolatedPosition.z = card.transform.position.z;
-            card.transform.position = interpolatedPosition;
-            if (elapsedFrames == interpolationFramesCount)
+            MoveCard(addedCard);
+        }
+        if (isCardChanged && isMultiCard == true) 
+        {
+            int position = 0;
+            foreach (var card in movedCards)
             {
-                cardAdded = false;
-                elapsedFrames = 0;
-                positionApper.z = card.transform.position.z;
-                card.transform.position = positionApper;
+                elspsedFramesCards[position] = MoveCard(card, position, movedCards.Length,
+                    elspsedFramesCards[position], mainPositions[position]);
+                position++;
             }
         }
     }
+    public Card[] GetNumberCards(Card addedCard)
+    {
+        var cardsInHand = GetComponentsInChildren<Card>();
+        Card[] cards = new Card[cardsInHand.Length + 1];
+        cards[0] = addedCard;
+        cardsInHand.CopyTo(cards, 1);
+        var len = cards.Length;
+        for (var i = 1; i < len; i++)
+        {
+            for (var j = 0; j < len - i; j++)
+            {
+                if (cards[j].transform.position.x > cards[j + 1].transform.position.x)
+                {
+                    Swap(ref cards[j], ref cards[j + 1]);
+                }
+            }
+        }
+        return cards;
+    }
+    public Card[] GetNumberCards() 
+    {
+        var cards = GetComponentsInChildren<Card>();
+        var len = cards.Length;
+        for (var i = 1; i < len; i++)
+        {
+            for (var j = 0; j < len - i; j++)
+            {
+                if (cards[j].transform.position.x > cards[j + 1].transform.position.x)
+                {
+                    Swap(ref cards[j], ref cards[j + 1]);
+                }
+            }
+        }
+        return cards;
+    }
+    //метод перестановки элементов
+    private void Swap(ref Card card1, ref Card card2)
+    {
+        var temp = card1;
+        card1 = card2;
+        card2 = temp;
+    }
+    private void MoveCard(Card card)
+    {
+        interpolationRatio = (float)elapsedFrames / interpolationFramesCount;
+        Vector3 interpolatedPosition = Vector3.Lerp(mainPosititon, center, interpolationRatio);
+        elapsedFrames = (elapsedFrames + 1) % (interpolationFramesCount + 1);
+        interpolatedPosition.z = card.transform.position.z;
+        card.transform.position = interpolatedPosition;
+        if (elapsedFrames == interpolationFramesCount)
+        {
+            isCardChanged = false;
+            elapsedFrames = 0;
+            center.z = card.transform.position.z;
+            card.transform.position = center;
+        }
+    }
+    private int MoveCard(Card card, int position, int cardsCount, int elapsedFrame, Vector3 mainPos)
+    {
+        positionApper = GetNewCardPosition(position, cardsCount);
+        interpolationRatio = (float)elapsedFrame / interpolationFramesCount;
+        Vector3 interpolatedPosition = Vector3.Lerp(mainPos, positionApper, interpolationRatio);
+        elapsedFrame = (elapsedFrame + 1) % (interpolationFramesCount + 1);
+        interpolatedPosition.z = card.transform.position.z;
+        card.transform.position = interpolatedPosition;
+        if (elapsedFrame == interpolationFramesCount)
+        {
+            isCardChanged = false;
+            elapsedFrame = 0;
+            positionApper.z = card.transform.position.z;
+            card.transform.position = positionApper;
+        }
+        return elapsedFrame;
+    }
+    private Vector3 GetNewCardPosition(int position, int cardsCount) 
+    {
+        var newPosition = transform.position;
+        var hasCenterPosition = false;
+        if (cardsCount % 2 == 1)
+            hasCenterPosition = true;
+        if (cardsCount == 1)
+        {
+            newPosition.x = center.x;
+            return newPosition;
+        }
+        if (cardsCount % 2 == 1 && cardsCount / 2 == position)
+        {
+            newPosition.x = center.x;
+            return newPosition;
+        }
+        else
+        {
+            if (hasCenterPosition == true)
+            {
+                var centerPosition = cardsCount / 2;
+                newPosition.x = center.x + ((cardWidth + widthBetweenCards) * (-centerPosition + position));
+            }
+            else
+            {
+                var centerPosition = cardsCount / 2;
+                newPosition.x = center.x + ((cardWidth + widthBetweenCards) * (-centerPosition + position)) + ((cardWidth + widthBetweenCards) * 0.5f);
+            }
+        }
+        return newPosition;
+    }
+
 }

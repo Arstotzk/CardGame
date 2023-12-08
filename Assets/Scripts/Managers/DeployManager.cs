@@ -77,4 +77,10 @@ public class DeployManager : MonoBehaviour
             card.isMoveable = false;
         }
     }
+    public void PutCardFromBufferToHand(Card card)
+    {
+        card.transform.SetParent(hand.transform);
+        var dctPlace = hand.GetComponent<DropCardToPlace>();
+        dctPlace.CardAdded(card);
+    }
 }
