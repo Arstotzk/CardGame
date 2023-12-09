@@ -83,7 +83,7 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
         if (isHand == false)
         {
             card.SoundOnDeck.Play();
-            //card.deployManager.Reinforcement -= card.reinforcement;
+            card.deployManager.Reinforcement -= card.reinforcement;
         }
     }
     public void CardRemove() 
