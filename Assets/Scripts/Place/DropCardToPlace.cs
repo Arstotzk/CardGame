@@ -69,9 +69,9 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
         isCardChanged = true;
         mainPosititon = card.transform.position;
         //positionApper = center;
-        movedCards = GetNumberCards();
         if (isMultiCard)
         {
+            movedCards = GetNumberCards();
             elspsedFramesCards = new int[movedCards.Length];
             for (int i = 0; i < elspsedFramesCards.Length; i++) { elspsedFramesCards[i] = 0; }
             mainPositions = new Vector3[movedCards.Length];
@@ -80,13 +80,18 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
                 mainPositions[i] = movedCards[i].transform.position;
             }
         }
+        if (isHand == false)
+        {
+            card.SoundOnDeck.Play();
+            //card.deployManager.Reinforcement -= card.reinforcement;
+        }
     }
     public void CardRemove() 
     {
-        isCardChanged = true;
-        movedCards = GetNumberCards();
         if (isMultiCard)
         {
+            isCardChanged = true;
+            movedCards = GetNumberCards();
             elspsedFramesCards = new int[movedCards.Length];
             for (int i = 0; i < elspsedFramesCards.Length; i++) { elspsedFramesCards[i] = 0; }
             mainPositions = new Vector3[movedCards.Length];
