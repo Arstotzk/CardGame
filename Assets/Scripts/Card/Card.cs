@@ -16,6 +16,19 @@ public class Card : MonoBehaviour
     public Transform CurrentParent;
     public int column;
     public int row;
+    private Place _place;
+    public Place place
+    { 
+        get => _place;
+        set
+        {
+            if (_place != null && _place != value)
+            {
+                _place.isCursored = false;
+            }
+            _place = value;
+        }
+    }
 
     public int _health;
     public int health
@@ -176,11 +189,10 @@ public class Card : MonoBehaviour
             RaycastHit[] raycastHits = Physics.RaycastAll(ray);
             foreach (var hit in raycastHits)
             {
-                var place = hit.transform.gameObject.GetComponent<DropCardToPlace>();
-                if (place != null)
+                var dctPlace = hit.transform.gameObject.GetComponent<DropCardToPlace>();
+                if (dctPlace != null)
                 {
-                    place.CardRemove();
-                    var plac = hit.transform.gameObject.GetComponent<Place>();
+                    dctPlace.CardRemove();
                 }
             }
         }
@@ -190,18 +202,20 @@ public class Card : MonoBehaviour
         if (deployManager.Reinforcement > 0 && isMoveable == true)
         {
             deployManager.isPlayerDrugCard = false;
-
+            var posit = transform.position;
+            posit.z = 0f;
+            transform.position = posit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit[] raycastHits = Physics.RaycastAll(ray);
             var isMoveToPlace = false;
             foreach (var hit in raycastHits)
             {
-                var place = hit.transform.gameObject.GetComponent<DropCardToPlace>();
-                if (place != null)
+                var dctPlace = hit.transform.gameObject.GetComponent<DropCardToPlace>();
+                if (dctPlace != null)
                 {
                     CurrentParent = hit.transform;
                     transform.SetParent(CurrentParent);
-                    place.CardAdded(this);
+                    dctPlace.CardAdded(this);
                     var plac = hit.transform.gameObject.GetComponent<Place>();
                     //Ќе нравитс€, нужно по умному сделать нормально провер€ть что это место под карту\ничего\рука
                     if (plac != null)
@@ -213,6 +227,7 @@ public class Card : MonoBehaviour
             }
             if (isMoveToPlace == false) 
             {
+                place = null;
                 deployManager.PutCardFromBufferToHand(this);
             }
             animator.Play("OnDragEnd");
@@ -229,7 +244,7 @@ public class Card : MonoBehaviour
             transform.rotation = target;
 
             var zFixedPosition = newPos + offset;
-            zFixedPosition.z = -0.001f;
+            zFixedPosition.z = -0.01f;
             transform.position = zFixedPosition;
             //Debug.Log("MouseDrag: " + newPos + "; " + offset);
             oldPos = newPos;

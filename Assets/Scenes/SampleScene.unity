@@ -5341,6 +5341,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &311104525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10304,6 +10305,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &327410134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15292,6 +15294,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &374383042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20423,6 +20426,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &401939963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25532,6 +25536,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &587322677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30843,6 +30848,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &818362481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35775,6 +35781,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &820188181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40879,6 +40886,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &945343800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46121,6 +46129,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &1005111764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51183,6 +51192,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &1383006940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51350,6 +51360,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!65 &1426078344
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56255,6 +56266,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1655802112}
     m_Modifications:
+    - target: {fileID: 1424613156, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076140677, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1889954402033784441, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -56275,9 +56294,29 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3517906208761834662, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4068837967759928536, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068837967759928536, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192219942360013210, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192219942408453017, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192219942713766397, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4192219943228298148, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: m_Pivot.x
@@ -56366,6 +56405,34 @@ PrefabInstance:
     - target: {fileID: 4192219943228298151, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: m_Name
       value: CardSample
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192219943229188566, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192219943231557796, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192219943777670851, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192219943976761137, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192219944229491700, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192219944311039168, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5561480235676205417, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6918614959929754302, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: CurrentParent
@@ -61297,6 +61364,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &1529420461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66364,6 +66432,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &1605114942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71296,6 +71365,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &1651521670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71443,7 +71513,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 12, y: 2.5, z: 0.001}
-  m_Center: {x: 0, y: 0, z: 0.001}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1655802116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71461,7 +71531,7 @@ MonoBehaviour:
   isHand: 1
   mainPosititon: {x: 0, y: 0, z: 0}
   mainPositions: []
-  interpolationFramesCount: 60
+  interpolationFramesCount: 30
   elapsedFrames: 0
   elspsedFramesCards: 
   isCardChanged: 0
@@ -76419,6 +76489,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &1731410024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81492,6 +81563,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &1804315655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86424,6 +86496,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &1865345294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96211,6 +96284,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &2042797395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101143,6 +101217,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &2046956862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106224,6 +106299,7 @@ MonoBehaviour:
   cardBuffer: {fileID: 561989504}
   testParticle: 0
   testPatricle2: 0
+  _isCursored: 0
 --- !u!114 &2146049311
 MonoBehaviour:
   m_ObjectHideFlags: 0

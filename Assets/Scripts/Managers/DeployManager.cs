@@ -80,6 +80,7 @@ public class DeployManager : MonoBehaviour
     public void PutCardFromBufferToHand(Card card)
     {
         card.transform.SetParent(hand.transform);
+        card.CurrentParent = hand.transform;
         var dctPlace = hand.GetComponent<DropCardToPlace>();
         dctPlace.CardAdded(card);
     }

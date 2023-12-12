@@ -13,7 +13,7 @@ public class Place : MonoBehaviour
     public GameObject cardBuffer;
     public bool testParticle = false;
     public bool testPatricle2 = false;
-    private bool _isCursored;
+    public bool _isCursored;
     public bool isCursored 
     { 
         get => _isCursored;
@@ -62,10 +62,7 @@ public class Place : MonoBehaviour
     }
     public void OnMouseExit()
     {
-        if (deployManager.isPlayerDrugCard)
-        {
-            SetCollorUnselect();
-        }
+        SetCollorUnselect();
         isCursored = false;
     }
 
