@@ -127,13 +127,13 @@ public class CardPerson : Card
         {
             var rowLocation = attackLocation.Item1;
             var columnLocation = attackLocation.Item2;
-            Place place = null;
+            Place attackPlace = null;
             if (!isEnemy)
-                place = battleManager.GetPlaceAt(-1 + columnLocation + column, -3 + rowLocation + row);
+                attackPlace = battleManager.GetPlaceAt(-1 + columnLocation + column, -3 + rowLocation + row);
             else
-                place = battleManager.GetPlaceAt(-1 + columnLocation + column, 1 + rowLocation + row);
-            if(place != null)
-                places.Add(place);
+                attackPlace = battleManager.GetPlaceAt(-1 + columnLocation + column, 1 + rowLocation + row);
+            if(attackPlace != null)
+                places.Add(attackPlace);
         }
         return places;
     }
@@ -141,18 +141,18 @@ public class CardPerson : Card
     public void ShowAttackPlaces()
     {
         attackPlaces = GetCurrentAttackPlaces();
-        foreach (var place in attackPlaces) 
+        foreach (var attackPlace in attackPlaces) 
         {
-            if(place != null)
-                place.StartAttackShow();
+            if(attackPlace != null)
+                attackPlace.StartAttackShow();
         }
     }
     public void StopShowAttackPlaces()
     {
-        foreach (var place in attackPlaces)
+        foreach (var attackPlace in attackPlaces)
         {
-            if (place != null)
-                place.StopAttackShow();
+            if (attackPlace != null)
+                attackPlace.StopAttackShow();
         }
         attackPlaces = new List<Place>();
     }
@@ -209,50 +209,48 @@ public class CardPerson : Card
     {
         return SoundOnAttack.clip.length;
     }
-    public override void OnDrag(PointerEventData eventData)
+    public override void OnMouseDrag()
     {
-
-        base.OnDrag(eventData);
+        base.OnMouseDrag();
 
         if (deployManager.Reinforcement > 0 && isMoveable == true)
         {
-            Place place;
-            eventData.pointerEnter.TryGetComponent<Place>(out place);
-            Debug.Log(place);
-            if (enterObject != eventData.pointerEnter)
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit[] raycastHits = Physics.RaycastAll(ray);
+            foreach (var hit in raycastHits)
             {
-                column = 0;
-                row = 0;
-                StopShowAttackPlaces();
-            }
-            if (place != null && enterObject != eventData.pointerEnter)
-            {
-                Debug.Log(eventData.pointerEnter);
-                enterObject = eventData.pointerEnter;
-                column = place.column;
-                row = place.row;
-
-                ShowAttackPlaces();
+                var hitPlace = hit.transform.gameObject.GetComponent<Place>();
+                if (hitPlace != null)
+                {
+                    place = hitPlace;
+                    column = place.column;
+                    row = place.row;
+                    place.isCursored = true;
+                }
             }
         }
 
     }
-    public override void OnEndDrag(PointerEventData eventData)
+    public override void OnEndDrag()
     {
-        base.OnEndDrag(eventData);
+        base.OnEndDrag();
         if (isMoveable == true && deployManager.isPlayerDrugCard == true)
         {
             StopShowAttackPlaces();
         }
     }
-    public void OnMouseEnter()
+
+    public override void OnMouseEnter()
     {
-        if(!deployManager.isPlayerDrugCard)
+        base.OnMouseEnter();
+        if (!deployManager.isPlayerDrugCard && place != null)
             ShowAttackPlaces();
     }
-    public void OnMouseExit()
+    public override void OnMouseExit()
     {
-        if (!deployManager.isPlayerDrugCard)
+        base.OnMouseExit();
+        if (!deployManager.isPlayerDrugCard && place != null)
             StopShowAttackPlaces();
     }
+
 }

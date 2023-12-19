@@ -100,4 +100,20 @@ public class Hand : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 card.SoundOnDeath.clip = smSlavic.GetOnDieSoundClip();
         }
     }
+
+    public void OnMouseEnter()
+    {
+        Debug.Log("HandMouseEnter");
+        pointerOnHand = true;
+        isFinished = false;
+    }
+    public void OnMouseExit()
+    {
+        pointerOnHand = false;
+        isFinished = false;
+        if (elapsedFrames == interpolationFramesCount)
+        {
+            elapsedFrames = elapsedFrames - 1;
+        }
+    }
 }

@@ -4,17 +4,31 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Card : MonoBehaviour
 {
     Camera MainCamera;
     Camera SecondCamera;
     Vector3 offset;
     Vector3 oldPos;
-    Vector3 resize = new Vector3(1.3f, 1.3f, 1.3f);
+    Vector3 resize = new Vector3(1.5f, 1.5f, 1.5f);
+    Vector3 normalSize = new Vector3(1.5f, 1.5f, 1.5f);
     public Transform DefaultParent;
     public Transform CurrentParent;
     public int column;
     public int row;
+    private Place _place;
+    public Place place
+    { 
+        get => _place;
+        set
+        {
+            if (_place != null && _place != value)
+            {
+                _place.isCursored = false;
+            }
+            _place = value;
+        }
+    }
 
     public int _health;
     public int health
@@ -92,9 +106,10 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public GameObject enterObject;
     void Awake ()
     {
-        MainCamera = Camera.allCameras[0]; //TODO Костыль, перописать по нормальному
+        MainCamera = Camera.main;
     }
-    public void OnBeginDrag(PointerEventData eventData)
+    //Старый код, удалить потом
+    public void OnBeginDrag()
     {
         if (deployManager.Reinforcement > 0 && isMoveable == true)
         {
@@ -111,7 +126,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
     }
-
+    //Старый код, удалить потом
     public virtual void OnDrag(PointerEventData eventData)
     {
         if (deployManager.Reinforcement > 0 && isMoveable == true)
@@ -131,8 +146,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             offset = newPos;
         }
     }
-
-    public virtual void OnEndDrag(PointerEventData eventData)
+    //Старый код, удалить потом
+    public virtual void OnEndDrag()
     {
         if (isMoveable == true && deployManager.isPlayerDrugCard == true)
         {
@@ -155,6 +170,107 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         animator.Play("Burning");
         Invoke("Delete", 0.5f); //Переделать на сброс карты в стопку сброса
     }
+
+    public void OnMouseDown()
+    {
+        if (deployManager.Reinforcement > 0 && isMoveable == true)
+        {
+            deployManager.isPlayerDrugCard = true;
+            animator.Play("OnDragStart");
+            var mousePos = Input.mousePosition;
+            offset = transform.position - MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
+            oldPos = offset;
+            transform.SetParent(DefaultParent);
+            CurrentParent = transform.parent;
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0.001f);
+
+            //забрали карту из руки
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit[] raycastHits = Physics.RaycastAll(ray);
+            foreach (var hit in raycastHits)
+            {
+                var dctPlace = hit.transform.gameObject.GetComponent<DropCardToPlace>();
+                if (dctPlace != null)
+                {
+                    dctPlace.CardRemove();
+                }
+            }
+        }
+    }
+    public void OnMouseUp()
+    {
+        if (deployManager.Reinforcement > 0 && isMoveable == true)
+        {
+            deployManager.isPlayerDrugCard = false;
+            var posit = transform.position;
+            posit.z = 0f;
+            transform.position = posit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit[] raycastHits = Physics.RaycastAll(ray);
+            var isMoveToPlace = false;
+            foreach (var hit in raycastHits)
+            {
+                var dctPlace = hit.transform.gameObject.GetComponent<DropCardToPlace>();
+                if (dctPlace != null)
+                {
+                    CurrentParent = hit.transform;
+                    transform.SetParent(CurrentParent);
+                    dctPlace.CardAdded(this);
+                    var plac = hit.transform.gameObject.GetComponent<Place>();
+                    //Не нравится, нужно по умному сделать нормально проверять что это место под карту\ничего\рука
+                    if (plac != null)
+                    {
+                        plac.isCursored = false;
+                        isMoveToPlace = true;
+                    }
+                }
+            }
+            if (isMoveToPlace == false) 
+            {
+                place = null;
+                deployManager.PutCardFromBufferToHand(this);
+            }
+            animator.Play("OnDragEnd");
+        }
+    }
+    public virtual void OnMouseDrag()
+    {
+        if (deployManager.Reinforcement > 0 && isMoveable == true)
+        {
+            var mousePos = Input.mousePosition;
+            Vector3 newPos = MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
+            Vector3 difference = newPos - oldPos;
+            Quaternion target = Quaternion.Euler(difference.y * 15, -difference.x * 15, 0);
+            transform.rotation = target;
+
+            var zFixedPosition = newPos + offset;
+            zFixedPosition.z = -0.01f;
+            transform.position = zFixedPosition;
+            //Debug.Log("MouseDrag: " + newPos + "; " + offset);
+            oldPos = newPos;
+        }
+    }
+    public virtual void OnMouseEnter()
+    {
+        var hand = CurrentParent.GetComponentInChildren<Hand>();
+        if (hand != null)
+            hand.OnMouseEnter();
+    }
+    public virtual void OnMouseExit()
+    {
+        var hand = CurrentParent.GetComponent<Hand>();
+        if (hand != null)
+            hand.OnMouseExit();
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("OnTriggerEnter2D");
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("OnTriggerEnter");
+    }
+
 
 
 }

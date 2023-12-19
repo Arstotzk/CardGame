@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hands : MonoBehaviour
+public class Button : MonoBehaviour
 {
+    public BattleManager bm;
+    public MusicManager mm;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,11 @@ public class Hands : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnMouseDown()
+    {
+        bm.BattleStart();
+        mm.PlayMusic();
     }
 }
