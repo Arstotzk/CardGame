@@ -226,7 +226,7 @@ public class CardPerson : Card
                     column = place.column;
                     row = place.row;
                     place.isCursored = true;
-                }
+                } 
             }
         }
 
