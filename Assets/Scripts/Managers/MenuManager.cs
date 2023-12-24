@@ -37,6 +37,11 @@ public class MenuManager : MonoBehaviour
         sfxValue = PlayerPrefs.GetFloat("Sfx");
         slavicValue = PlayerPrefs.GetFloat("Slavic");
         reptilianValue = PlayerPrefs.GetFloat("Reptilian");
+        
+        //Первый запуск игры нет данных в PlayerPrefs
+        if (masterValue == 0 && musicValue == 0 && sfxValue == 0 && slavicValue == 0 && reptilianValue == 0)
+            masterValue = musicValue = sfxValue = slavicValue = reptilianValue = 1;
+
         master.value = masterValue;
         music.value = musicValue;
         sfx.value = sfxValue;
@@ -59,6 +64,12 @@ public class MenuManager : MonoBehaviour
     }
     public void Setting() 
     {
+        masterValue = PlayerPrefs.GetFloat("Master");
+        musicValue = PlayerPrefs.GetFloat("Music");
+        sfxValue = PlayerPrefs.GetFloat("Sfx");
+        slavicValue = PlayerPrefs.GetFloat("Slavic");
+        reptilianValue = PlayerPrefs.GetFloat("Reptilian");
+
         settings.SetActive(true);
         audioSfx.volume = 1;
         audioSlavic.volume = 1;
