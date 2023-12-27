@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NovelMind : MonoBehaviour
+public class NovelMind : NovelScript
 {
-    // Start is called before the first frame update
-    void Start()
+    private string _text;
+    public string text
     {
-        
+        get => _text;
     }
-
-    // Update is called once per frame
-    void Update()
+    public NovelMind(string inputText)
     {
-        
+        scriptType = ScriptType.mind;
+        _text = inputText;
     }
 }
