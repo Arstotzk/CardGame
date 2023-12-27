@@ -10,6 +10,9 @@ public class NovelManager : MonoBehaviour
     public int scriptNumber;
     public GameObject character;
     public GameObject mainText;
+
+    public MusicManager musicManager;
+    public MusicManager soundManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,8 +38,13 @@ public class NovelManager : MonoBehaviour
         switch (currentScript.scriptType)
         {
             case NovelScript.ScriptType.mind:
+                character.SetActive(false);
+                mainText.SetActive(true);
+                mainText.GetComponentInChildren<TMP_Text>(true).text = ((NovelMind)currentScript).text;
                 break;
             case NovelScript.ScriptType.say:
+                character.SetActive(true);
+                mainText.SetActive(true);
                 character.GetComponentInChildren<TMP_Text>(true).text = ((NovelSay) currentScript).character;
                 mainText.GetComponentInChildren<TMP_Text>(true).text = ((NovelSay)currentScript).text;
                 break;
@@ -46,14 +54,28 @@ public class NovelManager : MonoBehaviour
                 break;
             case NovelScript.ScriptType.startBattle:
                 break;
-            case NovelScript.ScriptType.musicStart:
+            case NovelScript.ScriptType.musicPlay:
+                musicManager.audioSource.clip = ((NovelMusic)currentScript).audioClip;
+                musicManager.PlayMusic();
                 break;
             case NovelScript.ScriptType.musicStop:
+                musicManager.audioSource.clip = null;
+                musicManager.StopMusic();
                 break;
             case NovelScript.ScriptType.soundPlay:
+                soundManager.StopMusic();
+                soundManager.audioSource.clip = ((NovelSound)currentScript).audioClip;
+                soundManager.PlayMusic();
+                break;
+            case NovelScript.ScriptType.soundStop:
+                soundManager.audioSource.clip = null;
+                soundManager.StopMusic();
                 break;
             default:
                 break;
         }
+
+        if (currentScript.isAutoNext)
+            PlayNextScript();
     }
 }

@@ -10,7 +10,7 @@ public class MusicManager : MonoBehaviour
     public bool isMusicPlays = false;
     public void PlayMusic()
     {
-        if (canPlaysMusic == true && isMusicPlays == false)
+        if (isMusicPlays == false)
         {
             audioSource.Play();
             isMusicPlays = true;
@@ -18,7 +18,6 @@ public class MusicManager : MonoBehaviour
     }
     public void StopMusic() 
     {
-        canPlaysMusic = false;
         isMusicPlays = false;
         audioSource.Stop();
     }

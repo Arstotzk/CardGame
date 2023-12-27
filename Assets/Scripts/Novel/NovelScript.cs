@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class NovelScript
 {
-    public bool isAutoNext;
+    public bool isAutoNext = false;
     public ScriptType scriptType; 
     public NovelScript()
     {
@@ -21,8 +21,9 @@ public abstract class NovelScript
         world,
         action,
         startBattle,
-        musicStart,
+        musicPlay,
         musicStop,
-        soundPlay
+        soundPlay,
+        soundStop
     }
 }
