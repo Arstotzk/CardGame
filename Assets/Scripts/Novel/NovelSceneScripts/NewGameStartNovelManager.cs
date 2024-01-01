@@ -13,9 +13,7 @@ public class NewGameStartNovelManager : NovelManager
     void Start()
     {
         Debug.Log("NewGameStart: " + scriptNumber);
-        //Старт музыки
         scripts.Add(new NovelMusic(BeginMusic));
-        //Старт звука повозки
         scripts.Add(new NovelSound(HorseSound));
         scripts.Add(new NovelMind("Под стук колес повозки и ног лошади, Пиздослав проснулся ото сна."));
         scripts.Add(new NovelSay("Пиздаслав", "Эй, кучер, сколько еще ехать до Древнеславянки?"));
@@ -40,7 +38,6 @@ public class NewGameStartNovelManager : NovelManager
         scripts.Add(new NovelSay("Пиздаслав", "Сейчас бабуль. Только расплачусь с Кучером."));
         scripts.Add(new NovelSay("Конемир", "Да брось ты. Я помог тебе, ты поможешь мне."));
         scripts.Add(new NovelSay("Пиздаслав", "Добро. Увидимся."));
-        //Остановка звука повозки
         scripts.Add(new NovelSound(null));
         scripts.Add(new NovelMind("Повозка остановилась, пиздаслав забрал свой мешок с вещами."));
         scripts.Add(new NovelMind("Пиздаслав спрыгнул с повозки и крепко обнял свою бабушку."));
@@ -50,6 +47,7 @@ public class NewGameStartNovelManager : NovelManager
         scripts.Add(new NovelSay("Бабушка Авдотья", "Вот деду несла пироги. Он как всегда ушел на речку рыбачить рано с утра и ничего с собой не взял, а уже обед."));
         scripts.Add(new NovelSay("Пиздаслав", "Давай я ему отнесу."));
         scripts.Add(new NovelSay("Бабушка Авдотья", "Давай, пока дойду до него уже ужин будет, а ты быстро доберешься. И я пока на тебя пироги испеку."));
+        //Меняем фон на реку
         scripts.Add(new NovelMind("Пиздаслав зашел в знакомый с детсва прилесок рядом с речкой."));
         scripts.Add(new NovelMind("На берегу сидел с удочкой коренастный седой дед. Подошел к деду поближе."));
         scripts.Add(new NovelSay("Пиздаслав", "Ну что, всех окуней выловил?"));
@@ -59,32 +57,31 @@ public class NewGameStartNovelManager : NovelManager
         scripts.Add(new NovelSay("Пиздаслав", "Конечно расскажу, но сначала отобедай, бабушка пирожки передала."));
         scripts.Add(new NovelMind("Пиздаслав протянул корзинку с пирожками."));
         scripts.Add(new NovelSay("Дед Максим", "А мы их пополам поделим."));
-        //Оставновка музыки
         scripts.Add(new NovelMusic(null));
-        //Звук взрыва
         scripts.Add(new NovelSound(ExplosionSound));
         scripts.Add(new NovelMind("Только Пиздаслав хотел возразить как в небе вспыхнуло и раздался гулкий взрыв."));
         scripts.Add(new NovelSay("Дед Максим", "Ох. Что это было?"));
         scripts.Add(new NovelSay("Пиздаслав", "Упало где-то на востоке. Нужно проверить. Надеюсь это не то о чем я думаю."));
         scripts.Add(new NovelSay("Дед Максим", "Я иду с тобой."));
         scripts.Add(new NovelSay("Пиздаслав", "Ну чтож, хорошо. Только не шуми."));
-        //Старт музыки ящеров
+        //Меняем фон на место крушения
         scripts.Add(new NovelMusic(LizardMusic));
         scripts.Add(new NovelMind("Пиздаслав с дедом Максимом начали подходить к месту откуда доносился шум."));
         scripts.Add(new NovelMind("Казалось что небо вокруг почернело и воздух стал вязким."));
         scripts.Add(new NovelMind("Что Пиздаславу, что деду Максиму стало трудно дышать."));
+        //Добавляем на сцену ящеров
         scripts.Add(new NovelMind("И тут они увидели их. Ящеров."));
         scripts.Add(new NovelMind("Отвратительные чешуйчатые создания что-то копашились рядом со своим воздушным кораблем."));
         scripts.Add(new NovelMind("Пиздаслав аккуратно поставил свой мешок и достал оттуда меч."));
         scripts.Add(new NovelSay("Пиздаслав", "*Шепотом* Нужно рассказать в деревне."));
         scripts.Add(new NovelSay("Дед Максим", "*Шепотом* Никогда не думал что увижу их вживую. Какие они омерзительные."));
         scripts.Add(new NovelSay("Пиздаслав", "*Шепотом* Давай тихо отходить, чтобы они нас не заметили."));
-        //Хруст ветки
         scripts.Add(new NovelSound(BranchSound));
         scripts.Add(new NovelMind("И тут предательски треснула ветка под ногами деда Максима."));
         scripts.Add(new NovelMind("Ящеры вдруг остановились."));
         scripts.Add(new NovelMind("Десятки глаз с вертикальными глазами смотрели в сторону русов."));
         scripts.Add(new NovelSay("Пиздаслав", "Прийдется драться."));
+        scripts.Add(new NovelStartScene("SampleScene"));
         //Начало сцены битвы
 
         PlayScript();

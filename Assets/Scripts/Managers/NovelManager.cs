@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class NovelManager : MonoBehaviour
 {
@@ -17,12 +18,6 @@ public class NovelManager : MonoBehaviour
     void Start()
     {
         scriptNumber = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public virtual void PlayNextScript()
@@ -52,7 +47,9 @@ public class NovelManager : MonoBehaviour
                 break;
             case NovelScript.ScriptType.action:
                 break;
-            case NovelScript.ScriptType.startBattle:
+            case NovelScript.ScriptType.startScane:
+                string sceneName = ((NovelStartScene)currentScript).sceneName;
+                SceneManager.LoadScene(sceneName);
                 break;
             case NovelScript.ScriptType.musicPlay:
                 musicManager.audioSource.clip = ((NovelMusic)currentScript).audioClip;

@@ -20,7 +20,7 @@ public abstract class NovelScript
         say,
         world,
         action,
-        startBattle,
+        startScane,
         musicPlay,
         musicStop,
         soundPlay,

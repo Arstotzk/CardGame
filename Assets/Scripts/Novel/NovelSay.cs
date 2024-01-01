@@ -16,6 +16,7 @@ public class NovelSay : NovelScript
     }
     public NovelSay(string inputCharacter, string inputText)
     {
+        //Добавить говорящего и его полдожение на сцене
         scriptType = ScriptType.say;
         _character = inputCharacter;
         _text = inputText;
