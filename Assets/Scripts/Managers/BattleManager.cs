@@ -51,16 +51,16 @@ public class BattleManager : MonoBehaviour
         {
             if (card.isEnemy)
             {
-                card.SoundOnAttack.clip = smReptilian.GetOnAttackSoundClip();
-                card.SoundOnDeck.clip = smReptilian.GetOnDeckSoundClip();
-                card.SoundOnDeath.clip = smReptilian.GetOnDieSoundClip();
+                //card.SoundOnAttack.clip = smReptilian.GetOnAttackSoundClip();
+                //card.SoundOnDeck.clip = smReptilian.GetOnDeckSoundClip();
+                //card.SoundOnDeath.clip = smReptilian.GetOnDieSoundClip();
             }
             else
             {
-                if (!card.isUniqueAttack)
-                    card.SoundOnAttack.clip = smSlavic.GetOnAttackSoundClip();
-                card.SoundOnDeck.clip = smSlavic.GetOnDeckSoundClip();
-                card.SoundOnDeath.clip = smSlavic.GetOnDieSoundClip();
+                //if (!card.isUniqueAttack)
+                    //card.SoundOnAttack.clip = smSlavic.GetOnAttackSoundClip();
+                //card.SoundOnDeck.clip = smSlavic.GetOnDeckSoundClip();
+                //card.SoundOnDeath.clip = smSlavic.GetOnDieSoundClip();
             }
         }
     }
@@ -117,7 +117,7 @@ public class BattleManager : MonoBehaviour
     }
     public List<CardPerson> OrderCardList(List<CardPerson> cards) 
     {
-        cards = cards.OrderByDescending(c => c.Initiative).ThenBy(c => c._health).ThenBy(c => c.Attack).ToList();
+        cards = cards.OrderByDescending(c => c.Initiative).ThenBy(c => c._health).ThenBy(c => c._attack).ToList();
         return cards;
     }
     public float ExecCardsActions(List<CardPerson> cards)

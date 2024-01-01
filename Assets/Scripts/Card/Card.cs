@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class Card : MonoBehaviour
+public abstract class Card : MonoBehaviour
 {
     Camera MainCamera;
-    Camera SecondCamera;
     Vector3 offset;
     Vector3 oldPos;
     Vector3 resize = new Vector3(1.5f, 1.5f, 1.5f);
@@ -29,37 +28,9 @@ public class Card : MonoBehaviour
             _place = value;
         }
     }
-
-    public int _health;
-    public int health
-    { 
-        get => _health;
-        set 
-        {
-            futureHealth = value;
-            _health = value;
-            if (value <= 0)
-            {
-                HealthText.text = "0";
-                SoundOnDeath.Play();
-                //animator.Play("OnDrugStart");
-                Invoke("Death", SoundOnDeath.clip.length); //Переделать на сброс карты в стопку сброса
-                isDead = true;
-            }
-            else 
-            {
-                HealthText.text = value.ToString();
-            }
-        } 
-    }
-    public int Attack;
-    public int Initiative;
     public int reinforcement;
     public string cardName;
 
-    public TMP_Text HealthText;
-    public TMP_Text AttackText;
-    public TMP_Text InitiativeText;
     public TMP_Text rceText;
     public TMP_Text cardNameText;
 
@@ -72,35 +43,18 @@ public class Card : MonoBehaviour
 
     public Animator animator;
 
-    public AudioSource SoundOnDeck;
-    public AudioSource SoundOnAttack;
-    public AudioSource SoundOnDeath;
+    public CardSound sound;
 
-    public AudioSource SoundAttack;
-    public AudioSource SoundGetDammage;
-
-    public int _futureHealth;
-    public int futureHealth { 
-        get => _futureHealth;
-        set 
-        {
-            _futureHealth = value;
-            if (value <= 0)
-                futureIsDead = true;
-        } 
-    }
-    public bool futureIsDead;
     public virtual void Start()
     {
-        HealthText.text = health.ToString();
-        AttackText.text = Attack.ToString();
-        InitiativeText.text = Initiative.ToString();
+        sound = GetComponent<CardSound>();
         rceText.text = reinforcement.ToString();
         cardNameText.text = cardName;
         animator = GetComponent<Animator>();
-
-        futureHealth = _health;
-        futureIsDead = isDead;
+        if (GetComponentInParent<Place>() != null)
+        {
+            place = GetComponentInParent<Place>();
+        }
     }
 
     public GameObject enterObject;
@@ -108,61 +62,9 @@ public class Card : MonoBehaviour
     {
         MainCamera = Camera.main;
     }
-    //Старый код, удалить потом
-    public void OnBeginDrag()
-    {
-        if (deployManager.Reinforcement > 0 && isMoveable == true)
-        {
-            deployManager.isPlayerDrugCard = true;
-            //transform.localScale = resize;
-            animator.Play("OnDragStart");
-            var mousePos = Input.mousePosition;
-            mousePos.z = 10; // select distance = 10 units from the camera
-            offset = MainCamera.ScreenToWorldPoint(mousePos);
-            offset.z = 0;
-            oldPos = offset;
-            CurrentParent = transform.parent;
-            transform.SetParent(DefaultParent);
-            GetComponent<CanvasGroup>().blocksRaycasts = false;
-        }
-    }
-    //Старый код, удалить потом
-    public virtual void OnDrag(PointerEventData eventData)
-    {
-        if (deployManager.Reinforcement > 0 && isMoveable == true)
-        {
-            var mousePos = Input.mousePosition;
-            mousePos.z = 10;
-            Vector3 newPos = MainCamera.ScreenToWorldPoint(mousePos);
-            newPos.z = 0;
-            Vector3 difference = newPos - offset;
-            Quaternion target = Quaternion.Euler(difference.y * 10, -difference.x * 10, 0);
-            transform.rotation = target;
-            Debug.Log("mousePos:" + mousePos);
-            Debug.Log("newPos:" + newPos);
-            Debug.Log("eventData.position:" + eventData.position);
-            //Дичь, переделать
-            transform.position = transform.position + ((newPos - offset) * 10f);
-            offset = newPos;
-        }
-    }
-    //Старый код, удалить потом
-    public virtual void OnEndDrag()
-    {
-        if (isMoveable == true && deployManager.isPlayerDrugCard == true)
-        {
-            deployManager.isPlayerDrugCard = false;
-            Debug.Log("DragEnd");
-            Quaternion target = Quaternion.Euler(0, 0, 0);
-            transform.rotation = target;
-            animator.Play("OnDragEnd");
-            transform.localScale = new Vector3(1f, 1f, 1f);
-            transform.SetParent(CurrentParent);
-            GetComponent<CanvasGroup>().blocksRaycasts = true;
-        }
-    }
     public void Delete() 
     {
+        //Добавить в сброс
         Destroy(gameObject);
     }
     public void Death()
@@ -171,6 +73,7 @@ public class Card : MonoBehaviour
         Invoke("Delete", 0.5f); //Переделать на сброс карты в стопку сброса
     }
 
+    //Взяли карту
     public void OnMouseDown()
     {
         if (deployManager.Reinforcement > 0 && isMoveable == true)
@@ -182,7 +85,7 @@ public class Card : MonoBehaviour
             oldPos = offset;
             transform.SetParent(DefaultParent);
             CurrentParent = transform.parent;
-            transform.position = new Vector3(transform.position.x, transform.position.y, 0.001f);
+            transform.position = new Vector3(transform.position.x, transform.position.y, -0.01f);
 
             //забрали карту из руки
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -197,39 +100,16 @@ public class Card : MonoBehaviour
             }
         }
     }
-    public void OnMouseUp()
+    //Положили карту
+    public virtual void OnMouseUp()
     {
         if (deployManager.Reinforcement > 0 && isMoveable == true)
         {
+            Debug.Log("OnMouseUp");
             deployManager.isPlayerDrugCard = false;
             var posit = transform.position;
             posit.z = 0f;
             transform.position = posit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit[] raycastHits = Physics.RaycastAll(ray);
-            var isMoveToPlace = false;
-            foreach (var hit in raycastHits)
-            {
-                var dctPlace = hit.transform.gameObject.GetComponent<DropCardToPlace>();
-                if (dctPlace != null)
-                {
-                    CurrentParent = hit.transform;
-                    transform.SetParent(CurrentParent);
-                    dctPlace.CardAdded(this);
-                    var plac = hit.transform.gameObject.GetComponent<Place>();
-                    //Не нравится, нужно по умному сделать нормально проверять что это место под карту\ничего\рука
-                    if (plac != null)
-                    {
-                        plac.isCursored = false;
-                        isMoveToPlace = true;
-                    }
-                }
-            }
-            if (isMoveToPlace == false) 
-            {
-                place = null;
-                deployManager.PutCardFromBufferToHand(this);
-            }
             animator.Play("OnDragEnd");
         }
     }
@@ -244,7 +124,7 @@ public class Card : MonoBehaviour
             transform.rotation = target;
 
             var zFixedPosition = newPos + offset;
-            zFixedPosition.z = -0.01f;
+            //zFixedPosition.z = -0.01f;
             transform.position = zFixedPosition;
             //Debug.Log("MouseDrag: " + newPos + "; " + offset);
             oldPos = newPos;
@@ -262,15 +142,6 @@ public class Card : MonoBehaviour
         if (hand != null)
             hand.OnMouseExit();
     }
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("OnTriggerEnter2D");
-    }
-    public void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("OnTriggerEnter");
-    }
 
-
-
+    public abstract void Action();
 }

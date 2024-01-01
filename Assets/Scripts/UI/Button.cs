@@ -21,6 +21,6 @@ public class Button : MonoBehaviour
     public void OnMouseDown()
     {
         bm.BattleStart();
-        mm.PlayMusic();
+        //mm.PlayMusic();
     }
 }

@@ -94,10 +94,10 @@ public class Hand : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         foreach (var card in cards)
         {
-                if (!card.isUniqueAttack)
-                    card.SoundOnAttack.clip = smSlavic.GetOnAttackSoundClip();
-                card.SoundOnDeck.clip = smSlavic.GetOnDeckSoundClip();
-                card.SoundOnDeath.clip = smSlavic.GetOnDieSoundClip();
+                //if (!card.isuniqueattack)
+                //    card.soundonattack.clip = smslavic.getonattacksoundclip();
+                //card.soundondeck.clip = smslavic.getondecksoundclip();
+                //card.soundondeath.clip = smslavic.getondiesoundclip();
         }
     }
 

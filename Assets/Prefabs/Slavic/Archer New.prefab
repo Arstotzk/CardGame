@@ -1234,7 +1234,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4192219943228298151}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.66, y: 0, z: 0}
   m_LocalScale: {x: 1.4000001, y: 1.4000001, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1269,14 +1269,8 @@ MonoBehaviour:
   CurrentParent: {fileID: 0}
   column: 0
   row: 0
-  _health: 1
-  Attack: 2
-  Initiative: 2
   reinforcement: 1
   cardName: "\u041B\u0443\u0447\u043D\u0438\u0437\u0430\u0440"
-  HealthText: {fileID: 1424613152}
-  AttackText: {fileID: 1461362661}
-  InitiativeText: {fileID: 1389730470}
   rceText: {fileID: 1338594074}
   cardNameText: {fileID: 314086988}
   deployManager: {fileID: 0}
@@ -1285,13 +1279,7 @@ MonoBehaviour:
   isDead: 0
   isEnemy: 0
   animator: {fileID: 0}
-  SoundOnDeck: {fileID: 5297640340404832790}
-  SoundOnAttack: {fileID: 2934220478579914313}
-  SoundOnDeath: {fileID: 3387863935719616733}
-  SoundAttack: {fileID: 1889954402033784441}
-  SoundGetDammage: {fileID: 0}
-  _futureHealth: 0
-  futureIsDead: 0
+  sound: {fileID: 0}
   enterObject: {fileID: 0}
   attackPattern:
     rows:
@@ -1302,6 +1290,16 @@ MonoBehaviour:
   cardsImpact: []
   attackPlaces: []
   isUniqueAttack: 0
+  SoundAttack: {fileID: 1889954402033784441}
+  SoundGetDammage: {fileID: 0}
+  _futureHealth: 0
+  futureIsDead: 0
+  _health: 1
+  Attack: 2
+  Initiative: 2
+  HealthText: {fileID: 1424613152}
+  AttackText: {fileID: 1461362661}
+  InitiativeText: {fileID: 1389730470}
 --- !u!95 &2407350143700658653
 Animator:
   serializedVersion: 4
@@ -1315,7 +1313,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: e0e5b97eb580a974c9eaf444004157c6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
