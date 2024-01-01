@@ -20,6 +20,7 @@ public class CardItem : Card
     }
     public override void Action()
     {
+        isMoveable = false;
         cardInteract.health += health;
         cardInteract.attack += attack;
         var pos = transform.position;

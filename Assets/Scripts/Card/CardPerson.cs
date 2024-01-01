@@ -32,6 +32,7 @@ public class CardPerson : Card
     }
     public bool futureIsDead;
 
+    private int defaultHealth;
     public int _health;
     public int health
     {
@@ -52,10 +53,16 @@ public class CardPerson : Card
             else
             {
                 HealthText.text = value.ToString();
+                if (value == defaultHealth)
+                    HealthText.color = (new Color32(255, 255, 255, 255));
+                else if (value < defaultHealth)
+                    HealthText.color = (new Color32(245, 155, 155, 255));
+                else if (value > defaultHealth)
+                    HealthText.color = (new Color32(155, 245, 155, 255));
             }
         }
     }
-
+    private int defaultAttack;
     public int _attack;
     public int attack
     {
@@ -64,6 +71,13 @@ public class CardPerson : Card
         {
             _attack = value;
             AttackText.text = value.ToString();
+
+            if (value == defaultAttack)
+                AttackText.color = (new Color32(255, 255, 255, 255));
+            else if (value < defaultAttack)
+                AttackText.color = (new Color32(245, 155, 155, 255));
+            else if (value > defaultAttack)
+                AttackText.color = (new Color32(155, 245, 155, 255));
         }
     }
     public int Initiative;
@@ -77,6 +91,8 @@ public class CardPerson : Card
         base.Start();
         HealthText.text = health.ToString();
         AttackText.text = attack.ToString();
+        defaultHealth = health;
+        defaultAttack = attack;
         InitiativeText.text = Initiative.ToString();
 
         futureHealth = _health;
