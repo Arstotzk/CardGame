@@ -27,6 +27,7 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
     public void Start()
     {
         center = transform.position;
+        CardRemove();
     }
     public void OnDrop(PointerEventData eventData)
     {

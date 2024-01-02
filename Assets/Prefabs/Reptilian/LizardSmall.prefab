@@ -1347,8 +1347,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultParent: {fileID: 0}
   CurrentParent: {fileID: 0}
-  column: 0
-  row: 0
+  column: 1
+  row: 1
   reinforcement: 1
   cardName: "\u042F\u0449\u0435\u0431\u043B\u0443\u0434"
   rceText: {fileID: 1338594074}
@@ -1375,7 +1375,7 @@ MonoBehaviour:
   _futureHealth: 0
   futureIsDead: 0
   _health: 3
-  Attack: 1
+  _attack: 1
   Initiative: 4
   HealthText: {fileID: 1424613152}
   AttackText: {fileID: 1461362661}
@@ -1525,8 +1525,8 @@ AudioSource:
   m_GameObject: {fileID: 4192219943228298151}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 5812802150011197189, guid: dbbb7b80d951871458e262fc8c81d562, type: 2}
-  m_audioClip: {fileID: 8300000, guid: c459790df7fc5df40a6070561ee05f6e, type: 3}
+  OutputAudioMixerGroup: {fileID: -6285140627336829716, guid: dbbb7b80d951871458e262fc8c81d562, type: 2}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

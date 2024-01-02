@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -77,12 +78,12 @@ public class MenuManager : MonoBehaviour
     }
     public void Continue()
     {
-
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void NewGame() 
     {
-
+        SceneManager.LoadScene("VisualNovelScene");
     }
     public void MasterValueChanged(float value)
     {
