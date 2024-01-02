@@ -14,6 +14,8 @@ public class BattleManager : MonoBehaviour
     public CardPerson[,] cardsArray;
     public Place[,] cardPlaces;
     public Timer timer;
+    public int roundNum;
+    public EnemyAI enemyAI;
 
     public SoundManager smSlavic;
     public SoundManager smReptilian;
@@ -22,6 +24,7 @@ public class BattleManager : MonoBehaviour
     {
         cardsArray = new CardPerson[5, 4];
         cardPlaces = new Place[5, 4];
+        roundNum = 0;
         FillCardPlaces();
         FillCardsArray();
     }
@@ -29,7 +32,6 @@ public class BattleManager : MonoBehaviour
     {
         if (!timer.timerOn)
         {
-
             deployManager.SetNotMovableHand();
             deployManager.SetNotMovableField();
             Debug.Log("BattleStart");
@@ -41,8 +43,9 @@ public class BattleManager : MonoBehaviour
             var seconds = ExecCardsActions(cards);
 
             //Battle End
-
+            roundNum++;
             StartCoroutine(ResetReinforsmentToDeployManager(seconds));
+            StartCoroutine(StartRoundScript(seconds));
         }
     }
     public void FillCardsSounds(List<CardPerson> cards) 
@@ -143,6 +146,12 @@ public class BattleManager : MonoBehaviour
         card.Action();
     }
 
+    public IEnumerator StartRoundScript(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        //—делать еще скриптовые раунды в который определенные карты выставл€ютс€, а не рандомные
+        enemyAI.SetCardToBattle();
+    }
     public IEnumerator ResetReinforsmentToDeployManager(float seconds) 
     {
         yield return new WaitForSeconds(seconds);

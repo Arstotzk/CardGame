@@ -142,6 +142,19 @@ public abstract class Card : MonoBehaviour
         if (hand != null)
             hand.OnMouseExit();
     }
+    public void SetToPlace(Place place)
+    {
+        var dctPlace = place.GetComponent<DropCardToPlace>();
+        //Для вражеской карты из руки
+        animator.Play("Rotate");
+        var enemyHand = this.GetComponentInParent<DropCardToPlace>();
+
+        transform.SetParent(dctPlace.transform);
+        sound.audioSourcePerson.clip = sound.GetOnDeckSoundClip();
+        sound.audioSourcePerson.Play();
+        dctPlace.CardAdded(this);
+        enemyHand.CardRemove();
+    }
 
     public abstract void Action();
 }

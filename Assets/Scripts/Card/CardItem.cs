@@ -27,6 +27,7 @@ public class CardItem : Card
         pos.z = -0.1f;
         transform.position = pos;
         sound.audioSourceSfx.Play();
+        deployManager.Reinforcement -= reinforcement;
         Invoke("Delete", sound.audioSourceSfx.clip.length);
     }
     public override void OnMouseUp()
