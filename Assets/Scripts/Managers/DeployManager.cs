@@ -77,6 +77,20 @@ public class DeployManager : MonoBehaviour
             card.isMoveable = false;
         }
     }
+
+    public void SetMovableField()
+    {
+        var cardOnFirstLineGround = firstLineGround.GetComponentsInChildren<CardPerson>();
+        var cardOnSecondLineGround = secondLineGround.GetComponentsInChildren<CardPerson>();
+        CardPerson[] cardOnGround = new CardPerson[cardOnFirstLineGround.Length + cardOnSecondLineGround.Length];
+        cardOnFirstLineGround.CopyTo(cardOnGround, 0);
+        cardOnSecondLineGround.CopyTo(cardOnGround, cardOnFirstLineGround.Length);
+        foreach (var card in cardOnGround)
+        {
+            if (!card.isEnemy)
+                card.isMoveable = true;
+        }
+    }
     public void PutCardFromBufferToHand(Card card)
     {
         card.transform.SetParent(hand.transform);

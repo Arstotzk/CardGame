@@ -158,6 +158,7 @@ public class BattleManager : MonoBehaviour
         deployManager.AddMaxReinforcement(1);
         deployManager.ResetReinforcement();
         deployManager.SetMovableHand();
+        deployManager.SetMovableField();
     }
     public CardPerson GetCardAt(int column, int row) 
     {
