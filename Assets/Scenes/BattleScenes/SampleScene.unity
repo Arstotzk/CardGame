@@ -56645,10 +56645,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1655802112}
     m_Modifications:
-    - target: {fileID: 1424613152, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
-      propertyPath: m_enableVertexGradient
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4068837967759928536, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -86992,6 +86988,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4068837967759928536, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
   m_PrefabInstance: {fileID: 1493385882}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1889737786 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3387863935719616733, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+  m_PrefabInstance: {fileID: 1493385882}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1889737787 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1889954402033784441, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+  m_PrefabInstance: {fileID: 1493385882}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1891719979
 GameObject:
   m_ObjectHideFlags: 0
@@ -106934,6 +106940,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1655802112}
     m_Modifications:
+    - target: {fileID: 2766036185589894187, guid: 25676768bb26bb746b33c80ff15dda6f, type: 3}
+      propertyPath: audioSourceSfx
+      value: 
+      objectReference: {fileID: 1889737787}
+    - target: {fileID: 2766036185589894187, guid: 25676768bb26bb746b33c80ff15dda6f, type: 3}
+      propertyPath: audioSourcePerson
+      value: 
+      objectReference: {fileID: 1889737786}
     - target: {fileID: 4068837967759928536, guid: 25676768bb26bb746b33c80ff15dda6f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -106981,14 +106995,6 @@ PrefabInstance:
     - target: {fileID: 4192219943228298151, guid: 25676768bb26bb746b33c80ff15dda6f, type: 3}
       propertyPath: m_Name
       value: OldMaxim
-      objectReference: {fileID: 0}
-    - target: {fileID: 6918614959929754302, guid: 25676768bb26bb746b33c80ff15dda6f, type: 3}
-      propertyPath: _attack
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6918614959929754302, guid: 25676768bb26bb746b33c80ff15dda6f, type: 3}
-      propertyPath: Initiative
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6918614959929754302, guid: 25676768bb26bb746b33c80ff15dda6f, type: 3}
       propertyPath: CurrentParent

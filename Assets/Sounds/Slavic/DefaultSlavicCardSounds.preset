@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DefaultSlavicCardSounds
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: aaaa68fd1db1062499ece964f9906089, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.size
+    value: 13
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.data[0]
+    value: 
+    objectReference: {fileID: 8300000, guid: 303c9cc432920f6469d06cc44bacf411, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.data[1]
+    value: 
+    objectReference: {fileID: 8300000, guid: 7957f9ac5ae080e48bb96a2a9a3f17c9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.data[2]
+    value: 
+    objectReference: {fileID: 8300000, guid: 15a1f434f4c395845856f866def899d9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.data[3]
+    value: 
+    objectReference: {fileID: 8300000, guid: 1414b2a8c5a05c2438a068eaa51d18e8, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.data[4]
+    value: 
+    objectReference: {fileID: 8300000, guid: 1513828c1a38fce49a2ef45e8b273ca0, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.data[5]
+    value: 
+    objectReference: {fileID: 8300000, guid: 727587d04b753ec49a407db5346730ff, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.data[6]
+    value: 
+    objectReference: {fileID: 8300000, guid: c0978aeaf2dc1574aa235d6e430baf5d, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.data[7]
+    value: 
+    objectReference: {fileID: 8300000, guid: 53d41740abdf5dc4cb355a70ab9a7bf9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.data[8]
+    value: 
+    objectReference: {fileID: 8300000, guid: 728013634cfdc7c47bfeaf4cb77b70a1, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.data[9]
+    value: 
+    objectReference: {fileID: 8300000, guid: f16a3afce39aec0469982dff3fcf7985, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.data[10]
+    value: 
+    objectReference: {fileID: 8300000, guid: 34207b87bef51a74e9a57c0f658dc1f4, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.data[11]
+    value: 
+    objectReference: {fileID: 8300000, guid: b0c26d35598162340848910885d4e27b, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDeck.Array.data[12]
+    value: 
+    objectReference: {fileID: 8300000, guid: d84ddb069377ee04b97199e87907e425, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.size
+    value: 16
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[0]
+    value: 
+    objectReference: {fileID: 8300000, guid: c1c67a64164a73b4eab598d1a3414d00, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[1]
+    value: 
+    objectReference: {fileID: 8300000, guid: ffd856c5eda69a447b5cb09740c8eb0c, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[2]
+    value: 
+    objectReference: {fileID: 8300000, guid: a7fe13d8b5601d249880fd2d268704c0, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[3]
+    value: 
+    objectReference: {fileID: 8300000, guid: dbbaa6c952c636f47aaac250846710fa, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[4]
+    value: 
+    objectReference: {fileID: 8300000, guid: c8a5363fd36f3b24b9036fd2f53a9b8a, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[5]
+    value: 
+    objectReference: {fileID: 8300000, guid: 6b397df22f0bfdd4aa50f13286c48769, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[6]
+    value: 
+    objectReference: {fileID: 8300000, guid: 9042aac6b03c5104f8cbdab7eae11335, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[7]
+    value: 
+    objectReference: {fileID: 8300000, guid: c273e28909f77864eb3969401ad6e112, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[8]
+    value: 
+    objectReference: {fileID: 8300000, guid: 0b1f29ab7ca658c4b806894347d4d1ff, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[9]
+    value: 
+    objectReference: {fileID: 8300000, guid: 486f18f2ea647014c95462aae004a1fd, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[10]
+    value: 
+    objectReference: {fileID: 8300000, guid: 636fc8e7cbfeb0e43a1703b3d66bc6b2, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[11]
+    value: 
+    objectReference: {fileID: 8300000, guid: 965687ffb44b47144949ec751534b133, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[12]
+    value: 
+    objectReference: {fileID: 8300000, guid: c97baddc9ac89c04c85cee6ba5b6cfda, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[13]
+    value: 
+    objectReference: {fileID: 8300000, guid: 0c75f6d9f51d9514593aefc1446e15cf, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[14]
+    value: 
+    objectReference: {fileID: 8300000, guid: 55ad4d3d61ea9cf46ad6cbdf43d36a33, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnAttack.Array.data[15]
+    value: 
+    objectReference: {fileID: 8300000, guid: 012fbf07809338c4b875e3b403518193, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.size
+    value: 13
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.data[0]
+    value: 
+    objectReference: {fileID: 8300000, guid: 89da2c233192d0041a7d3ab084682f21, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.data[1]
+    value: 
+    objectReference: {fileID: 8300000, guid: bbdc085184d26ac4bb3d52b92557c812, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.data[2]
+    value: 
+    objectReference: {fileID: 8300000, guid: d00a44552f3e5cc45841314c21af60f9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.data[3]
+    value: 
+    objectReference: {fileID: 8300000, guid: 652a952324cf7174a95595b24b1ba045, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.data[4]
+    value: 
+    objectReference: {fileID: 8300000, guid: c459790df7fc5df40a6070561ee05f6e, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.data[5]
+    value: 
+    objectReference: {fileID: 8300000, guid: 526658ad9b979294ba671498a421d869, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.data[6]
+    value: 
+    objectReference: {fileID: 8300000, guid: db0b5862d22614240a39ab01b94d2d9c, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.data[7]
+    value: 
+    objectReference: {fileID: 8300000, guid: dcfd0ee0befade54ca5a6fd53a1b99f1, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.data[8]
+    value: 
+    objectReference: {fileID: 8300000, guid: 682ae5a3e680bbd459dc750aef32cbea, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.data[9]
+    value: 
+    objectReference: {fileID: 8300000, guid: 153dd9e7c23756445879881db1e62c0b, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.data[10]
+    value: 
+    objectReference: {fileID: 8300000, guid: 54cfd7171291c464f8e5f6dbe5b7fd5f, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.data[11]
+    value: 
+    objectReference: {fileID: 8300000, guid: 580dea7ec07f80d4fadf403882bd01a9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SoundOnDie.Array.data[12]
+    value: 
+    objectReference: {fileID: 8300000, guid: 783500bbe76c31c41855033d4acb0f9c, type: 3}
+  - target: {fileID: 0}
+    propertyPath: audioSourcePerson
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: audioSourceSfx
+    value: 
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []
