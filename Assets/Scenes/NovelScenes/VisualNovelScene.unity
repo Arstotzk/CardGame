@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -246,8 +246,8 @@ MonoBehaviour:
   HorseSound: {fileID: 8300000, guid: 91f84d9beebfe7e4cbc2d6b18f63e1bd, type: 3}
   ExplosionSound: {fileID: 8300000, guid: 8827651fb5427804ab7d72243e3bfd4e, type: 3}
   BranchSound: {fileID: 8300000, guid: 55db9593c04462445968f6a60e95bfa5, type: 3}
-  village: {fileID: 21300000, guid: 82557889d72a5d74697bcf141a5be094, type: 3}
-  river: {fileID: 21300000, guid: 2009a721ce51d31489025a7072ba12c8, type: 3}
+  village: {fileID: 21300000, guid: 3c68e6f75b77e4f489ce1b8eaea8084c, type: 3}
+  river: {fileID: 21300000, guid: 2682469e19a4a9d4385881d130ab725a, type: 3}
   darkForest: {fileID: 21300000, guid: e608ec787f8651f42bc01cd45ea38640, type: 3}
   darkForestReptilian: {fileID: 21300000, guid: ae23fa42df856e4469d4b47d65fcbf5d, type: 3}
 --- !u!1 &606184342
@@ -1451,8 +1451,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
