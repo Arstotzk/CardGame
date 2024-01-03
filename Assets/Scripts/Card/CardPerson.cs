@@ -128,15 +128,18 @@ public class CardPerson : Card
 
                 if (cardImpact && ((isEnemy && !cardImpact.isEnemy) || (!isEnemy && cardImpact.isEnemy)))
                 {
-                    cardsImpact.Add(cardImpact);
                     Debug.Log(string.Format("Card attack action: {0}", cardImpact.cardName));
-                    //transform.SetParent(DefaultParent);
-                    animator.Play("OnDragStart");
-                    sound.audioSourcePerson.clip = sound.GetOnAttackSoundClip();
-                    sound.audioSourcePerson.Play();
-                    Debug.Log(string.Format("SoundOnAttack time: {0}", sound.audioSourcePerson.clip.length.ToString()));
-                    Invoke("PlayAttackAnimation", sound.audioSourcePerson.clip.length);
+                    cardsImpact.Add(cardImpact);
                 }
+            }
+            if (cardsImpact.Count > 0)
+            {
+                //transform.SetParent(DefaultParent);
+                animator.Play("OnDragStart");
+                sound.audioSourcePerson.clip = sound.GetOnAttackSoundClip();
+                sound.audioSourcePerson.Play();
+                Debug.Log(string.Format("SoundOnAttack time: {0}", sound.audioSourcePerson.clip.length.ToString()));
+                Invoke("PlayAttackAnimation", sound.audioSourcePerson.clip.length);
             }
             Debug.Log(string.Format("Card action: {0}", cardName));
         }
@@ -245,7 +248,7 @@ public class CardPerson : Card
     }
     public void PlayAttackAnimation()
     {
-        Debug.Log("PlayAttackAnimation()");
+        Debug.Log("PlayAttackAnimation() " + cardName);
         if (isEnemy)
             animator.Play("AttackEnemy");
         else

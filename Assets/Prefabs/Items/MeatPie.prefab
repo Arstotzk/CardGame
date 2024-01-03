@@ -1223,7 +1223,7 @@ Transform:
   m_GameObject: {fileID: 4192219942771937414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.08003437, y: 0.078620754, z: 1}
+  m_LocalScale: {x: 0.09, y: 0.11, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4068837967759928536}
@@ -1270,7 +1270,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 65fc977cba01b5a4a893d5a0f3c1abfb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5545851fbe5d0c46988833b35f60c3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1367,6 +1367,7 @@ MonoBehaviour:
   CurrentParent: {fileID: 0}
   column: 0
   row: 0
+  _place: {fileID: 0}
   reinforcement: 1
   cardName: "\u041F\u0438\u0440\u043E\u0436\u043E\u043A \u0441 \u043C\u044F\u0441\u043E\u043C"
   rceText: {fileID: 1338594074}
@@ -1379,8 +1380,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   sound: {fileID: 0}
   enterObject: {fileID: 0}
-  health: 0
-  attack: 1
+  health: 2
+  attack: 0
   cardInteract: {fileID: 0}
   HealthText: {fileID: 1424613152}
   AttackText: {fileID: 1461362661}

@@ -1349,6 +1349,7 @@ MonoBehaviour:
   CurrentParent: {fileID: 0}
   column: 0
   row: 0
+  _place: {fileID: 0}
   reinforcement: 1
   cardName: "\u0414\u0435\u0434 \u041C\u0430\u043A\u0441\u0438\u043C"
   rceText: {fileID: 1338594074}
@@ -1469,7 +1470,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -186019373386806352, guid: dbbb7b80d951871458e262fc8c81d562, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 1e93ae7c291791d43bea08dfbc189527, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 056b3ec93e5c6f943aa831a090a9aa04, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

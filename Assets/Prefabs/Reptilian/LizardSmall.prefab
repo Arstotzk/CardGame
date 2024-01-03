@@ -1347,8 +1347,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultParent: {fileID: 0}
   CurrentParent: {fileID: 0}
-  column: 1
-  row: 1
+  column: 0
+  row: 0
   reinforcement: 1
   cardName: "\u042F\u0449\u0435\u0431\u043B\u0443\u0434"
   rceText: {fileID: 1338594074}
@@ -1363,7 +1363,7 @@ MonoBehaviour:
   enterObject: {fileID: 0}
   attackPattern:
     rows:
-    - row: 010101
+    - row: 000100
     - row: 000000
     - row: 000000
   attackPatternIcon: {fileID: 2598432086119827094}
@@ -1374,7 +1374,7 @@ MonoBehaviour:
   SoundGetDammage: {fileID: 0}
   _futureHealth: 0
   futureIsDead: 0
-  _health: 3
+  _health: 2
   _attack: 1
   Initiative: 4
   HealthText: {fileID: 1424613152}

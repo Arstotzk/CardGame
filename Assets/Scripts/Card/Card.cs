@@ -15,7 +15,7 @@ public abstract class Card : MonoBehaviour
     public Transform CurrentParent;
     public int column;
     public int row;
-    private Place _place;
+    public Place _place;
     public Place place
     { 
         get => _place;
@@ -142,14 +142,16 @@ public abstract class Card : MonoBehaviour
         if (hand != null)
             hand.OnMouseExit();
     }
-    public void SetToPlace(Place place)
+    public void SetToPlace(Place setPlace)
     {
-        var dctPlace = place.GetComponent<DropCardToPlace>();
+        place = setPlace;
+        var dctPlace = setPlace.GetComponent<DropCardToPlace>();
         //Для вражеской карты из руки
         animator.Play("Rotate");
         var enemyHand = this.GetComponentInParent<DropCardToPlace>();
 
         transform.SetParent(dctPlace.transform);
+        CurrentParent = setPlace.transform;
         sound.audioSourcePerson.clip = sound.GetOnDeckSoundClip();
         sound.audioSourcePerson.Play();
         dctPlace.CardAdded(this);

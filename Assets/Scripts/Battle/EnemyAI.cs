@@ -69,7 +69,17 @@ public class EnemyAI : MonoBehaviour
             }
         }
         //В любом положении нет карт для атаки, значит ставим карту в рандомное место
-        return battleManager.GetPlaceAt(coordinates[0].Column, coordinates[0].Row);
+        foreach (var coord in coordinates)
+        {
+            card.row = coord.Row;
+            card.column = coord.Column;
+            var cardAtPlace = battleManager.GetCardAt(coord.Column, coord.Row);
+            if (cardAtPlace == null)
+            {
+                return battleManager.GetPlaceAt(coord.Column, coord.Row);
+            }
+        }
+        return null;
     }
 
     public void SetCardToBattle() 
@@ -78,6 +88,8 @@ public class EnemyAI : MonoBehaviour
             return;
         var cardFromHand = GetRandomCard();
         var place = GetPlace(cardFromHand);
+        if (place == null)
+            return;
         cardFromHand.SetToPlace(place);
     }
 }

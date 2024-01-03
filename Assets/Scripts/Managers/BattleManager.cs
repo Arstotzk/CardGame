@@ -19,12 +19,16 @@ public class BattleManager : MonoBehaviour
 
     public SoundManager smSlavic;
     public SoundManager smReptilian;
+    public Button battleButton;
+
+    public bool isBattleActive;
 
     public void Start()
     {
         cardsArray = new CardPerson[5, 4];
         cardPlaces = new Place[5, 4];
         roundNum = 0;
+        isBattleActive = false;
         FillCardPlaces();
         FillCardsArray();
     }
@@ -32,6 +36,7 @@ public class BattleManager : MonoBehaviour
     {
         if (!timer.timerOn)
         {
+            isBattleActive = true;
             deployManager.SetNotMovableHand();
             deployManager.SetNotMovableField();
             Debug.Log("BattleStart");
@@ -44,7 +49,11 @@ public class BattleManager : MonoBehaviour
 
             //Battle End
             roundNum++;
-            StartCoroutine(ResetReinforsmentToDeployManager(seconds));
+            //Потом сделать по нормальному, менеджер очереди
+            if (roundNum > 2)
+                StartCoroutine(ResetReinforsmentToDeployManager(seconds + 4));
+            else
+                StartCoroutine(ResetReinforsmentToDeployManager(seconds + 4));
             StartCoroutine(StartRoundScript(seconds));
         }
     }
@@ -151,14 +160,28 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         //Сделать еще скриптовые раунды в который определенные карты выставляются, а не рандомные
         enemyAI.SetCardToBattle();
+        FillCardsArray();
+        if (roundNum > 2)
+        {
+            StartCoroutine(StartSetEnemyCard(4));
+        }
+    }
+
+    public IEnumerator StartSetEnemyCard(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        enemyAI.SetCardToBattle();
+        FillCardsArray();
     }
     public IEnumerator ResetReinforsmentToDeployManager(float seconds) 
     {
         yield return new WaitForSeconds(seconds);
+        isBattleActive = false;
         deployManager.AddMaxReinforcement(1);
         deployManager.ResetReinforcement();
         deployManager.SetMovableHand();
         deployManager.SetMovableField();
+        battleButton.EndBattle();
     }
     public CardPerson GetCardAt(int column, int row) 
     {
