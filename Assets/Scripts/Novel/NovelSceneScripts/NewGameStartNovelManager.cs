@@ -9,6 +9,10 @@ public class NewGameStartNovelManager : NovelManager
     public AudioClip HorseSound;
     public AudioClip ExplosionSound;
     public AudioClip BranchSound;
+
+    public Sprite village;
+    public Sprite river;
+    public Sprite reptilian;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +29,7 @@ public class NewGameStartNovelManager : NovelManager
         scripts.Add(new NovelSay("Кучер", "Наверное ты служить уехал раньше чем я в Древнеславянке поселился."));
         scripts.Add(new NovelSay("Пиздаслав", "И правда, три года назад уехал."));
         //Меняем фон на деревню
+        scripts.Add(new NovelBackground(village));
         scripts.Add(new NovelMind("Телега уже подезжала ко входу к деревне."));
         scripts.Add(new NovelSay("Конемир", "Ну будем знакомы, меня Конемир звать."));
         scripts.Add(new NovelMind("Конемир протянул свою руку для рукопожатия."));
@@ -48,6 +53,7 @@ public class NewGameStartNovelManager : NovelManager
         scripts.Add(new NovelSay("Пиздаслав", "Давай я ему отнесу."));
         scripts.Add(new NovelSay("Бабушка Авдотья", "Давай, пока дойду до него уже ужин будет, а ты быстро доберешься. И я пока на тебя пироги испеку."));
         //Меняем фон на реку
+        scripts.Add(new NovelBackground(river));
         scripts.Add(new NovelMind("Пиздаслав зашел в знакомый с детсва прилесок рядом с речкой."));
         scripts.Add(new NovelMind("На берегу сидел с удочкой коренастный седой дед. Подошел к деду поближе."));
         scripts.Add(new NovelSay("Пиздаслав", "Ну что, всех окуней выловил?"));
@@ -65,6 +71,7 @@ public class NewGameStartNovelManager : NovelManager
         scripts.Add(new NovelSay("Дед Максим", "Я иду с тобой."));
         scripts.Add(new NovelSay("Пиздаслав", "Ну чтож, хорошо. Только не шуми."));
         //Меняем фон на место крушения
+        scripts.Add(new NovelBackground(reptilian));
         scripts.Add(new NovelMusic(LizardMusic));
         scripts.Add(new NovelMind("Пиздаслав с дедом Максимом начали подходить к месту откуда доносился шум."));
         scripts.Add(new NovelMind("Казалось что небо вокруг почернело и воздух стал вязким."));

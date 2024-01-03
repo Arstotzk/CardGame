@@ -238,13 +238,17 @@ MonoBehaviour:
   scriptNumber: 0
   character: {fileID: 829656129}
   mainText: {fileID: 1153878431}
+  background: {fileID: 813891233}
   musicManager: {fileID: 2075628962}
   soundManager: {fileID: 1596831112}
   BeginMusic: {fileID: 8300000, guid: bfac58b79375ca542bbd0a5c08a822e8, type: 3}
   LizardMusic: {fileID: 8300000, guid: 1df6000f298f41245bb4de929279a880, type: 3}
-  HorseSound: {fileID: 8300000, guid: 5457193f7aa1c9648822df14231218e4, type: 3}
+  HorseSound: {fileID: 8300000, guid: 91f84d9beebfe7e4cbc2d6b18f63e1bd, type: 3}
   ExplosionSound: {fileID: 8300000, guid: 8827651fb5427804ab7d72243e3bfd4e, type: 3}
   BranchSound: {fileID: 8300000, guid: 55db9593c04462445968f6a60e95bfa5, type: 3}
+  village: {fileID: 21300000, guid: 82557889d72a5d74697bcf141a5be094, type: 3}
+  river: {fileID: 21300000, guid: 2009a721ce51d31489025a7072ba12c8, type: 3}
+  reptilian: {fileID: 21300000, guid: 5237cc8e49a7164469d6adcab5d0c268, type: 3}
 --- !u!1 &606184342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,7 +1248,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -186019373386806352, guid: dbbb7b80d951871458e262fc8c81d562, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 91f84d9beebfe7e4cbc2d6b18f63e1bd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
