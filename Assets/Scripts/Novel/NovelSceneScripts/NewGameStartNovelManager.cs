@@ -12,7 +12,8 @@ public class NewGameStartNovelManager : NovelManager
 
     public Sprite village;
     public Sprite river;
-    public Sprite reptilian;
+    public Sprite darkForest;
+    public Sprite darkForestReptilian;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,12 +72,13 @@ public class NewGameStartNovelManager : NovelManager
         scripts.Add(new NovelSay("Дед Максим", "Я иду с тобой."));
         scripts.Add(new NovelSay("Пиздаслав", "Ну чтож, хорошо. Только не шуми."));
         //Меняем фон на место крушения
-        scripts.Add(new NovelBackground(reptilian));
+        scripts.Add(new NovelBackground(darkForest));
         scripts.Add(new NovelMusic(LizardMusic));
         scripts.Add(new NovelMind("Пиздаслав с дедом Максимом начали подходить к месту откуда доносился шум."));
         scripts.Add(new NovelMind("Казалось что небо вокруг почернело и воздух стал вязким."));
         scripts.Add(new NovelMind("Что Пиздаславу, что деду Максиму стало трудно дышать."));
         //Добавляем на сцену ящеров
+        scripts.Add(new NovelBackground(darkForestReptilian));
         scripts.Add(new NovelMind("И тут они увидели их. Ящеров."));
         scripts.Add(new NovelMind("Отвратительные чешуйчатые создания что-то копашились рядом со своим воздушным кораблем."));
         scripts.Add(new NovelMind("Пиздаслав аккуратно поставил свой мешок и достал оттуда меч."));
