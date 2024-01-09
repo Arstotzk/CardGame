@@ -1349,6 +1349,7 @@ MonoBehaviour:
   CurrentParent: {fileID: 0}
   column: 0
   row: 0
+  _place: {fileID: 0}
   reinforcement: 1
   cardName: "\u042F\u0449\u0435\u0431\u043B\u0443\u0434"
   rceText: {fileID: 1338594074}
