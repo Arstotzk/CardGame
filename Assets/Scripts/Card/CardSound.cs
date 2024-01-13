@@ -8,6 +8,7 @@ public class CardSound : MonoBehaviour
     public List<AudioClip> SoundOnDeck;
     public List<AudioClip> SoundOnAttack;
     public List<AudioClip> SoundOnDie;
+    public List<AudioClip> SoundOnDieSfx;
     public AudioSource audioSourcePerson;
     public AudioSource audioSourceSfx;
 
@@ -35,6 +36,11 @@ public class CardSound : MonoBehaviour
     public AudioClip GetOnDieSoundClip()
     {
         var clip = SoundOnDie[Random.Range(0, SoundOnDie.Count)];
+        return clip;
+    }
+    public AudioClip GetOnDieSfxSoundClip()
+    {
+        var clip = SoundOnDieSfx[Random.Range(0, SoundOnDieSfx.Count)];
         return clip;
     }
 }

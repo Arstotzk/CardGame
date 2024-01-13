@@ -45,6 +45,7 @@ public class CardPerson : Card
             {
                 HealthText.text = "0";
                 sound.audioSourcePerson.clip = sound.GetOnDieSoundClip();
+                sound.audioSourceSfx.clip = sound.GetOnDieSfxSoundClip();
                 sound.audioSourcePerson.Play();
                 //animator.Play("OnDrugStart");
                 Invoke("Death", sound.audioSourcePerson.clip.length); //Переделать на сброс карты в стопку сброса

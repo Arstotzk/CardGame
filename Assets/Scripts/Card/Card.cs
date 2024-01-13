@@ -69,8 +69,8 @@ public abstract class Card : MonoBehaviour
     }
     public void Death()
     {
-        animator.Play("Burning");
-        Invoke("Delete", 0.5f); //Переделать на сброс карты в стопку сброса
+        animator.Play("Death");
+        Invoke("Delete", 1f); //Переделать на сброс карты в стопку сброса
     }
 
     //Взяли карту
@@ -156,6 +156,10 @@ public abstract class Card : MonoBehaviour
         sound.audioSourcePerson.Play();
         dctPlace.CardAdded(this);
         enemyHand.CardRemove();
+    }
+    public void PlayDieSfx()
+    {
+        sound.audioSourceSfx.Play();
     }
 
     public abstract void Action();

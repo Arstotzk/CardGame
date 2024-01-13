@@ -57398,6 +57398,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1655802112}
     m_Modifications:
+    - target: {fileID: 314086988, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 314086988, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338594074, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389730470, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424613152, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1461362661, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1889954402033784441, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -57412,7 +57436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4068837967759928536, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.45
       objectReference: {fileID: 0}
     - target: {fileID: 4068837967759928536, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: m_LocalPosition.z
@@ -57450,6 +57474,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardSample
       objectReference: {fileID: 0}
+    - target: {fileID: 5759030354783273443, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759030354783273443, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759030354783273443, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759030354783273443, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021272546093219151, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6918614959929754302, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: CurrentParent
       value: 
@@ -57466,6 +57510,30 @@ PrefabInstance:
       propertyPath: deployManager
       value: 
       objectReference: {fileID: 357907921}
+    - target: {fileID: 8136452940293966615, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136452940293966615, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136452940293966615, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427967731500961398, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427967731500961398, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427967731500961398, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
 --- !u!1 &1494925514
