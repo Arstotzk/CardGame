@@ -5,7 +5,6 @@ using System.Collections;
 [CustomPropertyDrawer(typeof(AttackPattern))]
 public class CustPropertyDrawer : PropertyDrawer {
 
-	//Удалить т.к. ушел от UI
 	public override void OnGUI(Rect position,SerializedProperty property,GUIContent label){
 		EditorGUI.PrefixLabel(position,label);
 		Rect newposition = position;

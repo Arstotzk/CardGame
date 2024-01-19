@@ -174,7 +174,6 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
     }
     private void MoveCard(Card card)
     {
-        Debug.Log("MoveCard");
         interpolationRatio = (float)elapsedFrames / interpolationFramesCount;
         Vector3 interpolatedPosition = Vector3.Lerp(mainPosititon, center, interpolationRatio);
         elapsedFrames = (elapsedFrames + 1) % (interpolationFramesCount + 1);
@@ -190,7 +189,6 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
     }
     private int MoveCard(Card card, int position, int cardsCount, int elapsedFrame, Vector3 mainPos)
     {
-        Debug.Log("MoveCard");
         positionApper = GetNewCardPosition(position, cardsCount);
         interpolationRatio = (float)elapsedFrame / interpolationFramesCount;
         Vector3 interpolatedPosition = Vector3.Lerp(mainPos, positionApper, interpolationRatio);
