@@ -39,6 +39,13 @@ public class CardPerson : Card
         get => _health;
         set
         {
+            //TODO убрать cardProperty!= null, когда обновлю все карты и добалю этот класс
+            if (_health > value && cardProperty!= null && cardProperty.IsHasProperty(Property.Type.Berserk))
+            {
+                //TODO ƒобавить эффект или анимацию, что атака увеличилась
+                attack++;
+            }
+
             futureHealth = value;
             _health = value;
             if (value <= 0)
@@ -110,6 +117,8 @@ public class CardPerson : Card
                 point.color = new Color32(150, 0, 0, 255);
             }
         }
+
+
     }
     public override void Action()
     {

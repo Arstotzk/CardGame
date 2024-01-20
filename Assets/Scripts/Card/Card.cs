@@ -45,6 +45,7 @@ public abstract class Card : MonoBehaviour
 
     public CardSound sound;
 
+    public CardProperty cardProperty;
     public virtual void Start()
     {
         sound = GetComponent<CardSound>();
@@ -55,6 +56,7 @@ public abstract class Card : MonoBehaviour
         {
             place = GetComponentInParent<Place>();
         }
+        cardProperty = GetComponent<CardProperty>();
     }
 
     public GameObject enterObject;
