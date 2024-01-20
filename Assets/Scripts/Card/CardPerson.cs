@@ -117,8 +117,6 @@ public class CardPerson : Card
                 point.color = new Color32(150, 0, 0, 255);
             }
         }
-
-
     }
     public override void Action()
     {
@@ -293,6 +291,7 @@ public class CardPerson : Card
             Debug.Log(cardImpact.cardName);
             cardImpact.health -= attack;
         }
+        AfterAction();
     }
     public float GetClipDeathLength() 
     {
@@ -350,8 +349,7 @@ public class CardPerson : Card
                     {
                         plac.isCursored = false;
                         isMoveToPlace = true;
-                        sound.audioSourcePerson.clip = sound.GetOnDeckSoundClip();
-                        sound.audioSourcePerson.Play();
+                        OnDeck();
                     }
                 }
             }
@@ -360,6 +358,51 @@ public class CardPerson : Card
                 place = null;
                 deployManager.PutCardFromBufferToHand(this);
             }
+        }
+    }
+    public void OnDeck() 
+    {
+        sound.audioSourcePerson.clip = sound.GetOnDeckSoundClip();
+        sound.audioSourcePerson.Play();
+
+        if (cardProperty.IsHasProperty(Property.Type.Healer))
+        {
+            List<CardPerson> cardsImpact = new List<CardPerson>();
+            CardPerson getedCard;
+            getedCard = battleManager.GetCardAt(column + 1, row);
+            if (getedCard != null)
+                cardsImpact.Add(getedCard);
+            getedCard = battleManager.GetCardAt(column - 1, row);
+            if (getedCard != null)
+                cardsImpact.Add(getedCard);
+            foreach (var cardImpact in cardsImpact)
+            {
+                cardImpact.RegenerateHealth(1);
+            }
+        }
+    }
+
+    public void BeforeAction()
+    {
+        if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Regeneration))
+            RegenerateHealth(1);
+    }
+    public void AfterAction()
+    {
+        if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Vampirism))
+            RegenerateHealth(attack);
+    }
+
+    public void RegenerateHealth(int value)
+    {
+        if (value <= 0)
+            return;
+        if (health < defaultHealth)
+        {
+            if (health + value >= defaultHealth)
+                health = defaultHealth;
+            else
+                health += value;
         }
     }
 

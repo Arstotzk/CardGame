@@ -138,6 +138,7 @@ public class BattleManager : MonoBehaviour
         float seconds = 0f;
         foreach (var card in cards) 
         {
+            StartCoroutine(ExecBeforeCardAction(card, seconds));
             Debug.Log("CardAction");
             if (card.IsAnyToAction())
             {
@@ -153,6 +154,11 @@ public class BattleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         card.Action();
+    }
+    public IEnumerator ExecBeforeCardAction(CardPerson card, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        card.BeforeAction();
     }
 
     public IEnumerator StartRoundScript(float seconds)
