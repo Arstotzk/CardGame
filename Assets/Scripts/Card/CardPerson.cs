@@ -15,6 +15,7 @@ public class CardPerson : Card
     public List<CardPerson> cardsImpact;
     public List<Place> attackPlaces;
     public bool isUniqueAttack = false;
+    public bool isPropertyOnDeckUsed = false;
 
     public AudioSource SoundAttack;
     public AudioSource SoundGetDammage;
@@ -373,7 +374,7 @@ public class CardPerson : Card
 
         battleManager.FillCardsArray();
 
-        if (cardProperty.IsHasProperty(Property.Type.Healer))
+        if (cardProperty.IsHasProperty(Property.Type.Healer) && !isPropertyOnDeckUsed)
         {
             List<CardPerson> cardsImpact = new List<CardPerson>();
             CardPerson getedCard;
@@ -389,6 +390,8 @@ public class CardPerson : Card
                 cardImpact.RegenerateHealth(1);
             }
         }
+
+        isPropertyOnDeckUsed = true;
     }
 
     public void BeforeAction()
