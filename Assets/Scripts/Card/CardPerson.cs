@@ -88,7 +88,8 @@ public class CardPerson : Card
                 AttackText.color = (new Color32(155, 245, 155, 255));
         }
     }
-    public int Initiative;
+    int _initiative;
+    public int initiative;
 
     public TMP_Text HealthText;
     public TMP_Text AttackText;
@@ -101,11 +102,13 @@ public class CardPerson : Card
         AttackText.text = attack.ToString();
         defaultHealth = health;
         defaultAttack = attack;
-        InitiativeText.text = Initiative.ToString();
+        InitiativeText.text = initiative.ToString();
 
         futureHealth = _health;
         futureIsDead = isDead;
 
+        //TODO Показывать схему атаки только при просмотре карты на правую кнопку мыши (на самой карте не показывать)
+        /*
         var pattern = attackPatternIcon.GetComponentsInChildren<Image>();
         foreach (var point in pattern) 
         {
@@ -117,6 +120,7 @@ public class CardPerson : Card
                 point.color = new Color32(150, 0, 0, 255);
             }
         }
+        */
     }
     public override void Action()
     {
@@ -330,7 +334,7 @@ public class CardPerson : Card
     {
         base.OnMouseUp();
 
-        if (deployManager.Reinforcement > 0 && isMoveable == true)
+        if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit[] raycastHits = Physics.RaycastAll(ray);
@@ -362,8 +366,12 @@ public class CardPerson : Card
     }
     public void OnDeck() 
     {
+        isFromHand = false;
+
         sound.audioSourcePerson.clip = sound.GetOnDeckSoundClip();
         sound.audioSourcePerson.Play();
+
+        battleManager.FillCardsArray();
 
         if (cardProperty.IsHasProperty(Property.Type.Healer))
         {
@@ -377,6 +385,7 @@ public class CardPerson : Card
                 cardsImpact.Add(getedCard);
             foreach (var cardImpact in cardsImpact)
             {
+                Debug.Log("Heal card: " + cardImpact.name);
                 cardImpact.RegenerateHealth(1);
             }
         }

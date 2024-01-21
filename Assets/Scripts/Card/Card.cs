@@ -28,7 +28,26 @@ public abstract class Card : MonoBehaviour
             _place = value;
         }
     }
-    public int reinforcement;
+    public int _reinforcement;
+    public int reinforcement 
+    {
+        get 
+        {
+            if (isFromHand)
+                return _reinforcement;
+
+            int additionalValue = 0;
+            if (cardProperty!= null && cardProperty.IsHasProperty(Property.Type.Speed))
+                additionalValue = -1;
+            if (_reinforcement + additionalValue < 0)
+                return 0;
+            return _reinforcement + additionalValue;
+        }
+        set
+        {
+            _reinforcement = value;
+        }
+    }
     public string cardName;
 
     public TMP_Text rceText;
@@ -40,6 +59,7 @@ public abstract class Card : MonoBehaviour
     public bool isMoveable;
     public bool isDead;
     public bool isEnemy;
+    public bool isFromHand;
 
     public Animator animator;
 
@@ -78,7 +98,7 @@ public abstract class Card : MonoBehaviour
     //Взяли карту
     public void OnMouseDown()
     {
-        if (deployManager.Reinforcement > 0 && isMoveable == true)
+        if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
         {
             deployManager.isPlayerDrugCard = true;
             animator.Play("OnDragStart");
@@ -97,6 +117,7 @@ public abstract class Card : MonoBehaviour
                 var dctPlace = hit.transform.gameObject.GetComponent<DropCardToPlace>();
                 if (dctPlace != null)
                 {
+                    isFromHand = dctPlace.isHand;
                     dctPlace.CardRemove();
                 }
             }
@@ -105,7 +126,7 @@ public abstract class Card : MonoBehaviour
     //Положили карту
     public virtual void OnMouseUp()
     {
-        if (deployManager.Reinforcement > 0 && isMoveable == true)
+        if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
         {
             Debug.Log("OnMouseUp");
             deployManager.isPlayerDrugCard = false;
@@ -117,7 +138,7 @@ public abstract class Card : MonoBehaviour
     }
     public virtual void OnMouseDrag()
     {
-        if (deployManager.Reinforcement > 0 && isMoveable == true)
+        if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
         {
             var mousePos = Input.mousePosition;
             Vector3 newPos = MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));

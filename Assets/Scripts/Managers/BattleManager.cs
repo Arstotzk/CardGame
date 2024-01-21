@@ -129,7 +129,7 @@ public class BattleManager : MonoBehaviour
     }
     public List<CardPerson> OrderCardList(List<CardPerson> cards) 
     {
-        cards = cards.OrderByDescending(c => c.Initiative).ThenBy(c => c._health).ThenBy(c => c._attack).ToList();
+        cards = cards.OrderByDescending(c => c.initiative).ThenBy(c => c._health).ThenBy(c => c._attack).ToList();
         return cards;
     }
     public float ExecCardsActions(List<CardPerson> cards)

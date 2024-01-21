@@ -6,7 +6,7 @@ using TMPro;
 public class DeployManager : MonoBehaviour
 {
 
-    int _reinforcement;
+    public int _reinforcement;
     public int Reinforcement 
     { 
         get => _reinforcement;
