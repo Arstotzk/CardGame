@@ -292,11 +292,41 @@ public class CardPerson : Card
         SoundAttack.Play();
         foreach (var cardImpact in cardsImpact) 
         {
-            Debug.Log("-health");
-            Debug.Log(cardImpact.cardName);
-            cardImpact.health -= attack;
+            Attack(cardImpact);
         }
         AfterAction();
+    }
+    public void Attack(CardPerson cardImpact)
+    {
+        Debug.Log("");
+        Debug.Log(cardImpact.cardName);
+        if (cardImpact.IsDefended())
+        {
+            var card = battleManager.GetCardAt(column, row - 1);
+            //TODO запускаем анимацию защиты
+            Debug.Log("Defence card: " + cardImpact + " by: " + card);
+        }
+        else
+            cardImpact.health -= attack;
+    }
+
+    public bool IsDefended() 
+    {
+        CardPerson card = null;
+        if(isEnemy)
+            card = battleManager.GetCardAt(column, row + 1);
+        else
+            card = battleManager.GetCardAt(column, row - 1);
+
+        if (card == null)
+            return false;
+
+        if (card.isEnemy != isEnemy)
+            return false;
+
+        if (card.cardProperty != null && card.cardProperty.IsHasProperty(Property.Type.Defence))
+            return true;
+        return false;
     }
     public float GetClipDeathLength() 
     {

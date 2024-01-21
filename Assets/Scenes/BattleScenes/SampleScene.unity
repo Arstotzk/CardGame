@@ -10686,6 +10686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe3bf4832b97f84584dba0ef03818d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reinforcement: 0
   limitReinforcement: 3
   maxReinforcement: 1
   ReinforcementText: {fileID: 724188468}
@@ -57761,7 +57762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8258980320645239905, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: properties.Array.data[0].type
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8258980320645239905, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: properties.Array.data[1].type
