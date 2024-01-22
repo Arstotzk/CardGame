@@ -302,12 +302,29 @@ public class CardPerson : Card
         Debug.Log(cardImpact.cardName);
         if (cardImpact.IsDefended())
         {
-            var card = battleManager.GetCardAt(column, row - 1);
+            int addedRow = isEnemy ? 1 : -1;
+            var card = battleManager.GetCardAt(column, row + addedRow);
             //TODO запускаем анимацию защиты
             Debug.Log("Defence card: " + cardImpact + " by: " + card);
         }
         else
             cardImpact.health -= attack;
+        if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Strength))
+        {
+            int addedRow = isEnemy ? 1 : -1;
+            var card = battleManager.GetCardAt(column, row + addedRow);
+            if (card != null && !card.isEnemy.Equals(isEnemy))
+            {
+                var cardBehind = battleManager.GetCardAt(column, row + (addedRow * 2));
+                if (cardBehind == null)
+                {
+                    var place = battleManager.GetPlaceAt(column, row + (addedRow * 2));
+                    var dctPlace = place.GetComponent<DropCardToPlace>();
+                    dctPlace.CardAddedFromProperty(card);
+                    battleManager.FillCardsArray();
+                }
+            }
+        }
     }
 
     public bool IsDefended() 

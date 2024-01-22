@@ -62,7 +62,13 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
             }
         }
     }
-
+    public void CardAddedFromProperty(Card card)
+    {
+        card.transform.SetParent(this.transform);
+        card.CurrentParent = this.transform;
+        card.place = this.GetComponent<Place>();
+        CardAdded(card);
+    }
     public void CardAdded(Card card)
     {
         addedCard = card;
