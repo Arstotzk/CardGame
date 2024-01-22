@@ -426,6 +426,8 @@ public class CardPerson : Card
 
     public void BeforeAction()
     {
+        if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Poison))
+            PoisonHealth(1);
         if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Regeneration))
             RegenerateHealth(1);
     }
@@ -435,12 +437,27 @@ public class CardPerson : Card
             RegenerateHealth(attack);
     }
 
+    public void PoisonHealth(int value)
+    {
+        //TODO добавить эффект яда
+        health -= value;
+        var property = cardProperty.GetProperty(Property.Type.Poison);
+        property.length--;
+        if (property.length <= 0)
+        {
+            cardProperty.RemoveProperty(property);
+        }
+        else
+            cardProperty.SetProperties();
+    }
+
     public void RegenerateHealth(int value)
     {
         if (value <= 0)
             return;
         if (health < defaultHealth)
         {
+            //TODO добавть эффект регенерации 
             if (health + value >= defaultHealth)
                 health = defaultHealth;
             else

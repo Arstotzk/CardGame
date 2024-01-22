@@ -105,4 +105,13 @@ public class CardProperty : MonoBehaviour
     {
         return properties.Where(p => p.type.Equals(type)).Any();
     }
+    public Property GetProperty(Property.Type type)
+    {
+        return properties.Where(p => p.type.Equals(type)).FirstOrDefault();
+    }
+    public void RemoveProperty(Property property) 
+    {
+        properties.Remove(property);
+        SetProperties();
+    }
 }

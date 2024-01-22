@@ -6,7 +6,15 @@ using UnityEngine;
 public class Property
 {
     public bool isLengthProperty;
-    public int length;
+    public int _length;
+    public int length 
+    {
+        get => _length;
+        set 
+        {
+            _length = value;
+        }
+    }
     public Type type;
     public Property(Type _type)
     {
