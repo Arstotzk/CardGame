@@ -46,18 +46,23 @@ public class CardProperty : MonoBehaviour
             {
                 case Property.Type.Berserk:
                     propertySprite.sprite = berserkSprite;
+                    length.text = string.Empty;
                     break;
                 case Property.Type.Clean:
                     propertySprite.sprite = cleanSprite;
+                    length.text = string.Empty;
                     break;
                 case Property.Type.Defence:
                     propertySprite.sprite = defenceSprite;
+                    length.text = string.Empty;
                     break;
                 case Property.Type.Healer:
                     propertySprite.sprite = healerSprite;
+                    length.text = string.Empty;
                     break;
                 case Property.Type.Hook:
                     propertySprite.sprite = hookSprite;
+                    length.text = string.Empty;
                     break;
                 case Property.Type.Poison:
                     propertySprite.sprite = poisonSprite;
@@ -65,9 +70,11 @@ public class CardProperty : MonoBehaviour
                     break;
                 case Property.Type.PoisonBlade:
                     propertySprite.sprite = poisonBladeSprite;
+                    length.text = string.Empty;
                     break;
                 case Property.Type.Regeneration:
                     propertySprite.sprite = regenerationSprite;
+                    length.text = string.Empty;
                     break;
                 case Property.Type.Sleep:
                     propertySprite.sprite = sleepSprite;
@@ -79,12 +86,15 @@ public class CardProperty : MonoBehaviour
                     break;
                 case Property.Type.Speed:
                     propertySprite.sprite = speedSprite;
+                    length.text = string.Empty;
                     break;
                 case Property.Type.Strength:
                     propertySprite.sprite = strengthSprite;
+                    length.text = string.Empty;
                     break;
                 case Property.Type.Vampirism:
                     propertySprite.sprite = vampirismSprite;
+                    length.text = string.Empty;
                     break;
                 default:
                     break;

@@ -430,6 +430,8 @@ public class CardPerson : Card
             PoisonHealth(1);
         if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Regeneration))
             RegenerateHealth(1);
+        if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Slowdown))
+            SlowdownCountDown();
     }
     public void AfterAction()
     {
@@ -437,6 +439,17 @@ public class CardPerson : Card
             RegenerateHealth(attack);
     }
 
+    public void SlowdownCountDown()
+    {
+        //TODO добавить эффект замедления (лучше наверное на получении эффекта)
+        //или эффект того что счетчик понизился
+        var property = cardProperty.GetProperty(Property.Type.Slowdown);
+        property.length--;
+        if (property.length <= 0)
+            cardProperty.RemoveProperty(property);
+        else
+            cardProperty.SetProperties();
+    }
     public void PoisonHealth(int value)
     {
         //TODO добавить эффект яда
@@ -444,9 +457,7 @@ public class CardPerson : Card
         var property = cardProperty.GetProperty(Property.Type.Poison);
         property.length--;
         if (property.length <= 0)
-        {
             cardProperty.RemoveProperty(property);
-        }
         else
             cardProperty.SetProperties();
     }

@@ -38,7 +38,9 @@ public abstract class Card : MonoBehaviour
 
             int additionalValue = 0;
             if (cardProperty!= null && cardProperty.IsHasProperty(Property.Type.Speed))
-                additionalValue = -1;
+                additionalValue += -1;
+            if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Slowdown))
+                additionalValue += 1;
             if (_reinforcement + additionalValue < 0)
                 return 0;
             return _reinforcement + additionalValue;
