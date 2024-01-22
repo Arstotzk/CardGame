@@ -57762,11 +57762,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8258980320645239905, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: properties.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8258980320645239905, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: properties.Array.data[0].type
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8258980320645239905, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: properties.Array.data[1].type
@@ -57802,7 +57802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8258980320645239905, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: properties.Array.data[0]._length
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8258980320645239905, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: properties.Array.data[1]._length
@@ -57826,7 +57826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8258980320645239905, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: properties.Array.data[0].isLengthProperty
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8258980320645239905, guid: b6805b12b0625754ea9d0a278d0df439, type: 3}
       propertyPath: properties.Array.data[1].isLengthProperty
