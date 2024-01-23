@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public abstract class Card : MonoBehaviour
+public abstract class Card : MonoBehaviour, IPointerClickHandler
 {
     Camera MainCamera;
     Vector3 offset;
@@ -51,6 +51,7 @@ public abstract class Card : MonoBehaviour
         }
     }
     public string cardName;
+    public SpriteRenderer spriteRenderer;
 
     public TMP_Text rceText;
     public TMP_Text cardNameText;
@@ -188,4 +189,12 @@ public abstract class Card : MonoBehaviour
     }
 
     public abstract void Action();
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            Debug.Log("Right Mouse Button Clicked on: " + name);
+        }
+    }
 }

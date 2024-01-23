@@ -1347,7 +1347,7 @@ MonoBehaviour:
   column: 0
   row: 0
   _place: {fileID: 0}
-  reinforcement: 1
+  _reinforcement: 0
   cardName: "\u041F\u0438\u0437\u0434\u0430\u0441\u043B\u0430\u0432"
   rceText: {fileID: 1338594074}
   cardNameText: {fileID: 314086988}
@@ -1356,8 +1356,10 @@ MonoBehaviour:
   isMoveable: 1
   isDead: 0
   isEnemy: 0
+  isFromHand: 0
   animator: {fileID: 0}
   sound: {fileID: 0}
+  cardProperty: {fileID: 0}
   enterObject: {fileID: 0}
   attackPattern:
     rows:
@@ -1368,13 +1370,14 @@ MonoBehaviour:
   cardsImpact: []
   attackPlaces: []
   isUniqueAttack: 0
+  isPropertyOnDeckUsed: 0
   SoundAttack: {fileID: 1889954402033784441}
   SoundGetDammage: {fileID: 0}
   _futureHealth: 0
   futureIsDead: 0
   _health: 6
   _attack: 2
-  Initiative: 5
+  initiative: 0
   HealthText: {fileID: 1424613152}
   AttackText: {fileID: 1461362661}
   InitiativeText: {fileID: 1389730470}
@@ -1425,13 +1428,13 @@ MonoBehaviour:
   vampirismSprite: {fileID: 21300000, guid: 25a13652d2d8cd94bb37d29446b5c4de, type: 3}
   properties:
   - isLengthProperty: 1
-    length: 2
+    _length: 0
     type: 5
   - isLengthProperty: 0
-    length: 0
+    _length: 0
     type: 2
   - isLengthProperty: 1
-    length: 1
+    _length: 0
     type: 8
   propertyObjects:
   - {fileID: 5986353980820210301}
