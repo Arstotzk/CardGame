@@ -124,4 +124,25 @@ public class CardProperty : MonoBehaviour
         properties.Remove(property);
         SetProperties();
     }
+
+    public void SetProperty(Property.Type type) 
+    {
+        properties.Add(new Property(type));
+    }
+
+    public void SetProperty(Property.Type type, int length)
+    {
+        var property = GetProperty(type);
+        if (property != null)
+        {
+            property.length += length;
+            SetProperties();
+            return;
+        }
+        else
+        {
+            properties.Add(new Property(type, length));
+            SetProperties();
+        }
+    }
 }

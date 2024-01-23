@@ -128,6 +128,12 @@ public class CardPerson : Card
         if (!isDead)
         {
             cardsImpact = new List<CardPerson>();
+
+            if (IsSleepRound())
+            {
+                return;
+            }
+
             var attackLocations = attackPattern.GetAttackLocations();
             foreach (var attackLocation in attackLocations)
             {
@@ -298,7 +304,6 @@ public class CardPerson : Card
     }
     public void Attack(CardPerson cardImpact)
     {
-        Debug.Log("");
         Debug.Log(cardImpact.cardName);
         if (cardImpact.IsDefended())
         {
@@ -310,6 +315,36 @@ public class CardPerson : Card
         else
             cardImpact.health -= attack;
 
+        AttackStrength();
+        AttackHook(cardImpact);
+        AttackPoisonBlade(cardImpact);
+
+    }
+    private void AttackPoisonBlade(CardPerson cardImpact)
+    {
+        if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.PoisonBlade))
+        {
+            cardImpact.cardProperty.SetProperty(Property.Type.Poison, 1);
+        }
+    }
+
+    private bool IsSleepRound() 
+    {
+        if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Sleep))
+        {
+            var property = cardProperty.GetProperty(Property.Type.Sleep);
+            property.length--;
+            if (property.length <= 0)
+                cardProperty.RemoveProperty(property);
+            else
+                cardProperty.SetProperties();
+            return true;
+        }
+        return false;
+    }
+
+    private void AttackStrength()
+    {
         if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Strength))
         {
             int addedRow = isEnemy ? 1 : -1;
@@ -326,7 +361,10 @@ public class CardPerson : Card
                 }
             }
         }
+    }
 
+    private void AttackHook(CardPerson cardImpact)
+    {
         if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Hook))
         {
             int rowBack;
