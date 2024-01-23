@@ -309,6 +309,7 @@ public class CardPerson : Card
         }
         else
             cardImpact.health -= attack;
+
         if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Strength))
         {
             int addedRow = isEnemy ? 1 : -1;
@@ -321,6 +322,34 @@ public class CardPerson : Card
                     var place = battleManager.GetPlaceAt(column, row + (addedRow * 2));
                     var dctPlace = place.GetComponent<DropCardToPlace>();
                     dctPlace.CardAddedFromProperty(card);
+                    battleManager.FillCardsArray();
+                }
+            }
+        }
+
+        if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Hook))
+        {
+            int rowBack;
+            int rowFront;
+            if (isEnemy)
+            {
+                rowBack = 3;
+                rowFront = 2;
+            }
+            else
+            {
+                rowBack = 0;
+                rowFront = 1;
+            }
+
+            if (cardImpact.row == rowBack)
+            {
+                var cardFront = battleManager.GetCardAt(cardImpact.column, rowFront);
+                if (cardFront == null)
+                {
+                    var place = battleManager.GetPlaceAt(cardImpact.column, rowFront);
+                    var dctPlace = place.GetComponent<DropCardToPlace>();
+                    dctPlace.CardAddedFromProperty(cardImpact);
                     battleManager.FillCardsArray();
                 }
             }
