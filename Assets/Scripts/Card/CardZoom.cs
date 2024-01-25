@@ -6,17 +6,28 @@ public class CardZoom : MonoBehaviour
 {
     // Start is called before the first frame update
     public CardZoomed cardZoomed;
+
+    private bool isCardZoomed;
+    private bool isPlayedAnimation;
     void Start()
     {
-        
+        isCardZoomed = false;
+        isPlayedAnimation = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1)) 
+        if (!isPlayedAnimation && !isCardZoomed && Input.GetMouseButtonDown(1)) 
         {
             CheckCard();
+        }
+
+        if (!isPlayedAnimation && isCardZoomed && Input.GetMouseButtonDown(1)) 
+        {
+            GetComponent<Animator>().Play("ToTransparent");
+            cardZoomed.GetComponent<Animator>().Play("EndZoom");
+            StartCoroutine(CardZoomedChange(0.8f, false));
         }
     }
 
@@ -30,8 +41,19 @@ public class CardZoom : MonoBehaviour
             if (card != null)
             {
                 cardZoomed.FillCardInfo(card.spriteRenderer.sprite, card.cardName, card.health, card.attack, card.reinforcement, card.initiative, card.cardProperty);
-                Debug.Log("Card zoomed: " + card.name);            
+                GetComponent<Animator>().Play("ToBlack");
+                cardZoomed.GetComponent<Animator>().Play("BeginZoom");
+                Debug.Log("Card zoomed: " + card.name);
+                StartCoroutine(CardZoomedChange(0.8f, true));
             }
         }
+    }
+
+    public IEnumerator CardZoomedChange(float seconds, bool value)
+    {
+        isPlayedAnimation = true;
+        yield return new WaitForSeconds(seconds);
+        isCardZoomed = value;
+        isPlayedAnimation = false;
     }
 }
