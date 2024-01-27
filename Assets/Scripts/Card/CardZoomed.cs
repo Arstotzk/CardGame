@@ -25,6 +25,7 @@ public class CardZoomed : MonoBehaviour
         initiativeText.text = initiative.ToString();
         this.cardProperty.properties = cardProperty.properties;
         this.cardProperty.SetProperties();
+        this.cardProperty.SetPropertiesDescription();
     }
 
 }

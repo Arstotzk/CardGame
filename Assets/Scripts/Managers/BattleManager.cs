@@ -37,8 +37,7 @@ public class BattleManager : MonoBehaviour
         if (!timer.timerOn)
         {
             isBattleActive = true;
-            deployManager.SetNotMovableHand();
-            deployManager.SetNotMovableField();
+            deployManager.SetAllMovable(false);
             Debug.Log("BattleStart");
 
             var cards = GetCardList();
@@ -185,8 +184,7 @@ public class BattleManager : MonoBehaviour
         isBattleActive = false;
         deployManager.AddMaxReinforcement(1);
         deployManager.ResetReinforcement();
-        deployManager.SetMovableHand();
-        deployManager.SetMovableField();
+        deployManager.SetAllMovable(true);
         battleButton.EndBattle();
     }
     public CardPerson GetCardAt(int column, int row) 

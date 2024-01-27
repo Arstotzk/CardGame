@@ -9,6 +9,8 @@ public class CardZoom : MonoBehaviour
 
     private bool isCardZoomed;
     private bool isPlayedAnimation;
+
+    public DeployManager deployManager;
     void Start()
     {
         isCardZoomed = false;
@@ -27,6 +29,7 @@ public class CardZoom : MonoBehaviour
         {
             GetComponent<Animator>().Play("ToTransparent");
             cardZoomed.GetComponent<Animator>().Play("EndZoom");
+            deployManager.SetAllMovable(true);
             StartCoroutine(CardZoomedChange(0.8f, false));
         }
     }
@@ -44,6 +47,7 @@ public class CardZoom : MonoBehaviour
                 GetComponent<Animator>().Play("ToBlack");
                 cardZoomed.GetComponent<Animator>().Play("BeginZoom");
                 Debug.Log("Card zoomed: " + card.name);
+                deployManager.SetAllMovable(false);
                 StartCoroutine(CardZoomedChange(0.8f, true));
             }
         }

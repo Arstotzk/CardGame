@@ -30,7 +30,7 @@ public class DeployManager : MonoBehaviour
     {
         Reinforcement = maxReinforcement;
         isPlayerDrugCard = false;
-        SetMovableHand();
+        SetMovableHand(true);
     }
 
     // Update is called once per frame
@@ -49,36 +49,15 @@ public class DeployManager : MonoBehaviour
         Reinforcement = maxReinforcement;
     }
 
-    public void SetMovableHand() 
+    public void SetMovableHand(bool isMovable) 
     {
         var cardInHand = hand.GetComponentsInChildren<Card>();
         foreach (var card in cardInHand)
         {
-            card.isMoveable = true;
+            card.isMoveable = isMovable;
         }
     }
-    public void SetNotMovableHand()
-    {
-        var cardInHand = hand.GetComponentsInChildren<Card>();
-        foreach (var card in cardInHand)
-        {
-            card.isMoveable = false;
-        }
-    }
-    public void SetNotMovableField()
-    {
-        var cardOnFirstLineGround = firstLineGround.GetComponentsInChildren<CardPerson>();
-        var cardOnSecondLineGround = secondLineGround.GetComponentsInChildren<CardPerson>();
-        CardPerson[] cardOnGround = new CardPerson[cardOnFirstLineGround.Length + cardOnSecondLineGround.Length];
-        cardOnFirstLineGround.CopyTo(cardOnGround, 0);
-        cardOnSecondLineGround.CopyTo(cardOnGround, cardOnFirstLineGround.Length);
-        foreach (var card in cardOnGround)
-        {
-            card.isMoveable = false;
-        }
-    }
-
-    public void SetMovableField()
+    public void SetMovableField(bool isMovable)
     {
         var cardOnFirstLineGround = firstLineGround.GetComponentsInChildren<CardPerson>();
         var cardOnSecondLineGround = secondLineGround.GetComponentsInChildren<CardPerson>();
@@ -88,8 +67,14 @@ public class DeployManager : MonoBehaviour
         foreach (var card in cardOnGround)
         {
             if (!card.isEnemy)
-                card.isMoveable = true;
+                card.isMoveable = isMovable;
         }
+    }
+
+    public void SetAllMovable(bool isMovable)
+    {
+        SetMovableHand(isMovable);
+        SetMovableField(isMovable);
     }
     public void PutCardFromBufferToHand(Card card)
     {
