@@ -63,6 +63,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     public bool isDead;
     public bool isEnemy;
     public bool isFromHand;
+    public bool isAction;
 
     public Animator animator;
 

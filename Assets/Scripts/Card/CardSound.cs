@@ -43,4 +43,9 @@ public class CardSound : MonoBehaviour
         var clip = SoundOnDieSfx[Random.Range(0, SoundOnDieSfx.Count)];
         return clip;
     }
+
+    public float GetLengthCurrentClip() 
+    {
+        return audioSourcePerson.clip.length;
+    }
 }

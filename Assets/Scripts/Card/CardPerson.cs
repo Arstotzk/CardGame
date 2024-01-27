@@ -40,34 +40,44 @@ public class CardPerson : Card
         get => _health;
         set
         {
-            //TODO убрать cardProperty!= null, когда обновлю все карты и добалю этот класс
-            if (_health > value && cardProperty!= null && cardProperty.IsHasProperty(Property.Type.Berserk))
+            try
             {
-                //TODO Добавить эффект или анимацию, что атака увеличилась
-                attack++;
-            }
+                if (isDead)
+                    return;
+                //TODO убрать cardProperty!= null, когда обновлю все карты и добалю этот класс
+                if (_health > value && cardProperty != null && cardProperty.IsHasProperty(Property.Type.Berserk))
+                {
+                    //TODO Добавить эффект или анимацию, что атака увеличилась
+                    attack++;
+                }
 
-            futureHealth = value;
-            _health = value;
-            if (value <= 0)
-            {
-                HealthText.text = "0";
-                sound.audioSourcePerson.clip = sound.GetOnDieSoundClip();
-                sound.audioSourceSfx.clip = sound.GetOnDieSfxSoundClip();
-                sound.audioSourcePerson.Play();
-                //animator.Play("OnDrugStart");
-                Invoke("Death", sound.audioSourcePerson.clip.length); //Переделать на сброс карты в стопку сброса
-                isDead = true;
-            }
-            else
-            {
-                HealthText.text = value.ToString();
-                if (value == defaultHealth)
-                    HealthText.color = (new Color32(255, 255, 255, 255));
-                else if (value < defaultHealth)
+                futureHealth = value;
+                _health = value;
+                if (value <= 0)
+                {
+                    HealthText.text = "0";
                     HealthText.color = (new Color32(245, 155, 155, 255));
-                else if (value > defaultHealth)
-                    HealthText.color = (new Color32(155, 245, 155, 255));
+                    sound.audioSourcePerson.clip = sound.GetOnDieSoundClip();
+                    sound.audioSourceSfx.clip = sound.GetOnDieSfxSoundClip();
+                    sound.audioSourcePerson.Play();
+                    //animator.Play("OnDrugStart");
+                    Invoke("Death", sound.audioSourcePerson.clip.length); //Переделать на сброс карты в стопку сброса
+                    isDead = true;
+                }
+                else
+                {
+                    HealthText.text = value.ToString();
+                    if (value == defaultHealth)
+                        HealthText.color = (new Color32(255, 255, 255, 255));
+                    else if (value < defaultHealth)
+                        HealthText.color = (new Color32(245, 155, 155, 255));
+                    else if (value > defaultHealth)
+                        HealthText.color = (new Color32(155, 245, 155, 255));
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogWarning("Health fail: " + ex.Message);
             }
         }
     }
@@ -107,6 +117,8 @@ public class CardPerson : Card
 
         futureHealth = _health;
         futureIsDead = isDead;
+
+        isAction = false;
 
         //TODO Показывать схему атаки только при просмотре карты на правую кнопку мыши (на самой карте не показывать)
         /*
@@ -159,6 +171,7 @@ public class CardPerson : Card
                 sound.audioSourcePerson.Play();
                 Debug.Log(string.Format("SoundOnAttack time: {0}", sound.audioSourcePerson.clip.length.ToString()));
                 Invoke("PlayAttackAnimation", sound.audioSourcePerson.clip.length);
+                isAction = true;
             }
             Debug.Log(string.Format("Card action: {0}", cardName));
         }
@@ -296,6 +309,7 @@ public class CardPerson : Card
     public void PlayHit()
     {
         SoundAttack.Play();
+        battleManager.isAnyoneDied = false;
         foreach (var cardImpact in cardsImpact) 
         {
             Attack(cardImpact);
@@ -315,6 +329,9 @@ public class CardPerson : Card
         else
             cardImpact.health -= attack;
 
+        if (cardImpact.health <= 0)
+            battleManager.isAnyoneDied = true;
+        
         AttackStrength();
         AttackHook(cardImpact);
         AttackPoisonBlade(cardImpact);
@@ -488,7 +505,7 @@ public class CardPerson : Card
 
         battleManager.FillCardsArray();
 
-        if (cardProperty.IsHasProperty(Property.Type.Healer) && !isPropertyOnDeckUsed)
+        if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Healer) && !isPropertyOnDeckUsed)
         {
             List<CardPerson> cardsImpact = new List<CardPerson>();
             CardPerson getedCard;
@@ -521,6 +538,19 @@ public class CardPerson : Card
     {
         if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.Vampirism))
             RegenerateHealth(attack);
+
+        //TODO надо бы это тоже в очередь запихивать
+        var delay = battleManager.GetLongestDieSoundLength();
+        if (battleManager.isAnyoneDied)
+            StartCoroutine(ChangeAction(false, delay));
+        else
+            StartCoroutine(ChangeAction(false, 0f));
+    }
+
+    public IEnumerator ChangeAction(bool value, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        isAction = value;
     }
 
     public void SlowdownCountDown()

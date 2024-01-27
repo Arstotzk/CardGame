@@ -82,14 +82,15 @@ public class EnemyAI : MonoBehaviour
         return null;
     }
 
-    public void SetCardToBattle() 
+    public CardPerson SetCardToBattle() 
     {
         if (hand.GetComponentsInChildren<CardPerson>().Length == 0)
-            return;
+            return null;
         var cardFromHand = GetRandomCard();
         var place = GetPlace(cardFromHand);
         if (place == null)
-            return;
+            return null;
         cardFromHand.SetToPlace(place);
+        return cardFromHand;
     }
 }

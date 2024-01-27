@@ -16,12 +16,14 @@ public class BattleManager : MonoBehaviour
     public Timer timer;
     public int roundNum;
     public EnemyAI enemyAI;
+    public Queue queue;
 
     public SoundManager smSlavic;
     public SoundManager smReptilian;
     public Button battleButton;
 
     public bool isBattleActive;
+    public bool isAnyoneDied;
 
     public void Start()
     {
@@ -31,7 +33,9 @@ public class BattleManager : MonoBehaviour
         isBattleActive = false;
         FillCardPlaces();
         FillCardsArray();
+        isAnyoneDied = false;
     }
+
     public void BattleStart()
     {
         if (!timer.timerOn)
@@ -44,6 +48,8 @@ public class BattleManager : MonoBehaviour
             cards = OrderCardList(cards);
             FillCardsArray();
             FillCardsSounds(cards);
+            queue.BattleStarted();
+            /*
             var seconds = ExecCardsActions(cards);
 
             //Battle End
@@ -54,7 +60,13 @@ public class BattleManager : MonoBehaviour
             else
                 StartCoroutine(ResetReinforsmentToDeployManager(seconds + 4));
             StartCoroutine(StartRoundScript(seconds));
+            */
         }
+    }
+    public void BattleEnd()
+    {
+        roundNum++;
+        StartRoundScript();
     }
     public void FillCardsSounds(List<CardPerson> cards) 
     {
@@ -113,6 +125,10 @@ public class BattleManager : MonoBehaviour
         FillCardsArrayRow(cardsAllyFront, 2);
         var cardsAllyBack = allyBack.GetCardInRow();
         FillCardsArrayRow(cardsAllyBack, 3);
+
+        var cards = GetCardList();
+        cards = OrderCardList(cards);
+        queue.FillQueue(cards);
     }
     public void FillCardsArrayRow(List<CardPerson> cardsRow, int rowNum) 
     {
@@ -160,16 +176,17 @@ public class BattleManager : MonoBehaviour
         card.BeforeAction();
     }
 
-    public IEnumerator StartRoundScript(float seconds)
+    public void StartRoundScript()
     {
-        yield return new WaitForSeconds(seconds);
         //—делать еще скриптовые раунды в который определенные карты выставл€ютс€, а не рандомные
-        enemyAI.SetCardToBattle();
+        var card = enemyAI.SetCardToBattle();
         FillCardsArray();
         if (roundNum > 2)
         {
-            StartCoroutine(StartSetEnemyCard(4));
+            StartCoroutine(StartSetEnemyCard(card.sound.GetLengthCurrentClip()));
         }
+        else
+            ResetReinforsmentToDeployManager();
     }
 
     public IEnumerator StartSetEnemyCard(float seconds)
@@ -177,10 +194,10 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         enemyAI.SetCardToBattle();
         FillCardsArray();
+        ResetReinforsmentToDeployManager();
     }
-    public IEnumerator ResetReinforsmentToDeployManager(float seconds) 
+    public void ResetReinforsmentToDeployManager() 
     {
-        yield return new WaitForSeconds(seconds);
         isBattleActive = false;
         deployManager.AddMaxReinforcement(1);
         deployManager.ResetReinforcement();
@@ -208,5 +225,17 @@ public class BattleManager : MonoBehaviour
         {
             return null;
         }
+    }
+
+    public float GetLongestDieSoundLength() 
+    {
+        var dieSoundLength = 0f;
+        var diedCards = GetCardList().Where(c => c.isDead);
+        foreach (var card in diedCards)
+        {
+            if (dieSoundLength < card.sound.GetLengthCurrentClip())
+                dieSoundLength = card.sound.GetLengthCurrentClip();
+        }
+        return dieSoundLength;
     }
 }
