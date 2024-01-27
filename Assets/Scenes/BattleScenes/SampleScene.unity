@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10917,7 +10917,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 656362187}
   m_Father: {fileID: 1728732610}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26827,7 +26828,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708898741}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16, y: 0, z: 0}
+  m_LocalPosition: {x: -16, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26849,6 +26850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardZoomed: {fileID: 8854427387106806386}
+  deployManager: {fileID: 357907921}
 --- !u!95 &708898744
 Animator:
   serializedVersion: 4
@@ -32454,8 +32456,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 656362187}
+  m_Children: []
   m_Father: {fileID: 80569880}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -37564,7 +37565,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -289.9903}
   m_LocalScale: {x: 0.013669999, y: 0.013669999, z: 0.013669999}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1639585808}
   m_Father: {fileID: 1463004606}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -37705,10 +37707,12 @@ MonoBehaviour:
   timer: {fileID: 938647239}
   roundNum: 0
   enemyAI: {fileID: 292280117}
+  queue: {fileID: 1639585809}
   smSlavic: {fileID: 987056012}
   smReptilian: {fileID: 109144809}
   battleButton: {fileID: 379490527}
   isBattleActive: 0
+  isAnyoneDied: 0
 --- !u!1 &945343794
 GameObject:
   m_ObjectHideFlags: 0
@@ -69491,6 +69495,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44ef82ea96d6ac541b7cc2034af937eb, type: 3}
+--- !u!1 &1639585807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1639585808}
+  - component: {fileID: 1639585809}
+  m_Layer: 0
+  m_Name: Queue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1639585808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639585807}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -465.45673, y: -97.29432, z: 21213.629}
+  m_LocalScale: {x: 73.15289, y: 73.15289, z: 73.15289}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 938647236}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1639585809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639585807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87834ec30e803d74bbaf648711fcbe01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPlayingCardNum: 0
+  isPlayBattle: 0
 --- !u!1 &1651521664
 GameObject:
   m_ObjectHideFlags: 0
@@ -111101,7 +111151,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 820188176}
+    m_TransformParent: {fileID: 374383037}
     m_Modifications:
     - target: {fileID: 2766036185589894187, guid: 050863ef3b68f734d982ba3b77908e35, type: 3}
       propertyPath: SoundOnDieSfx.Array.size
@@ -112991,6 +113041,13 @@ MonoBehaviour:
   - {fileID: 8344262437895480413}
   - {fileID: 7810077903928587060}
   - {fileID: 8083525593048020811}
+  propertyDescriptions:
+  - {fileID: 1077599942}
+  - {fileID: 1090389178}
+  - {fileID: 139593595}
+  - {fileID: 215187430}
+  - {fileID: 968306277}
+  - {fileID: 1611996733}
 --- !u!212 &6903292768633749735
 SpriteRenderer:
   m_ObjectHideFlags: 0
