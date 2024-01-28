@@ -1347,8 +1347,10 @@ MonoBehaviour:
   column: 0
   row: 0
   _place: {fileID: 0}
-  _reinforcement: 0
+  _reinforcement: 1
   cardName: "\u041F\u0438\u0437\u0434\u0430\u0441\u043B\u0430\u0432"
+  spriteRenderer: {fileID: 1424613154}
+  spriteQueueUI: {fileID: 21300000, guid: 49643b9f75b58e44b9e2beeefce956c2, type: 3}
   rceText: {fileID: 1338594074}
   cardNameText: {fileID: 314086988}
   deployManager: {fileID: 0}
@@ -1356,7 +1358,8 @@ MonoBehaviour:
   isMoveable: 1
   isDead: 0
   isEnemy: 0
-  isFromHand: 0
+  isFromHand: 1
+  isAction: 0
   animator: {fileID: 0}
   sound: {fileID: 0}
   cardProperty: {fileID: 0}
@@ -1377,7 +1380,7 @@ MonoBehaviour:
   futureIsDead: 0
   _health: 6
   _attack: 2
-  initiative: 0
+  initiative: 5
   HealthText: {fileID: 1424613152}
   AttackText: {fileID: 1461362661}
   InitiativeText: {fileID: 1389730470}
@@ -1426,16 +1429,7 @@ MonoBehaviour:
   speedSprite: {fileID: 21300000, guid: 054db89c323065a498c820d05d97e897, type: 3}
   strengthSprite: {fileID: 21300000, guid: b26de507d93b1ab49b3ac3801575e086, type: 3}
   vampirismSprite: {fileID: 21300000, guid: 25a13652d2d8cd94bb37d29446b5c4de, type: 3}
-  properties:
-  - isLengthProperty: 1
-    _length: 0
-    type: 5
-  - isLengthProperty: 0
-    _length: 0
-    type: 2
-  - isLengthProperty: 1
-    _length: 0
-    type: 8
+  properties: []
   propertyObjects:
   - {fileID: 5986353980820210301}
   - {fileID: 6638293426015067379}
@@ -1443,6 +1437,7 @@ MonoBehaviour:
   - {fileID: 6855778071024098067}
   - {fileID: 4650709706457910394}
   - {fileID: 6685074805912176645}
+  propertyDescriptions: []
 --- !u!114 &2766036185589894187
 MonoBehaviour:
   m_ObjectHideFlags: 0

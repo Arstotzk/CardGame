@@ -82,6 +82,9 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
             place = GetComponentInParent<Place>();
         }
         cardProperty = GetComponent<CardProperty>();
+
+        deployManager = (DeployManager) GameObject.FindObjectOfType(typeof(DeployManager));
+        battleManager = (BattleManager) GameObject.FindObjectOfType(typeof(BattleManager));
     }
 
     public GameObject enterObject;
