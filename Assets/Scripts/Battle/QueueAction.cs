@@ -9,6 +9,10 @@ public abstract class QueueAction
     public abstract void AfterAction();
     public abstract bool IsAction();
 
+    public abstract Place GetPlace();
+
+    public abstract Sprite GetSpriteUI();
+
     public enum QueueStatus 
     {
         NotPlayed,

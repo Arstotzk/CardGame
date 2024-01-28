@@ -20,6 +20,16 @@ public class QueueActionCard : QueueAction
         status = QueueStatus.Played;
     }
 
+    public override Place GetPlace()
+    {
+        return card.place;
+    }
+
+    public override Sprite GetSpriteUI()
+    {
+        return card.spriteQueueUI;
+    }
+
     public override bool IsAction()
     {
         return card.isAction;

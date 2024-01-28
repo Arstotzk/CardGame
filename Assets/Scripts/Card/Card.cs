@@ -52,6 +52,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     }
     public string cardName;
     public SpriteRenderer spriteRenderer;
+    public Sprite spriteQueueUI;
 
     public TMP_Text rceText;
     public TMP_Text cardNameText;

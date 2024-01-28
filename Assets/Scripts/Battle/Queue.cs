@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Queue : MonoBehaviour
 {
-
+    public QueueUI queueUI;
     public List<QueueAction> queueActions;
     public int currentPlayingCardNum;
     public bool isPlayBattle;
@@ -47,6 +47,8 @@ public class Queue : MonoBehaviour
         {
             queueActions.Add(new QueueActionCard(card));
         }
+
+        queueUI.RedrawQueueUI(this);
     }
 
     public void BattleStarted()
