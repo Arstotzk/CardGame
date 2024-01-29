@@ -9,26 +9,37 @@ public class CardItem : Card
     public int attack;
     public CardPerson cardInteract;
 
-    public TMP_Text HealthText;
-    public TMP_Text AttackText;
+    public TMP_Text healthText;
+    public TMP_Text attackText;
+
+    public SpriteRenderer healthIcon;
+    public SpriteRenderer attackIcon;
 
     public override void Start()
     {
         base.Start();
-        HealthText.text = health.ToString();
-        AttackText.text = attack.ToString();
+        healthText.text = health.ToString();
+        attackText.text = attack.ToString();
+        if (health == 0)
+        {
+            healthText.enabled = false;
+            healthIcon.enabled = false;
+        }
+        if (attack == 0)
+        {
+            attackText.enabled = false;
+            attackIcon.enabled = false;
+        }
+
     }
     public override void Action()
     {
         isMoveable = false;
         cardInteract.health += health;
         cardInteract.attack += attack;
-        var pos = transform.position;
-        pos.z = -0.1f;
-        transform.position = pos;
         sound.audioSourceSfx.Play();
         deployManager.Reinforcement -= reinforcement;
-        Invoke("Delete", sound.audioSourceSfx.clip.length);
+        Death();
     }
     public override void OnMouseUp()
     {

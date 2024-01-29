@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CardProperty
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 32aca7a4d247f2f438d9ab36e54a70f5, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: berserkSprite
+    value: 
+    objectReference: {fileID: 21300000, guid: 8bd14ec20369c324792b01c6c2ccef64, type: 3}
+  - target: {fileID: 0}
+    propertyPath: cleanSprite
+    value: 
+    objectReference: {fileID: 21300000, guid: 614f006ac203e4444922aae505106b34, type: 3}
+  - target: {fileID: 0}
+    propertyPath: defenceSprite
+    value: 
+    objectReference: {fileID: 21300000, guid: 316edc33ef95bea42b23c9486436c667, type: 3}
+  - target: {fileID: 0}
+    propertyPath: healerSprite
+    value: 
+    objectReference: {fileID: 21300000, guid: dc6096a85567b3f429de46079c053c99, type: 3}
+  - target: {fileID: 0}
+    propertyPath: hookSprite
+    value: 
+    objectReference: {fileID: 21300000, guid: 44e942f00d735c84aae3b8661363a8e5, type: 3}
+  - target: {fileID: 0}
+    propertyPath: poisonSprite
+    value: 
+    objectReference: {fileID: 21300000, guid: 0e14221118497cd429c68156b3b22ee6, type: 3}
+  - target: {fileID: 0}
+    propertyPath: poisonBladeSprite
+    value: 
+    objectReference: {fileID: 21300000, guid: 1b8f3520353ea73489dbd29c1c192e3b, type: 3}
+  - target: {fileID: 0}
+    propertyPath: regenerationSprite
+    value: 
+    objectReference: {fileID: 21300000, guid: 8f139099a67459e4eb4720d702d1f606, type: 3}
+  - target: {fileID: 0}
+    propertyPath: sleepSprite
+    value: 
+    objectReference: {fileID: 21300000, guid: ec26f4780041f2a49bd91ea3bb621f0d, type: 3}
+  - target: {fileID: 0}
+    propertyPath: slowdownSprite
+    value: 
+    objectReference: {fileID: 21300000, guid: 65e864e1377aa3444a053440a420d01c, type: 3}
+  - target: {fileID: 0}
+    propertyPath: speedSprite
+    value: 
+    objectReference: {fileID: 21300000, guid: 054db89c323065a498c820d05d97e897, type: 3}
+  - target: {fileID: 0}
+    propertyPath: strengthSprite
+    value: 
+    objectReference: {fileID: 21300000, guid: b26de507d93b1ab49b3ac3801575e086, type: 3}
+  - target: {fileID: 0}
+    propertyPath: vampirismSprite
+    value: 
+    objectReference: {fileID: 21300000, guid: 25a13652d2d8cd94bb37d29446b5c4de, type: 3}
+  - target: {fileID: 0}
+    propertyPath: properties.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: propertyObjects.Array.size
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: propertyObjects.Array.data[0]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: propertyObjects.Array.data[1]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: propertyObjects.Array.data[2]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: propertyObjects.Array.data[3]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: propertyObjects.Array.data[4]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: propertyObjects.Array.data[5]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: propertyDescriptions.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []

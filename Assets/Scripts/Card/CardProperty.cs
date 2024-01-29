@@ -172,9 +172,9 @@ public class CardProperty : MonoBehaviour
 
         for (; propertyNum < propertyObjects.Count; propertyNum++)
         {
-            var propertySprite = propertyObjects[propertyNum].GetComponent<SpriteRenderer>();
+            var propertySprite = propertyDescriptions[propertyNum].GetComponent<SpriteRenderer>();
             propertySprite.sprite = null;
-            var text = propertyObjects[propertyNum].GetComponentInChildren<TextMeshPro>();
+            var text = propertyDescriptions[propertyNum].GetComponentInChildren<TextMeshPro>();
             text.text = string.Empty;
         }
     }

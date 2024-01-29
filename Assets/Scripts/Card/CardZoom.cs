@@ -50,6 +50,19 @@ public class CardZoom : MonoBehaviour
                 deployManager.SetAllMovable(false);
                 StartCoroutine(CardZoomedChange(0.8f, true));
             }
+            else
+            {
+                var cardItem = hit.transform.gameObject.GetComponentInParent<CardItem>();
+                if (cardItem != null)
+                {
+                    cardZoomed.FillCardInfo(cardItem.spriteRenderer.sprite, cardItem.cardName, cardItem.health, cardItem.attack, cardItem.reinforcement, cardItem.cardProperty);
+                    GetComponent<Animator>().Play("ToBlack");
+                    cardZoomed.GetComponent<Animator>().Play("BeginZoom");
+                    Debug.Log("Card zoomed: " + cardItem.name);
+                    deployManager.SetAllMovable(false);
+                    StartCoroutine(CardZoomedChange(0.8f, true));
+                }
+            }
         }
     }
 
