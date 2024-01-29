@@ -37,6 +37,10 @@ public class CardItem : Card
         isMoveable = false;
         cardInteract.health += health;
         cardInteract.attack += attack;
+        if (cardProperty.IsHasProperty(Property.Type.Clean))
+        {
+            cardInteract.cardProperty.RemoveNegativeProperties();
+        }
         sound.audioSourceSfx.Play();
         deployManager.Reinforcement -= reinforcement;
         Death();

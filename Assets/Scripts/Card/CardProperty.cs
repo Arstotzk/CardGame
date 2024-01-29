@@ -121,7 +121,7 @@ public class CardProperty : MonoBehaviour
             var descriprion = propertyDescriptions[propertyNum].GetComponentInChildren<TextMeshPro>();
             //TODO Сделать чтобы через при создании через инспектор описание генерилось сразу
             if (property.description == null)
-                property.SetDescription();
+                property.SetSettings();
             descriprion.text = property.description;
             switch (property.type)
             {
@@ -198,7 +198,7 @@ public class CardProperty : MonoBehaviour
         properties.Add(new Property(type));
     }
 
-    public void SetProperty(Property.Type type, int length, bool isNegative)
+    public void SetProperty(Property.Type type, int length)
     {
         var property = GetProperty(type);
         if (property != null)
@@ -209,8 +209,18 @@ public class CardProperty : MonoBehaviour
         }
         else
         {
-            properties.Add(new Property(type, length, isNegative));
+            properties.Add(new Property(type, length));
             SetProperties();
         }
+    }
+
+    public void RemoveNegativeProperties()
+    {
+        var propertyList = properties.Where(p => p.isNegative == true).ToList();
+        foreach (var property in propertyList)
+        {
+            RemoveProperty(property);
+        }
+        SetProperties();
     }
 }
