@@ -6,6 +6,7 @@ using UnityEngine;
 public class Property
 {
     public bool isLengthProperty;
+    public bool isNegative;
     public int _length;
     public int length 
     {
@@ -32,11 +33,12 @@ public class Property
         isLengthProperty = false;
         SetDescription();
     }
-    public Property(Type _type, int _length)
+    public Property(Type _type, int _length, bool _isNegative)
     {
         type = _type;
         length = _length;
         isLengthProperty = true;
+        isNegative = _isNegative;
         SetDescription();
     }
 

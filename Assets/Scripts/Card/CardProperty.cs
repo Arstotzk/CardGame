@@ -198,7 +198,7 @@ public class CardProperty : MonoBehaviour
         properties.Add(new Property(type));
     }
 
-    public void SetProperty(Property.Type type, int length)
+    public void SetProperty(Property.Type type, int length, bool isNegative)
     {
         var property = GetProperty(type);
         if (property != null)
@@ -209,7 +209,7 @@ public class CardProperty : MonoBehaviour
         }
         else
         {
-            properties.Add(new Property(type, length));
+            properties.Add(new Property(type, length, isNegative));
             SetProperties();
         }
     }
