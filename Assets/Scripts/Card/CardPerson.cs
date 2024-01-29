@@ -341,8 +341,7 @@ public class CardPerson : Card
     {
         if (cardProperty != null && cardProperty.IsHasProperty(Property.Type.PoisonBlade))
         {
-            //TODO Переделать привезать негатиавный флаг к типу
-            cardImpact.cardProperty.SetProperty(Property.Type.Poison, 1, true);
+            cardImpact.cardProperty.SetProperty(Property.Type.Poison, 1);
         }
     }
 
