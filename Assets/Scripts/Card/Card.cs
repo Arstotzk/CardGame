@@ -97,10 +97,24 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         //Добавить в сброс
         Destroy(gameObject);
     }
+
+    public void ToDiscard()
+    {
+        if (isEnemy)
+            battleManager.discardEnemy.AddCard(this);
+        else
+            battleManager.discardSlav.AddCard(this);
+    }
     public void Death()
     {
         animator.Play("Death");
-        Invoke("Delete", 1f); //Переделать на сброс карты в стопку сброса
+        Invoke("ToDiscard", 1f); //Переделать на сброс карты в стопку сброса
+    }
+
+    public void Death(float time)
+    {
+        animator.Play("Death");
+        Invoke("ToDiscard", time); //Переделать на сброс карты в стопку сброса
     }
 
     //Взяли карту

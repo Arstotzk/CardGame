@@ -17,6 +17,10 @@ public class BattleManager : MonoBehaviour
     public int roundNum;
     public EnemyAI enemyAI;
     public Queue queue;
+    public Deck deckSlav;
+    public Deck deckEnemy;
+    public Deck discardSlav;
+    public Deck discardEnemy;
 
     public SoundManager smSlavic;
     public SoundManager smReptilian;
@@ -67,6 +71,8 @@ public class BattleManager : MonoBehaviour
     {
         roundNum++;
         StartRoundScript();
+        deckSlav.GetRandomCardToHand();
+        deckEnemy.GetRandomCardToHand();
     }
     public void FillCardsSounds(List<CardPerson> cards) 
     {

@@ -43,7 +43,7 @@ public class CardItem : Card
         }
         sound.audioSourceSfx.Play();
         deployManager.Reinforcement -= reinforcement;
-        Death();
+        Death(sound.audioSourceSfx.clip.length);
     }
     public override void OnMouseUp()
     {
