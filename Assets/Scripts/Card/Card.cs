@@ -202,6 +202,15 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         dctPlace.CardAdded(this);
         enemyHand.CardRemove();
     }
+    public void MoveToPlace(Place movePlace)
+    {
+        place = movePlace;
+        var dctPlace = movePlace.GetComponent<DropCardToPlace>();
+
+        transform.SetParent(dctPlace.transform);
+        CurrentParent = movePlace.transform;
+        dctPlace.CardAdded(this);
+    }
     public void PlayDieSfx()
     {
         sound.audioSourceSfx.Play();

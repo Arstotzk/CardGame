@@ -187,6 +187,8 @@ public class BattleManager : MonoBehaviour
         //—делать еще скриптовые раунды в который определенные карты выставл€ютс€, а не рандомные
         var card = enemyAI.SetCardToBattle();
         FillCardsArray();
+        enemyAI.MoveCardOnBattleground();
+        FillCardsArray();
         if (roundNum > 2 && card != null)
         {
             StartCoroutine(StartSetEnemyCard(card.sound.GetLengthCurrentClip()));
