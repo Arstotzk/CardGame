@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 384965456256786693, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.945169
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 384965456256786693, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6357708
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 384965456256786693, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51,6 +51,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 980951402289183261, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 15a1f434f4c395845856f866def899d9, type: 3}
     - target: {fileID: 1261485298176412743, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
       propertyPath: properties.Array.size
       value: 1
@@ -59,17 +63,63 @@ PrefabInstance:
       propertyPath: properties.Array.data[0].type
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3527505150430335403, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
-      propertyPath: attack
+    - target: {fileID: 1979658154310882415, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d101198cb0906904d8e1a3d98191e804, type: 3}
+    - target: {fileID: 1979658154310882415, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3527505150430335403, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+      propertyPath: attack
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527505150430335403, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
       propertyPath: health
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527505150430335403, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+      propertyPath: cardName
+      value: "\u0412\u043E\u0434\u0430 \u0431\u0430\u0439\u043A\u0430\u043B\u044C\u0441\u043A\u0430\u044F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527505150430335403, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+      propertyPath: spriteQueueUI
+      value: 
+      objectReference: {fileID: 21300000, guid: 830fdde3124c1da4b9351dec79d84b1d, type: 3}
+    - target: {fileID: 3527505150430335403, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+      propertyPath: _reinforcement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3568949575571146506, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
       propertyPath: m_Name
       value: BaikalWater
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3577032371675952895, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e93fcb44d174df448fff49e1b74c93a, type: 3}
+    - target: {fileID: 3577032371675952895, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739340411255511901, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+      propertyPath: m_Size.x
+      value: 6.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739340411255511901, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+      propertyPath: m_Size.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739340411255511901, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dd741658208027c44b64fb2fb90dcc07, type: 3}
+    - target: {fileID: 3739340411255511901, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5146982903985366103, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
+    - {fileID: 7098335395900679430, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7e45f851f4534fd428dd4f0965e13ec0, type: 3}

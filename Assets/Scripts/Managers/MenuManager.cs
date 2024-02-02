@@ -78,7 +78,12 @@ public class MenuManager : MonoBehaviour
     }
     public void Continue()
     {
-        SceneManager.LoadScene("SampleScene");
+        //SceneManager.LoadScene("SampleScene");
+    }
+
+    public void StartBattleScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     public void NewGame() 

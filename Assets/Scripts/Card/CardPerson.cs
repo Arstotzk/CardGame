@@ -139,6 +139,7 @@ public class CardPerson : Card
     {
         if (!isDead)
         {
+            BeforeAction();
             cardsImpact = new List<CardPerson>();
 
             if (IsSleepRound())

@@ -66,7 +66,7 @@ public class Property
                 isNegative = false;
                 break;
             case Type.Poison:
-                description = "Яд: в начале хода перед атакой получает 1 урон. Накапливается. Негативный";
+                description = "Яд: в начале своего хода получает 1 урон. Накапливается. Негативный";
                 isNegative = true;
                 break;
             case Type.PoisonBlade:
