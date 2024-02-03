@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 264583084461740348, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Name
-      value: ReptilianWarrior
+      value: ReptilianWarrior Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2575015247600276706, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_audioClip
@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: spriteQueueUI
       value: 
       objectReference: {fileID: 21300000, guid: a3f5e720a42f3a1448ff7b36ad911968, type: 3}
+    - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
+      propertyPath: _reinforcement
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: attackPattern.rows.Array.data[0].row.Array.data[0]
       value: 1

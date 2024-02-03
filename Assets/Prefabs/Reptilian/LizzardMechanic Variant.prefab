@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.68
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 264583084461740348, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Name
-      value: LizzardMechanic
+      value: LizzardMechanic Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2575015247600276706, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_audioClip

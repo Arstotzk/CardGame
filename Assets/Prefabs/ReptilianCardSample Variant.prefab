@@ -235,6 +235,10 @@ PrefabInstance:
       propertyPath: SoundOnAttack.Array.data[20]
       value: 
       objectReference: {fileID: 8300000, guid: 751b26a56096a6141803a269471e015d, type: 3}
+    - target: {fileID: 1787741114438416017, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -6285140627336829716, guid: dbbb7b80d951871458e262fc8c81d562, type: 2}
     - target: {fileID: 6325467273977644274, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: isEnemy
       value: 1

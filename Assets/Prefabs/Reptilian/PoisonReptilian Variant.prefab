@@ -25,11 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalRotation.y
@@ -41,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 264583084461740348, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Name
-      value: PoisonReptilian
+      value: PoisonReptilian Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1621895609204716102, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_audioClip

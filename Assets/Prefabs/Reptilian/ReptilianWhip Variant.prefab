@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5102442366730786565
+--- !u!1001 &4358810236974614785
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -13,15 +13,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3.6799793
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.378086
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.0004965286
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -29,15 +29,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -53,12 +53,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 264583084461740348, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Name
-      value: ReptilianDeath Variant
+      value: ReptilianWhip
       objectReference: {fileID: 0}
     - target: {fileID: 2575015247600276706, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 0b0d6192fbc99d74ca9ed414e1d9421e, type: 3}
+      objectReference: {fileID: 8300000, guid: 4056c88cc60925042a586ed13701cd5a, type: 3}
     - target: {fileID: 4145067827271622073, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Size.x
       value: 6.6
@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 4145067827271622073, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 76ed5c10e3c2c3445bb2581bf4ee9a49, type: 3}
+      objectReference: {fileID: 21300000, guid: 8dfd4e5bbeeaa8c4ebaaa041cd849b91, type: 3}
     - target: {fileID: 4145067827271622073, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -78,22 +78,30 @@ PrefabInstance:
     - target: {fileID: 5290676149614184844, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 069dab218f2ccba46821ad844d904a6c, type: 3}
+      objectReference: {fileID: 21300000, guid: 5a2b97a6dc45908489f794783f7650bd, type: 3}
     - target: {fileID: 5290676149614184844, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5412191977070745338, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
+      propertyPath: properties.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412191977070745338, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
+      propertyPath: properties.Array.data[0].type
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: _attack
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: _health
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: cardName
-      value: "\u042F\u0449\u0435\u0441\u043C\u0435\u0440\u0434"
+      value: "\u042F\u0449\u0435\u0445\u043B\u044B\u0441\u0442"
       objectReference: {fileID: 0}
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: initiative
@@ -110,27 +118,23 @@ PrefabInstance:
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: spriteQueueUI
       value: 
-      objectReference: {fileID: 21300000, guid: 22484bf5099e8af49bc9a6fcbc71025d, type: 3}
+      objectReference: {fileID: 21300000, guid: a6f97b0b7f80a9c4eb04793bcadf3d23, type: 3}
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: _reinforcement
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
-      propertyPath: attackPattern.rows.Array.data[0].row.Array.data[0]
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: attackPattern.rows.Array.data[0].row.Array.data[1]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
-      propertyPath: attackPattern.rows.Array.data[0].row.Array.data[2]
+      propertyPath: attackPattern.rows.Array.data[1].row.Array.data[1]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8532652931823534968, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 30bcacf8ae4132240a1e0c8fec6623de, type: 3}
+      objectReference: {fileID: 21300000, guid: 71a082af0fe866e4fa4bcaff9e5ded16, type: 3}
     - target: {fileID: 8532652931823534968, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
