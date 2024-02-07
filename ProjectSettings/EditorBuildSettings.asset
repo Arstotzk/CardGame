@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleScenes/FirstVillageBattle.unity
     guid: f7adca18027226547a5270a4f4a6e264
+  - enabled: 1
+    path: Assets/Scenes/BattleScenes/SecondVillageBattle.unity
+    guid: ed39d6eb648d2f642ab74b6cd61420cb
   m_configObjects: {}
