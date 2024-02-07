@@ -27,7 +27,7 @@ public class CardsRow : MonoBehaviour
         foreach (var cardPlace in cardPlaceList) 
         {
             var card = cardPlace.GetComponentInChildren<CardPerson>();
-            if (card)
+            if (card != null)
             {
                 cardList.Add(card);
             }

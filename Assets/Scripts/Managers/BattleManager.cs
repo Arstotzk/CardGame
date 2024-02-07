@@ -51,7 +51,7 @@ public class BattleManager : MonoBehaviour
             var cards = GetCardList();
             cards = OrderCardList(cards);
             FillCardsArray();
-            FillCardsSounds(cards);
+            //FillCardsSounds(cards);
             queue.BattleStarted();
             /*
             var seconds = ExecCardsActions(cards);

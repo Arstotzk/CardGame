@@ -61,8 +61,8 @@ public class CardPerson : Card
                     sound.audioSourceSfx.clip = sound.GetOnDieSfxSoundClip();
                     sound.audioSourcePerson.Play();
                     //animator.Play("OnDrugStart");
-                    Invoke("Death", sound.audioSourcePerson.clip.length); //Переделать на сброс карты в стопку сброса
                     isDead = true;
+                    Invoke("Death", sound.audioSourcePerson.clip.length); //Переделать на сброс карты в стопку сброса
                 }
                 else
                 {
