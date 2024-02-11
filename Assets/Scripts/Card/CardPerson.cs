@@ -8,6 +8,7 @@ class column
 {
     bool[] row;
 }
+
 public class CardPerson : Card
 {
     public AttackPattern attackPattern;

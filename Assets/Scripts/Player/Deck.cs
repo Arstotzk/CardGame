@@ -46,6 +46,21 @@ public class Deck : MonoBehaviour
         card.transform.parent = this.transform;
         card.CurrentParent = this.transform;
         card.isMoveable = false;
+        cards.Add(card);
+    }
+    public void AddCard(Card card, bool isFlip)
+    {
+        card.transform.position = this.transform.position;
+        if (isFlip)
+        {
+            var rotation = card.transform.rotation;
+            rotation.x = 180;
+            card.transform.rotation = rotation;
+        }
+        card.transform.parent = this.transform;
+        card.CurrentParent = this.transform;
+        card.isMoveable = false;
+        cards.Add(card);
     }
 
     // Update is called once per frame

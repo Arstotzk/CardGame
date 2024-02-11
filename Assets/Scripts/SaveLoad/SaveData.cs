@@ -7,5 +7,5 @@ using System;
 public class SaveData
 {
     public string scene;
-    public List<Card> cards;
+    public List<string> cards;
 }

@@ -85,6 +85,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 
         deployManager = (DeployManager) GameObject.FindObjectOfType(typeof(DeployManager));
         battleManager = (BattleManager) GameObject.FindObjectOfType(typeof(BattleManager));
+        DefaultParent = ((DragAndDropCardBuffer) GameObject.FindObjectOfType(typeof(DragAndDropCardBuffer))).transform;
     }
 
     public GameObject enterObject;
@@ -101,9 +102,9 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     public void ToDiscard()
     {
         if (isEnemy)
-            battleManager.discardEnemy.AddCard(this);
+            battleManager.discardEnemy.AddCard(this, true);
         else
-            battleManager.discardSlav.AddCard(this);
+            battleManager.discardSlav.AddCard(this, true);
     }
     public void Death()
     {
