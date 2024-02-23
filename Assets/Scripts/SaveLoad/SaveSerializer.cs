@@ -54,7 +54,7 @@ public class SaveSerializer : MonoBehaviour
         saveData.scene = SceneManager.GetActiveScene().name;
         saveData.cards = GetPlayerCardPrefabNames();
         saveData.mainCardProperty = new List<int>();
-        var mainCard = GetPlayerCards().Where(mc => mc.name == mainCardName).FirstOrDefault();
+        var mainCard = GetPlayerCards().Where(mc => mc.name.Contains(mainCardName)).FirstOrDefault();
         foreach (var property in mainCard.cardProperty.properties.Where(p => !p.isNegative && !p.isLengthProperty).ToList())
         {
             saveData.mainCardProperty.Add((int)property.type);
