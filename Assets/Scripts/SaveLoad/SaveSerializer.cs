@@ -10,14 +10,19 @@ using System.Linq;
 public class SaveSerializer : MonoBehaviour
 {
     const string mainCardName = "Pizdaslav";
+    const string lastSave = "LastSave.dat";
+    const string prefSave = "SaveFile";
     public BattleManager battleManager;
     public Hand hand;
     public Deck deck;
     public CardStore cardStore;
+
+    public float secondsLoadDelay = 2f;
     // Start is called before the first frame update
     void Start()
     {
         battleManager = (BattleManager)GameObject.FindObjectOfType(typeof(BattleManager));
+        StartCoroutine(LoadAndSet(secondsLoadDelay));
     }
 
     private List<string> GetPlayerCardPrefabNames()
@@ -45,12 +50,16 @@ public class SaveSerializer : MonoBehaviour
         cards.AddRange(cardsOnDeck);
         return cards;
     }
-
     public void Save()
+    {
+        Save(lastSave);
+    }
+
+    public void Save(string saveFile)
     {
         var saveData = new SaveData();
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/MySaveData.dat");
+        FileStream file = File.Create(Application.persistentDataPath + "/" + saveFile);
         saveData.scene = SceneManager.GetActiveScene().name;
         saveData.cards = GetPlayerCardPrefabNames();
         saveData.mainCardProperty = new List<int>();
@@ -64,12 +73,12 @@ public class SaveSerializer : MonoBehaviour
         Debug.Log("Game data saved");
     }
 
-    public void Load()
+    public void Load(string saveFile)
     {
-        if (File.Exists(Application.persistentDataPath + "/MySaveData.dat"))
+        if (File.Exists(Application.persistentDataPath + "/" + saveFile))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/MySaveData.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/" + saveFile, FileMode.Open);
             SaveData saveData = (SaveData)bf.Deserialize(file);
             file.Close();
             foreach (var prefabName in saveData.cards)
@@ -88,10 +97,18 @@ public class SaveSerializer : MonoBehaviour
                     }
                 }
             }
-            Debug.Log("Game data loaded!");
+            Debug.Log("Game data loaded! SaveFile: " + saveFile);
         }
         else
-            Debug.LogError("There is no save data!");
+            Debug.LogError("There is no save data! SaveFile: " + saveFile);
+    }
+
+    private IEnumerator LoadAndSet(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        var saveFile = PlayerPrefs.GetString(prefSave);
+        Load(saveFile);
+        deck.GetStartedCardToHand();
     }
 }
 

@@ -1564,6 +1564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cards: []
   hand: {fileID: 1690164781}
+  numStartedCards: 6
 --- !u!114 &359331431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2339,6 +2340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cards: []
   hand: {fileID: 1655802116}
+  numStartedCards: 6
 --- !u!4 &546859159
 Transform:
   m_ObjectHideFlags: 0
@@ -3094,6 +3096,7 @@ MonoBehaviour:
   hand: {fileID: 1655802114}
   deck: {fileID: 1962898139}
   cardStore: {fileID: 1106647216}
+  secondsLoadDelay: 2
 --- !u!1 &906159558 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6370881783775131371, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
@@ -3783,6 +3786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cards: []
   hand: {fileID: 1690164781}
+  numStartedCards: 6
 --- !u!4 &1134232475
 Transform:
   m_ObjectHideFlags: 0
@@ -9942,7 +9946,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1962898137}
   - component: {fileID: 1962898139}
-  - component: {fileID: 1962898138}
   m_Layer: 0
   m_Name: DeckSlav
   m_TagString: Untagged
@@ -9966,19 +9969,6 @@ Transform:
   m_Father: {fileID: 102857363}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1962898138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962898136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b55427230a81351459abb59975ec665f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numCards: 6
 --- !u!114 &1962898139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9993,6 +9983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cards: []
   hand: {fileID: 1655802116}
+  numStartedCards: 6
 --- !u!1 &1997861720
 GameObject:
   m_ObjectHideFlags: 0

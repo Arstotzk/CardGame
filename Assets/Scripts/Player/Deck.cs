@@ -7,7 +7,7 @@ public class Deck : MonoBehaviour
     // Start is called before the first frame update
     public List<Card> cards;
     public DropCardToPlace hand;
-
+    public int numStartedCards = 6;
     void Start()
     {
 
@@ -67,5 +67,11 @@ public class Deck : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void GetStartedCardToHand()
+    {
+        for (var num = 0; num < numStartedCards; num++)
+            GetRandomCardToHand();
     }
 }
