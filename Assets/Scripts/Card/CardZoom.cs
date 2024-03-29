@@ -36,33 +36,46 @@ public class CardZoom : MonoBehaviour
 
     private void CheckCard() 
     {
+        //TODO Перенести это в отдельный класс
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] raycastHits = Physics.RaycastAll(ray);
+        CardPerson card = null;
+        CardItem cardItem = null;
+        DeckShowClick deckShowClick = null;
         foreach (var hit in raycastHits)
         {
-            var card = hit.transform.gameObject.GetComponentInParent<CardPerson>();
-            if (card != null)
-            {
-                cardZoomed.FillCardInfo(card.spriteRenderer.sprite, card.cardName, card.health, card.attack, card.reinforcement, card.initiative, card.cardProperty);
-                GetComponent<Animator>().Play("ToBlack");
-                cardZoomed.GetComponent<Animator>().Play("BeginZoom");
-                Debug.Log("Card zoomed: " + card.name);
-                deployManager.SetAllMovable(false);
-                StartCoroutine(CardZoomedChange(0.8f, true));
-            }
-            else
-            {
-                var cardItem = hit.transform.gameObject.GetComponentInParent<CardItem>();
-                if (cardItem != null)
-                {
-                    cardZoomed.FillCardInfo(cardItem.spriteRenderer.sprite, cardItem.cardName, cardItem.health, cardItem.attack, cardItem.reinforcement, cardItem.cardProperty);
-                    GetComponent<Animator>().Play("ToBlack");
-                    cardZoomed.GetComponent<Animator>().Play("BeginZoom");
-                    Debug.Log("Card zoomed: " + cardItem.name);
-                    deployManager.SetAllMovable(false);
-                    StartCoroutine(CardZoomedChange(0.8f, true));
-                }
-            }
+            var cardPersonHit = hit.transform.gameObject.GetComponentInParent<CardPerson>();
+            if(cardPersonHit != null)
+                card = cardPersonHit;
+            var cardItemHit = hit.transform.gameObject.GetComponentInParent<CardItem>();
+            if (cardItemHit != null)
+                cardItem = cardItemHit;
+            var deckShowClickHit = hit.transform.gameObject.GetComponent<DeckShowClick>();
+            if (deckShowClickHit != null)
+                deckShowClick = deckShowClickHit;
+        }
+        if (deckShowClick != null)
+        {
+
+            return;
+        }
+        if (card != null)
+        {
+            cardZoomed.FillCardInfo(card.spriteRenderer.sprite, card.cardName, card.health, card.attack, card.reinforcement, card.initiative, card.cardProperty);
+            GetComponent<Animator>().Play("ToBlack");
+            cardZoomed.GetComponent<Animator>().Play("BeginZoom");
+            Debug.Log("Card zoomed: " + card.name);
+            deployManager.SetAllMovable(false);
+            StartCoroutine(CardZoomedChange(0.8f, true));
+        }
+        else if (cardItem != null)
+        {
+            cardZoomed.FillCardInfo(cardItem.spriteRenderer.sprite, cardItem.cardName, cardItem.health, cardItem.attack, cardItem.reinforcement, cardItem.cardProperty);
+            GetComponent<Animator>().Play("ToBlack");
+            cardZoomed.GetComponent<Animator>().Play("BeginZoom");
+            Debug.Log("Card zoomed: " + cardItem.name);
+            deployManager.SetAllMovable(false);
+            StartCoroutine(CardZoomedChange(0.8f, true));
         }
     }
 
