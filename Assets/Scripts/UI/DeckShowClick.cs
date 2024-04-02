@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class DeckShowClick : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public DeckShow deckShow;
 
-    // Update is called once per frame
-    void Update()
+    public void DeckShow()
     {
-        
+        deckShow.Show(GetComponent<Deck>());
     }
 
 }

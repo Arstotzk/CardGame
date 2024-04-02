@@ -5,6 +5,9 @@ using UnityEngine;
 public class DeckShow : MonoBehaviour
 {
     // Start is called before the first frame update
+    private Deck deck;
+    public DropCardToPlace firstLine;
+    private bool isShowing = false;
     void Start()
     {
         
@@ -14,5 +17,30 @@ public class DeckShow : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Show(Deck _deck)
+    {
+        deck = _deck;
+        if (isShowing == true)
+        {
+            Unshow();
+            return;
+        }
+        var animator = GetComponent<Animator>();
+        animator.Play("ToBlack");
+        foreach (var card in deck.cards)
+        {
+            card.transform.parent = firstLine.transform;
+            firstLine.CardAdded(card);
+        }
+        isShowing = true;
+        Debug.Log("DeckShow");
+    }
+    public void Unshow()
+    {
+        var animator = GetComponent<Animator>();
+        animator.Play("ToTransparent");
+        isShowing = false;
     }
 }

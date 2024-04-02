@@ -50,13 +50,13 @@ public class CardZoom : MonoBehaviour
             var cardItemHit = hit.transform.gameObject.GetComponentInParent<CardItem>();
             if (cardItemHit != null)
                 cardItem = cardItemHit;
-            var deckShowClickHit = hit.transform.gameObject.GetComponent<DeckShowClick>();
+            var deckShowClickHit = hit.transform.gameObject.GetComponentInParent<DeckShowClick>();
             if (deckShowClickHit != null)
                 deckShowClick = deckShowClickHit;
         }
         if (deckShowClick != null)
         {
-
+            deckShowClick.DeckShow();
             return;
         }
         if (card != null)
