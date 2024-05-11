@@ -3393,6 +3393,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1106647215}
+  - {fileID: 1382216944}
   m_Father: {fileID: 1463004606}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4691,6 +4692,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52db5b2ead4c031468f3973046df1621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1382216943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1382216944}
+  - component: {fileID: 1382216945}
+  m_Layer: 0
+  m_Name: SceneStore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1382216944
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382216943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 883847803}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1382216945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382216943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5b93b02c653b04aa7b4eb17db03f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneDatas:
+  - Name: FirstBattle
+    NameRu: "\u041A\u0440\u0443\u0448\u0435\u043D\u0438\u0435 \u044F\u0449\u0435\u0440\u043E\u0432"
+    cards:
+    - {fileID: 5098939161992001065, guid: 09fde7e41ff70334b804c6b55f9a540c, type: 3}
+    cardsOnBattle:
+    - card: {fileID: 6136188814823340469, guid: 236581d256688b946a13f37821bc1bdf, type: 3}
+      row: 0
+      column: 0
 --- !u!224 &1390520428 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6370881783458385300, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
