@@ -208,6 +208,8 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         place = movePlace;
         var dctPlace = movePlace.GetComponent<DropCardToPlace>();
 
+        row = movePlace.row;
+        column = movePlace.column;
         transform.SetParent(dctPlace.transform);
         CurrentParent = movePlace.transform;
         dctPlace.CardAdded(this);

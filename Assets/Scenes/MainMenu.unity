@@ -3840,6 +3840,29 @@ MonoBehaviour:
   sfxValue: 0
   slavicValue: 0
   reptilianValue: 0
+  loadTestDatas:
+  - cards:
+    - Pizdaslav
+    - OldMaxim
+    - BaikalWater
+    - MeatPie
+    sceneName: FirstBattle
+  - cards:
+    - Pizdaslav
+    - Dobrorus
+    - BaikalWater
+    - Blagorus
+    - BaikalDoctor
+    - Travokur
+    sceneName: FirstVillageBattle
+  - cards:
+    - Pizdaslav
+    - Dobrorus
+    - BaikalWater
+    - Blagorus
+    - BaikalDoctor
+    - Travokur
+    sceneName: SecondVillageBattle
 --- !u!4 &1690324602
 Transform:
   m_ObjectHideFlags: 0
@@ -4499,7 +4522,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SampleScene
+          m_StringArgument: FirstBattle
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1795867308
@@ -4733,9 +4756,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SimpleScene
-
-'
+  m_text: FirstBattle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b90bde2b2a783474c84f18c611d0b035, type: 2}
   m_sharedMaterial: {fileID: 6341810683699775392, guid: b90bde2b2a783474c84f18c611d0b035, type: 2}

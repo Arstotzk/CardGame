@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System.Linq;
 
 public class MenuManager : MonoBehaviour
 {
@@ -29,6 +32,9 @@ public class MenuManager : MonoBehaviour
     public float sfxValue;
     public float slavicValue;
     public float reptilianValue;
+
+    private string currentSave = "CurrentScene.dat";
+    public List<LoadTestData> loadTestDatas;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,7 +89,20 @@ public class MenuManager : MonoBehaviour
 
     public void StartBattleScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        CreateSaveToLoad(sceneName);
+        PlayerPrefs.SetString("SaveFile", currentSave);
+        SceneManager.LoadScene("BattleScene");
+    }
+    private void CreateSaveToLoad(string sceneName)
+    {
+        var saveData = new SaveData();
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/" + "CurrentScene.dat");
+        saveData.scene = sceneName;
+        saveData.cards = loadTestDatas.Where(ltd => ltd.sceneName.Equals(sceneName)).FirstOrDefault().cards;
+        saveData.mainCardProperty = new List<int>();
+        bf.Serialize(file, saveData);
+        file.Close();
     }
 
     public void NewGame() 
