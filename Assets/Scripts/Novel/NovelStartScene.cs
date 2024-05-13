@@ -9,9 +9,21 @@ public class NovelStartScene : NovelScript
     {
         get => _sceneName;
     }
-    public NovelStartScene(string inputSceneName)
+
+    private SceneType _sceneType;
+    public SceneType sceneType
+    {
+        get => _sceneType;
+    }
+    public NovelStartScene(string inputSceneName, SceneType novelStartSceneType)
     {
         scriptType = ScriptType.startScane;
         _sceneName = inputSceneName;
+        _sceneType = novelStartSceneType;
+    }
+    public enum SceneType
+    {
+        novel,
+        battle
     }
 }

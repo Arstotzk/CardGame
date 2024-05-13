@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &372506715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 372506717}
+  - component: {fileID: 372506718}
+  m_Layer: 0
+  m_Name: SaveSerializer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &372506717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372506715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 409.09628, y: 667.16754, z: -7.303938}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &372506718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372506715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f824200c4133e084faf786ea55e1a2ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsLoadDelay: 0.05
+  novelManager: {fileID: 429315636}
 --- !u!1 &422758638
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 429315637}
   - component: {fileID: 429315638}
+  - component: {fileID: 429315639}
   m_Layer: 0
   m_Name: NovelManager
   m_TagString: Untagged
@@ -230,7 +277,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429315636}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3852358ea5fa02439083963e943290e, type: 3}
   m_Name: 
@@ -241,6 +288,7 @@ MonoBehaviour:
   background: {fileID: 813891233}
   musicManager: {fileID: 2075628962}
   soundManager: {fileID: 1596831112}
+  scriptName: NewGameStart
   BeginMusic: {fileID: 8300000, guid: bfac58b79375ca542bbd0a5c08a822e8, type: 3}
   LizardMusic: {fileID: 8300000, guid: 1df6000f298f41245bb4de929279a880, type: 3}
   HorseSound: {fileID: 8300000, guid: 91f84d9beebfe7e4cbc2d6b18f63e1bd, type: 3}
@@ -250,6 +298,25 @@ MonoBehaviour:
   river: {fileID: 21300000, guid: 2682469e19a4a9d4385881d130ab725a, type: 3}
   darkForest: {fileID: 21300000, guid: e608ec787f8651f42bc01cd45ea38640, type: 3}
   darkForestReptilian: {fileID: 21300000, guid: ae23fa42df856e4469d4b47d65fcbf5d, type: 3}
+--- !u!114 &429315639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429315636}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f84f88fcb6948243837f1408ce2559c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptNumber: 0
+  character: {fileID: 829656129}
+  mainText: {fileID: 1153878431}
+  background: {fileID: 813891233}
+  musicManager: {fileID: 2075628962}
+  soundManager: {fileID: 1596831112}
+  scriptName: RoadToVillage
 --- !u!1 &606184342
 GameObject:
   m_ObjectHideFlags: 0

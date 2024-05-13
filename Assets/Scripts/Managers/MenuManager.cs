@@ -107,6 +107,14 @@ public class MenuManager : MonoBehaviour
 
     public void NewGame() 
     {
+        var saveData = new SaveData();
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/" + "CurrentScene.dat");
+        saveData.scene = "NewGameStart";
+        //saveData.cards = loadTestDatas.Where(ltd => ltd.sceneName.Equals(sceneName)).FirstOrDefault().cards;
+        saveData.mainCardProperty = new List<int>();
+        bf.Serialize(file, saveData);
+        file.Close();
         SceneManager.LoadScene("VisualNovelScene");
     }
     public void MasterValueChanged(float value)
