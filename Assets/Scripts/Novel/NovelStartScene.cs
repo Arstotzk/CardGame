@@ -21,9 +21,4 @@ public class NovelStartScene : NovelScript
         _sceneName = inputSceneName;
         _sceneType = novelStartSceneType;
     }
-    public enum SceneType
-    {
-        novel,
-        battle
-    }
 }

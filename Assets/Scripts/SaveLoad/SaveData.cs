@@ -9,4 +9,5 @@ public class SaveData
     public string scene;
     public List<string> cards;
     public List<int> mainCardProperty;
+    public SceneType sceneType;
 }

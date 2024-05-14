@@ -55,7 +55,7 @@ public class NovelManager : MonoBehaviour
 
             case NovelScript.ScriptType.startScane:
                 string sceneName = ((NovelStartScene)currentScript).sceneName;
-                NovelStartScene.SceneType sceneType = ((NovelStartScene)currentScript).sceneType;
+                SceneType sceneType = ((NovelStartScene)currentScript).sceneType;
                 SceneManager.LoadScene(sceneName);
                 break;
 

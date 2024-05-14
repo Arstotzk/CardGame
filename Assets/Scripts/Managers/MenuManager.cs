@@ -99,6 +99,7 @@ public class MenuManager : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/" + "CurrentScene.dat");
         saveData.scene = sceneName;
+        saveData.sceneType = SceneType.battle;
         saveData.cards = loadTestDatas.Where(ltd => ltd.sceneName.Equals(sceneName)).FirstOrDefault().cards;
         saveData.mainCardProperty = new List<int>();
         bf.Serialize(file, saveData);
@@ -111,10 +112,12 @@ public class MenuManager : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/" + "CurrentScene.dat");
         saveData.scene = "NewGameStart";
+        saveData.sceneType = SceneType.novel;
         //saveData.cards = loadTestDatas.Where(ltd => ltd.sceneName.Equals(sceneName)).FirstOrDefault().cards;
         saveData.mainCardProperty = new List<int>();
         bf.Serialize(file, saveData);
         file.Close();
+        File.Copy(Application.persistentDataPath + "/" + "CurrentScene.dat", Application.persistentDataPath + "/" + "Проснись.dat", true);
         SceneManager.LoadScene("VisualNovelScene");
     }
     public void MasterValueChanged(float value)

@@ -86,7 +86,7 @@ public class NewGameStartNovelManager : NovelManager
         scripts.Add(new NovelMind("Ящеры вдруг остановились."));
         scripts.Add(new NovelMind("Десятки глаз с вертикальными глазами смотрели в сторону русов."));
         scripts.Add(new NovelSay("Пиздаслав", "Прийдется драться."));
-        scripts.Add(new NovelStartScene("FirstBattle", NovelStartScene.SceneType.battle));
+        scripts.Add(new NovelStartScene("FirstBattle", SceneType.battle));
 
         PlayScript();
     }
