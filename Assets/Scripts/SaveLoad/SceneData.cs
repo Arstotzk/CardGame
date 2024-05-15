@@ -9,6 +9,8 @@ public class SceneData
     public string NameRu;
     public List<Card> cards;
     public List<SceneCard> cardsOnBattle;
+    public string nextSceneName;
+    public string nextSceneNameRu;
 }
 
 [System.Serializable]

@@ -164,11 +164,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 372506715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f824200c4133e084faf786ea55e1a2ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 0147a5009ed72fc4eb761c7cd2b3d557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsLoadDelay: 0.05
-  novelManager: {fileID: 429315636}
 --- !u!1 &422758638
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +287,7 @@ MonoBehaviour:
   musicManager: {fileID: 2075628962}
   soundManager: {fileID: 1596831112}
   scriptName: NewGameStart
+  novelSceneLoader: {fileID: 1526458565}
   BeginMusic: {fileID: 8300000, guid: bfac58b79375ca542bbd0a5c08a822e8, type: 3}
   LizardMusic: {fileID: 8300000, guid: 1df6000f298f41245bb4de929279a880, type: 3}
   HorseSound: {fileID: 8300000, guid: 91f84d9beebfe7e4cbc2d6b18f63e1bd, type: 3}
@@ -317,6 +316,7 @@ MonoBehaviour:
   musicManager: {fileID: 2075628962}
   soundManager: {fileID: 1596831112}
   scriptName: RoadToVillage
+  novelSceneLoader: {fileID: 0}
 --- !u!1 &606184342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,6 +1153,53 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1526458564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1526458566}
+  - component: {fileID: 1526458565}
+  m_Layer: 0
+  m_Name: NovelSceneLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1526458565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526458564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e6eca4424e14e4b998f0232e6f4703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsLoadDelay: 0.05
+  novelManager: {fileID: 429315636}
+  saveSerializer: {fileID: 372506718}
+--- !u!4 &1526458566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526458564}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -407.73798, y: 627.66986, z: 19.035267}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1532151943
 GameObject:
   m_ObjectHideFlags: 0

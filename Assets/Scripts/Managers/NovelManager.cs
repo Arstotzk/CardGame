@@ -16,6 +16,7 @@ public class NovelManager : MonoBehaviour
     public MusicManager musicManager;
     public MusicManager soundManager;
     public string scriptName;
+    public NovelSceneLoader novelSceneLoader;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,8 +56,9 @@ public class NovelManager : MonoBehaviour
 
             case NovelScript.ScriptType.startScane:
                 string sceneName = ((NovelStartScene)currentScript).sceneName;
+                string sceneNameRu = ((NovelStartScene)currentScript).sceneNameRu;
                 SceneType sceneType = ((NovelStartScene)currentScript).sceneType;
-                SceneManager.LoadScene(sceneName);
+                novelSceneLoader.SaveAndLoadNextScene(sceneNameRu, sceneName, sceneType);
                 break;
 
             case NovelScript.ScriptType.musicPlay:

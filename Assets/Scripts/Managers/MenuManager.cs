@@ -34,6 +34,7 @@ public class MenuManager : MonoBehaviour
     public float reptilianValue;
 
     private string currentSave = "CurrentScene.dat";
+    public SaveSerializer saveSerializer;
     public List<LoadTestData> loadTestDatas;
     // Start is called before the first frame update
     void Start()
@@ -89,35 +90,19 @@ public class MenuManager : MonoBehaviour
 
     public void StartBattleScene(string sceneName)
     {
-        CreateSaveToLoad(sceneName);
+        CreateSaveToLoad(sceneName, SceneType.battle);
         PlayerPrefs.SetString("SaveFile", currentSave);
         SceneManager.LoadScene("BattleScene");
     }
-    private void CreateSaveToLoad(string sceneName)
+    private void CreateSaveToLoad(string sceneName, SceneType sceneType)
     {
-        var saveData = new SaveData();
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/" + "CurrentScene.dat");
-        saveData.scene = sceneName;
-        saveData.sceneType = SceneType.battle;
-        saveData.cards = loadTestDatas.Where(ltd => ltd.sceneName.Equals(sceneName)).FirstOrDefault().cards;
-        saveData.mainCardProperty = new List<int>();
-        bf.Serialize(file, saveData);
-        file.Close();
+        saveSerializer.Save("CurrentScene.dat", sceneName, sceneType, loadTestDatas.Where(ltd => ltd.sceneName.Equals(sceneName)).FirstOrDefault().cards, new List<int>());
     }
 
     public void NewGame() 
     {
-        var saveData = new SaveData();
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/" + "CurrentScene.dat");
-        saveData.scene = "NewGameStart";
-        saveData.sceneType = SceneType.novel;
-        //saveData.cards = loadTestDatas.Where(ltd => ltd.sceneName.Equals(sceneName)).FirstOrDefault().cards;
-        saveData.mainCardProperty = new List<int>();
-        bf.Serialize(file, saveData);
-        file.Close();
-        File.Copy(Application.persistentDataPath + "/" + "CurrentScene.dat", Application.persistentDataPath + "/" + "Проснись.dat", true);
+        saveSerializer.Save("Проснись.dat", "NewGameStart", SceneType.novel, new List<string>(), new List<int>());
+        saveSerializer.CreateCurrentSave("Проснись.dat");
         SceneManager.LoadScene("VisualNovelScene");
     }
     public void MasterValueChanged(float value)
