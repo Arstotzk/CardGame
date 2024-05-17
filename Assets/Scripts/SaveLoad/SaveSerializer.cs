@@ -68,5 +68,22 @@ public class SaveSerializer : MonoBehaviour
         }
         return saveData;
     }
+
+    public List<SaveFile> GetSaveFiles()
+    {
+        DirectoryInfo dir = new DirectoryInfo(Application.persistentDataPath + "/");
+        var saveFiles = new List<SaveFile>();
+        foreach (var file in dir.GetFiles())
+        {
+            if (file.Name != "CurrentScene.dat" && file.Extension == ".dat")
+            {
+                var save = new SaveFile();
+                save.nameSystem = file.FullName;
+                save.nameShow = Path.GetFileNameWithoutExtension(file.Name) + " " + file.CreationTime.ToString("dd.MM.yyyy HH:mm:ss");
+                saveFiles.Add(save);
+            }
+        }
+        return saveFiles;
+    }
 }
 

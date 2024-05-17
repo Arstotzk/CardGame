@@ -10,9 +10,11 @@ public class GameMenu : MonoBehaviour
     public GameObject menu;
     public GameObject gameUI;
     public GameObject saves;
+    public SaveSerializer saveSerializer;
     public bool menuActive;
     void Start()
     {
+        saveSerializer = (SaveSerializer)GameObject.FindObjectOfType(typeof(SaveSerializer));
         menuActive = false;
     }
 
@@ -38,19 +40,7 @@ public class GameMenu : MonoBehaviour
         saves.SetActive(active);
         if (active == true)
         {
-            DirectoryInfo dir = new DirectoryInfo(Application.persistentDataPath + "/");
-            var saveFiles = new List<SaveFile>();
-            foreach (var file in dir.GetFiles())
-            {
-                if (file.Name != "CurrentScene.dat" && file.Extension == ".dat")
-                {
-                    var save = new SaveFile();
-                    save.nameSystem = file.FullName;
-                    save.nameShow = Path.GetFileNameWithoutExtension(file.Name) + " " + file.CreationTime.ToString("dd.MM.yyyy HH:mm:ss");
-                    saveFiles.Add(save);
-                }
-            }
-            saves.GetComponentInChildren<SaveFilesUI>().RedrawSaveFilesUI(saveFiles);
+            saves.GetComponentInChildren<SaveFilesUI>().RedrawSaveFilesUI(saveSerializer.GetSaveFiles());
         }
     }
 }

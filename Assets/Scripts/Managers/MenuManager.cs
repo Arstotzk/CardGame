@@ -20,6 +20,7 @@ public class MenuManager : MonoBehaviour
     public AudioSource audioReptilian;
     public AudioMixer audioMixer;
     public GameObject settings;
+    public GameObject saves;
 
     public Scrollbar master;
     public Scrollbar music;
@@ -70,6 +71,18 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+    public void ShowSaves()
+    {
+        saves.SetActive(true);
+        saves.GetComponentInChildren<SaveFilesUI>().RedrawSaveFilesUI(saveSerializer.GetSaveFiles());
+
+        if (settings.activeSelf == true)
+            CancelSettings();
+    }
+    public void CloseSaves()
+    {
+        saves.SetActive(false);
+    }
     public void Setting() 
     {
         masterValue = PlayerPrefs.GetFloat("Master");
@@ -82,6 +95,9 @@ public class MenuManager : MonoBehaviour
         audioSfx.volume = 1;
         audioSlavic.volume = 1;
         audioReptilian.volume = 1;
+
+        if (saves.activeSelf == true)
+            CloseSaves();
     }
     public void Continue()
     {
