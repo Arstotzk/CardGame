@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -62,6 +60,7 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
             }
         }
     }
+    //TODO Переименовать
     public void CardAddedFromProperty(Card card)
     {
         card.transform.SetParent(this.transform);
@@ -69,6 +68,7 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
         card.place = this.GetComponent<Place>();
         CardAdded(card);
     }
+    //TODO Переименовать
     public void CardAdded(Card card)
     {
         addedCard = card;

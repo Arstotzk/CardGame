@@ -83,7 +83,6 @@ public class SceneLoader : MonoBehaviour
             {
                 var instCard = Instantiate(card, new Vector3(10, 10, 0), Quaternion.identity);
                 enemyDeck.AddCard(instCard, true);
-                enemyDeck.GetStartedCardToHand();
             }
             foreach (var cardOnBattle in currentSceneData.cardsOnBattle)
             {
@@ -99,7 +98,6 @@ public class SceneLoader : MonoBehaviour
             var card = cardStore.GetCard(prefabName);
             var instCard = Instantiate(card, new Vector3(10, 10, 0), Quaternion.identity);
             deck.AddCard(instCard, false);
-            deck.GetStartedCardToHand();
 
             //TODO пока костыльно передаю свойства карты
             if (prefabName == mainCardName)
@@ -110,6 +108,7 @@ public class SceneLoader : MonoBehaviour
                 }
             }
         }
+
         battleManager.FillCardsArray();
     }
 

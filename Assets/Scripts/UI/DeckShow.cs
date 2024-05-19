@@ -32,6 +32,7 @@ public class DeckShow : MonoBehaviour
         foreach (var card in deck.cards)
         {
             card.transform.parent = firstLine.transform;
+            card.OrderLayerUp(20);
             firstLine.CardAdded(card);
         }
         isShowing = true;
@@ -41,6 +42,12 @@ public class DeckShow : MonoBehaviour
     {
         var animator = GetComponent<Animator>();
         animator.Play("ToTransparent");
+        foreach (var card in firstLine.movedCards)
+        {
+            card.transform.parent = deck.transform;
+            card.OrderLayerDown(20);
+            deck.AddCard(card);
+        }
         isShowing = false;
     }
 }

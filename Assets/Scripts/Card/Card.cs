@@ -228,4 +228,28 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
             Debug.Log("Right Mouse Button Clicked on: " + name);
         }
     }
+
+    public void OrderLayerUp(int num) 
+    {
+        foreach (var sprite in GetComponentsInChildren<SpriteRenderer>())
+        {
+            sprite.sortingOrder = sprite.sortingOrder + num;
+        }
+        foreach (var text in GetComponentsInChildren<TextMeshPro>())
+        {
+            text.sortingOrder = text.sortingOrder + num;
+        }
+    }
+
+    public void OrderLayerDown(int num) 
+    {
+        foreach (var sprite in GetComponentsInChildren<SpriteRenderer>())
+        {
+            sprite.sortingOrder = sprite.sortingOrder - num;
+        }
+        foreach (var text in GetComponentsInChildren<TextMeshPro>())
+        {
+            text.sortingOrder = text.sortingOrder - num;
+        }
+    }
 }

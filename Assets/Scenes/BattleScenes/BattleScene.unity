@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3191,7 +3191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858852635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3212,7 +3212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMultiCard: 1
   isEnemy: 1
-  isHand: 0
+  isHand: 1
   mainPosititon: {x: 0, y: 0, z: 0}
   mainPositions: []
   interpolationFramesCount: 60
@@ -4370,6 +4370,26 @@ MonoBehaviour:
     NameRu: "\u041E\u0447\u0435\u0440\u0435\u0434\u043D\u0430\u044F \u043F\u043E\u0434\u043B\u0430\u044F
       \u0430\u0442\u0430\u043A\u0430 \u044F\u0449\u0435\u0440\u043E\u0432 \u043D\u0430
       \u0434\u0435\u0440\u0435\u0432\u043D\u044E"
+    cards:
+    - {fileID: 4602411226652721839, guid: 11f4a7fa818ddaf4d9f0f0b5c7d091a0, type: 3}
+    - {fileID: 6136188814823340469, guid: 236581d256688b946a13f37821bc1bdf, type: 3}
+    - {fileID: 3355190905077789568, guid: a54cb7f27aab89745b0c50b134b1ab03, type: 3}
+    - {fileID: 7347759463163578660, guid: 689d677b6df9dfd45af00f77f9e7594c, type: 3}
+    - {fileID: 1986932949338302696, guid: d3d247ccf2ce40243badc8fd3b3ebf92, type: 3}
+    cardsOnBattle:
+    - card: {fileID: 4602411226652721839, guid: 11f4a7fa818ddaf4d9f0f0b5c7d091a0, type: 3}
+      row: 1
+      column: 1
+    - card: {fileID: 2254723210038761248, guid: 35e49370487c37e4f8f3b425e20b9212, type: 3}
+      row: 1
+      column: 2
+    - card: {fileID: 7347759463163578660, guid: 689d677b6df9dfd45af00f77f9e7594c, type: 3}
+      row: 1
+      column: 3
+    nextSceneName: 
+    nextSceneNameRu: 
+  - Name: FullCards
+    NameRu: TestFullCards
     cards:
     - {fileID: 4602411226652721839, guid: 11f4a7fa818ddaf4d9f0f0b5c7d091a0, type: 3}
     - {fileID: 6136188814823340469, guid: 236581d256688b946a13f37821bc1bdf, type: 3}
@@ -10243,6 +10263,7 @@ MonoBehaviour:
   menu: {fileID: 1499452555}
   gameUI: {fileID: 725473289}
   saves: {fileID: 1147535555}
+  saveSerializer: {fileID: 0}
   menuActive: 0
 --- !u!1 &1962898136
 GameObject:
