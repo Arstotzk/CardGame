@@ -83,7 +83,7 @@ public class NovelManager : MonoBehaviour
                 break;
 
             case NovelScript.ScriptType.changeBackground:
-                background.GetComponent<Image>().sprite = ((NovelBackground)currentScript).background;
+                background.GetComponent<SpriteRenderer>().sprite = ((NovelBackground)currentScript).background;
                 break;
 
             default:

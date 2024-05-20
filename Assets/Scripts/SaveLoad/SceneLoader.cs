@@ -97,7 +97,7 @@ public class SceneLoader : MonoBehaviour
             Debug.Log("Load card: " + prefabName);
             var card = cardStore.GetCard(prefabName);
             var instCard = Instantiate(card, new Vector3(10, 10, 0), Quaternion.identity);
-            deck.AddCard(instCard, false);
+            deck.AddCard(instCard, true);
 
             //TODO пока костыльно передаю свойства карты
             if (prefabName == mainCardName)

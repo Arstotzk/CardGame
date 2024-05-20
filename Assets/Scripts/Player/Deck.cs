@@ -32,22 +32,19 @@ public class Deck : MonoBehaviour
             card.transform.parent = hand.transform;
             card.isFromHand = true;
             card.isMoveable = true;
+
+            var rotation = card.transform.rotation;
+            if(card.isEnemy)
+                rotation.x = 180;
+            else
+                rotation.x = 0;
+            card.transform.rotation = rotation;
+
             hand.CardAdded(card);
             cards.Remove(card);
         }
     }
 
-    public void AddCard(Card card)
-    {
-        card.transform.position = this.transform.position;
-        var rotation = card.transform.rotation;
-        rotation.x = 180;
-        card.transform.rotation = rotation;
-        card.transform.parent = this.transform;
-        card.CurrentParent = this.transform;
-        card.isMoveable = false;
-        cards.Add(card);
-    }
     public void AddCard(Card card, bool isFlip)
     {
         card.transform.position = this.transform.position;

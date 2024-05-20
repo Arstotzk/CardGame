@@ -7,6 +7,8 @@ public class DeckShow : MonoBehaviour
     // Start is called before the first frame update
     private Deck deck;
     public DropCardToPlace firstLine;
+    public DropCardToPlace secondLine;
+    public DropCardToPlace thirdLine;
     private bool isShowing = false;
     void Start()
     {
@@ -29,11 +31,27 @@ public class DeckShow : MonoBehaviour
         }
         var animator = GetComponent<Animator>();
         animator.Play("ToBlack");
-        foreach (var card in deck.cards)
+
+        var cards = new List<Card>();
+        cards.AddRange(deck.cards);
+        DropCardToPlace currentLine = firstLine;
+        int cardsNum = 0;
+
+        foreach (var card in cards)
         {
-            card.transform.parent = firstLine.transform;
+            cardsNum++;
+            card.transform.parent = currentLine.transform;
+            var rotation = card.transform.rotation;
+            rotation.x = 0;
+            card.transform.rotation = rotation;
+
             card.OrderLayerUp(20);
-            firstLine.CardAdded(card);
+            deck.cards.Remove(card);
+            currentLine.CardAdded(card);
+            if (cardsNum == 6)
+                currentLine = secondLine;
+            else if (cardsNum == 12)
+                currentLine = thirdLine;
         }
         isShowing = true;
         Debug.Log("DeckShow");
@@ -46,8 +64,26 @@ public class DeckShow : MonoBehaviour
         {
             card.transform.parent = deck.transform;
             card.OrderLayerDown(20);
-            deck.AddCard(card);
+            deck.AddCard(card, true);
         }
+        firstLine.CardRemove();
+
+        foreach (var card in secondLine.movedCards)
+        {
+            card.transform.parent = deck.transform;
+            card.OrderLayerDown(20);
+            deck.AddCard(card, true);
+        }
+        secondLine.CardRemove();
+
+        foreach (var card in thirdLine.movedCards)
+        {
+            card.transform.parent = deck.transform;
+            card.OrderLayerDown(20);
+            deck.AddCard(card, true);
+        }
+        thirdLine.CardRemove();
+
         isShowing = false;
     }
 }
