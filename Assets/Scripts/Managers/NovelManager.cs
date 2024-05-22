@@ -12,6 +12,7 @@ public class NovelManager : MonoBehaviour
     public GameObject character;
     public GameObject mainText;
     public GameObject background;
+    public Deck deck;
 
     public MusicManager musicManager;
     public MusicManager soundManager;
@@ -25,6 +26,8 @@ public class NovelManager : MonoBehaviour
 
     public virtual void PlayNextScript()
     {
+        if (!this.isActiveAndEnabled)
+            return;
         scriptNumber++;
         PlayScript();
     }
@@ -84,6 +87,12 @@ public class NovelManager : MonoBehaviour
 
             case NovelScript.ScriptType.changeBackground:
                 background.GetComponent<SpriteRenderer>().sprite = ((NovelBackground)currentScript).background;
+                break;
+
+            case NovelScript.ScriptType.addCard:
+                var instCard = Instantiate(((NovelAddCard)currentScript).card, new Vector3(10, 10, 0), Quaternion.identity);
+                instCard.isNovel = true;
+                deck.AddCard(instCard, true);
                 break;
 
             default:

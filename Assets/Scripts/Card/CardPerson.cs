@@ -444,6 +444,9 @@ public class CardPerson : Card
     }
     public override void OnMouseDrag()
     {
+        if (isNovel)
+            return;
+
         base.OnMouseDrag();
 
         if (deployManager.Reinforcement > 0 && isMoveable == true)
@@ -466,6 +469,9 @@ public class CardPerson : Card
     }
     public override void OnMouseUp()
     {
+        if (isNovel)
+            return;
+
         base.OnMouseUp();
 
         if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
@@ -594,12 +600,18 @@ public class CardPerson : Card
 
     public override void OnMouseEnter()
     {
+        if (isNovel)
+            return;
+
         base.OnMouseEnter();
         if (!deployManager.isPlayerDrugCard && place != null)
             ShowAttackPlaces();
     }
     public override void OnMouseExit()
     {
+        if (isNovel)
+            return;
+
         base.OnMouseExit();
         if (!deployManager.isPlayerDrugCard && place != null)
             StopShowAttackPlaces();

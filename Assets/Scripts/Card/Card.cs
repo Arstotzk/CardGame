@@ -65,6 +65,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     public bool isEnemy;
     public bool isFromHand;
     public bool isAction;
+    public bool isNovel = false;
 
     public Animator animator;
 
@@ -83,6 +84,8 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         }
         cardProperty = GetComponent<CardProperty>();
 
+        if (isNovel)
+            return;
         deployManager = (DeployManager) GameObject.FindObjectOfType(typeof(DeployManager));
         battleManager = (BattleManager) GameObject.FindObjectOfType(typeof(BattleManager));
         DefaultParent = ((DragAndDropCardBuffer) GameObject.FindObjectOfType(typeof(DragAndDropCardBuffer))).transform;
@@ -121,6 +124,9 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     //Взяли карту
     public void OnMouseDown()
     {
+        if (isNovel)
+            return;
+
         if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
         {
             deployManager.isPlayerDrugCard = true;
@@ -149,6 +155,9 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     //Положили карту
     public virtual void OnMouseUp()
     {
+        if (isNovel)
+            return;
+
         if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
         {
             Debug.Log("OnMouseUp");
@@ -161,6 +170,9 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     }
     public virtual void OnMouseDrag()
     {
+        if (isNovel)
+            return;
+
         if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
         {
             var mousePos = Input.mousePosition;
@@ -178,12 +190,18 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     }
     public virtual void OnMouseEnter()
     {
+        if (isNovel)
+            return;
+
         var hand = CurrentParent.GetComponentInChildren<Hand>();
         if (hand != null)
             hand.OnMouseEnter();
     }
     public virtual void OnMouseExit()
     {
+        if (isNovel)
+            return;
+
         var hand = CurrentParent.GetComponent<Hand>();
         if (hand != null)
             hand.OnMouseExit();

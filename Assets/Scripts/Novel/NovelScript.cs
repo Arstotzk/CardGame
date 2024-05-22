@@ -25,6 +25,7 @@ public abstract class NovelScript
         musicStop,
         soundPlay,
         soundStop,
-        changeBackground
+        changeBackground,
+        addCard
     }
 }

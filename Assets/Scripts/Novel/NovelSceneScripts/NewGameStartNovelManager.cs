@@ -14,12 +14,15 @@ public class NewGameStartNovelManager : NovelManager
     public Sprite river;
     public Sprite darkForest;
     public Sprite darkForestReptilian;
+
+    public Card mainCard;
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("NewGameStart: " + scriptNumber);
         scripts.Add(new NovelMusic(BeginMusic));
         scripts.Add(new NovelSound(HorseSound));
+        scripts.Add(new NovelAddCard(mainCard));
         scripts.Add(new NovelMind("Под стук колес повозки и копыт лошади, Пиздослав проснулся ото сна."));
         scripts.Add(new NovelSay("Пиздаслав", "Эй, кучер, сколько еще ехать до Древнеславянки?"));
         scripts.Add(new NovelSay("Кучер", "Вона уже виднеется, хлопец."));
