@@ -9859,7 +9859,7 @@ MonoBehaviour:
   menu: {fileID: 1499452555}
   gameUI: {fileID: 725473289}
   saves: {fileID: 1147535555}
-  saveSerializer: {fileID: 0}
+  saveSerializer: {fileID: 883847804}
   menuActive: 0
 --- !u!4 &1962898137 stripped
 Transform:
@@ -10296,6 +10296,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1463004606}
     m_Modifications:
+    - target: {fileID: 1351581030, guid: 6277acf2be046f94eacf489c6eb25e01, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522316591, guid: 6277acf2be046f94eacf489c6eb25e01, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705346314446098086, guid: 6277acf2be046f94eacf489c6eb25e01, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5705346314962739066, guid: 6277acf2be046f94eacf489c6eb25e01, type: 3}
       propertyPath: m_Name
       value: DeckShow
