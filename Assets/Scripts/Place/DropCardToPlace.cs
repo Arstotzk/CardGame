@@ -86,7 +86,7 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
                 mainPositions[i] = movedCards[i].transform.position;
             }
         }
-        if (isHand == false && !card.isEnemy)
+        if (isHand == false && !card.isEnemy && !card.isNovel)
         {
             card.deployManager.Reinforcement -= card.reinforcement;
         }

@@ -66,6 +66,8 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     public bool isFromHand;
     public bool isAction;
     public bool isNovel = false;
+    public bool isCanChoose = false;
+    public bool isChoosen = false;
 
     public Animator animator;
 
@@ -125,7 +127,11 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     public void OnMouseDown()
     {
         if (isNovel)
+        {
+            if (isCanChoose)
+                isChoosen = true;
             return;
+        }
 
         if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
         {
@@ -156,7 +162,9 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     public virtual void OnMouseUp()
     {
         if (isNovel)
+        {
             return;
+        }
 
         if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
         {

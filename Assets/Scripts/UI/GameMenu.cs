@@ -8,10 +8,14 @@ public class GameMenu : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject menu;
-    public GameObject gameUI;
+    public GameObject novelPanel;
     public GameObject saves;
     public SaveSerializer saveSerializer;
     public bool menuActive;
+    public bool activeNovelPanel;
+    public CardZoom cardZoom;
+    public ChooseCard chooseCard;
+    public DeckShow deckShow;
     void Start()
     {
         saveSerializer = (SaveSerializer)GameObject.FindObjectOfType(typeof(SaveSerializer));
@@ -25,13 +29,24 @@ public class GameMenu : MonoBehaviour
         {
             MenuTurn(!menuActive);
         }
+        if (cardZoom != null && chooseCard != null && deckShow != null)
+        {
+            if (!cardZoom.GetCardIsZoomed() && !chooseCard.GetIsChoosing() && !deckShow.GetIsShowing() && !menu.activeSelf)
+            {
+                novelPanel.SetActive(true);
+            }
+            else 
+            {
+                novelPanel.SetActive(false);
+            }
+        }
     }
 
     public void MenuTurn(bool active) 
     {
         menuActive = active;
         menu.SetActive(active);
-        gameUI.SetActive(!active);
+        //novelPanel.SetActive(!active);
         SaveTurn(false);
     }
 

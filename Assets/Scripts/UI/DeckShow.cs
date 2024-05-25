@@ -10,6 +10,13 @@ public class DeckShow : MonoBehaviour
     public DropCardToPlace secondLine;
     public DropCardToPlace thirdLine;
     private bool isShowing = false;
+
+    public bool GetIsShowing()
+    {
+        return isShowing;
+    }
+
+    public GameObject novelPanel;
     void Start()
     {
         

@@ -13,6 +13,10 @@ public class CardZoom : MonoBehaviour
     public DeployManager deployManager;
 
     public bool isNovel = false;
+    public bool GetCardIsZoomed()
+    {
+        return isCardZoomed;
+    }
     void Start()
     {
         isCardZoomed = false;

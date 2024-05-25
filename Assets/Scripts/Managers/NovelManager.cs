@@ -18,6 +18,8 @@ public class NovelManager : MonoBehaviour
     public MusicManager soundManager;
     public string scriptName;
     public NovelSceneLoader novelSceneLoader;
+
+    public ChooseCard chooseCard;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +33,7 @@ public class NovelManager : MonoBehaviour
         scriptNumber++;
         PlayScript();
     }
-    public virtual void PlayScript()
+    protected void PlayScript()
     {
         Debug.Log("PlayScript: " + scriptNumber);
         var currentScript = scripts[scriptNumber];
@@ -93,6 +95,15 @@ public class NovelManager : MonoBehaviour
                 var instCard = Instantiate(((NovelAddCard)currentScript).card, new Vector3(10, 10, 0), Quaternion.identity);
                 instCard.isNovel = true;
                 deck.AddCard(instCard, true);
+                break;
+
+            case NovelScript.ScriptType.chooseCard:
+                var card1 = Instantiate(((NovelChooseCard)currentScript).card1, new Vector3(0, 10, 0), Quaternion.identity);
+                card1.isNovel = true;
+                var card2 = Instantiate(((NovelChooseCard)currentScript).card2, new Vector3(0, 10, 0), Quaternion.identity);
+                card2.isNovel = true;
+                chooseCard.SetCurrentNovelManager(this);
+                chooseCard.SetCardToChoose(card1, card2);
                 break;
 
             default:
