@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 using System.Linq;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
@@ -27,6 +26,8 @@ public class MenuManager : MonoBehaviour
     public Scrollbar sfx;
     public Scrollbar slavic;
     public Scrollbar reptilian;
+    public TMP_Dropdown resolutionSetting;
+    public Toggle fullScreenSetting;
 
     public float masterValue;
     public float musicValue;
@@ -37,6 +38,7 @@ public class MenuManager : MonoBehaviour
     private string currentSave = "CurrentScene.dat";
     public SaveSerializer saveSerializer;
     public List<LoadTestData> loadTestDatas;
+    private bool isValueFromSetting;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +73,11 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public void ShowSaves()
     {
         saves.SetActive(true);
@@ -95,6 +102,8 @@ public class MenuManager : MonoBehaviour
         audioSfx.volume = 1;
         audioSlavic.volume = 1;
         audioReptilian.volume = 1;
+
+        SetSettingResolution();
 
         if (saves.activeSelf == true)
             CloseSaves();
@@ -191,6 +200,8 @@ public class MenuManager : MonoBehaviour
         audioSfx.volume = 0;
         audioSlavic.volume = 0;
         audioReptilian.volume = 0;
+
+        SetScreenResolution();
     }
 
     public void CancelSettings() 
@@ -217,5 +228,28 @@ public class MenuManager : MonoBehaviour
         audioSfx.volume = 0;
         audioSlavic.volume = 0;
         audioReptilian.volume = 0;
+    }
+
+    public void SetScreenResolution()
+    {
+        var resolution = Screen.resolutions[resolutionSetting.value];
+        var screenMode = FullScreenMode.Windowed;
+        if (fullScreenSetting.isOn)
+            screenMode = FullScreenMode.FullScreenWindow;
+        Screen.SetResolution(resolution.width, resolution.height, screenMode, resolution.refreshRate);
+    }
+    public void SetSettingResolution()
+    {
+        resolutionSetting.options.Clear();
+
+        foreach (var res in Screen.resolutions)
+        {
+            TMP_Dropdown.OptionData optionData = new TMP_Dropdown.OptionData();
+            optionData.text = res.ToString();
+            resolutionSetting.options.Add(optionData);
+        }
+
+        resolutionSetting.value = Screen.resolutions.ToList().IndexOf(Screen.currentResolution);
+        isValueFromSetting = true;
     }
 }
