@@ -76,32 +76,39 @@ public class SceneLoader : MonoBehaviour
     {
         SaveData saveData = saveSerializer.Load(saveFile);
         //«агрузка карт противника
+        var enemyCards = new List<Card>();
         currentSceneData = sceneStore.GetScene(saveData.scene);
         if (currentSceneData != null)
         {
             foreach (var card in currentSceneData.cards)
             {
                 var instCard = Instantiate(card, new Vector3(10, 10, 0), Quaternion.identity);
+                enemyCards.Add(instCard);
                 enemyDeck.AddCard(instCard, true);
             }
             foreach (var cardOnBattle in currentSceneData.cardsOnBattle)
             {
                 var place = battleManager.GetPlaceAt(cardOnBattle.column, cardOnBattle.row);
                 var instCard = Instantiate(cardOnBattle.card, new Vector3(10, 10, 0), Quaternion.identity);
+                enemyCards.Add(instCard);
                 instCard.MoveToPlace(place);
             }
         }
         //«агрузка карт игрока
+        Card mainCard = cardStore.GetCard(mainCardName);
+        var playerCards = new List<Card>();
         foreach (var prefabName in saveData.cards)
         {
             Debug.Log("Load card: " + prefabName);
             var card = cardStore.GetCard(prefabName);
             var instCard = Instantiate(card, new Vector3(10, 10, 0), Quaternion.identity);
+            playerCards.Add(instCard);
             deck.AddCard(instCard, true);
 
             //TODO пока костыльно передаю свойства карты
             if (prefabName == mainCardName)
             {
+                mainCard = instCard;
                 foreach (var property in saveData.mainCardProperty)
                 {
                     instCard.GetComponent<CardProperty>().SetProperty((Property.Type)property);
@@ -110,6 +117,7 @@ public class SceneLoader : MonoBehaviour
         }
 
         battleManager.FillCardsArray();
+        battleManager.SetCardsObjective(mainCard, enemyCards, playerCards);
     }
 
     public void SaveAndLoadNextScene() 

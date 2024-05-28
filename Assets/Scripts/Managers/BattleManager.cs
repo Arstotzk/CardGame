@@ -21,6 +21,8 @@ public class BattleManager : MonoBehaviour
     public Deck deckEnemy;
     public Deck discardSlav;
     public Deck discardEnemy;
+    public Objective objective;
+    public SceneLoader sceneLoader;
 
     public SoundManager smSlavic;
     public SoundManager smReptilian;
@@ -38,6 +40,7 @@ public class BattleManager : MonoBehaviour
         FillCardPlaces();
         FillCardsArray();
         isAnyoneDied = false;
+        objective = GetComponent<Objective>();
     }
 
     public void BattleStart()
@@ -69,10 +72,26 @@ public class BattleManager : MonoBehaviour
     }
     public void BattleEnd()
     {
-        roundNum++;
-        StartRoundScript();
-        deckSlav.GetRandomCardToHand();
-        deckEnemy.GetRandomCardToHand();
+        Objective.ObjectiveState objectiveState = objective.CheckObjective();
+        switch (objectiveState)
+        {
+            case Objective.ObjectiveState.NotReached:
+                roundNum++;
+                StartRoundScript();
+                deckSlav.GetRandomCardToHand();
+                deckEnemy.GetRandomCardToHand();
+                break;
+            case Objective.ObjectiveState.Win:
+                sceneLoader.SaveAndLoadNextScene();
+                break;
+            case Objective.ObjectiveState.Lose:
+                //ui
+                var gameMenu = (GameMenu)GameObject.FindObjectOfType(typeof(GameMenu));
+                gameMenu.ShowLose();
+                break;
+            default:
+                break;
+        }
     }
     public void FillCardsSounds(List<CardPerson> cards) 
     {
@@ -245,5 +264,11 @@ public class BattleManager : MonoBehaviour
                 dieSoundLength = card.sound.GetLengthCurrentClip();
         }
         return dieSoundLength;
+    }
+    public void SetCardsObjective(Card mainCard, List<Card> enemyCards, List<Card> playerCards) 
+    {
+        objective.mainCard = mainCard;
+        objective.enemyCards = enemyCards;
+        objective.playerCards = playerCards;
     }
 }

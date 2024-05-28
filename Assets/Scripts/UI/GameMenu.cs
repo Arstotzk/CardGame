@@ -9,6 +9,7 @@ public class GameMenu : MonoBehaviour
     // Start is called before the first frame update
     public GameObject menu;
     public GameObject gameUI;
+    public GameObject loseUI;
     public bool menuActive;
     public bool activeNovelPanel;
     public CardZoom cardZoom;
@@ -55,5 +56,10 @@ public class GameMenu : MonoBehaviour
     {
         menuActive = active;
         menu.SetActive(active);
+    }
+    public void ShowLose()
+    {
+        loseUI.SetActive(true);
+        MenuTurn(true);
     }
 }
