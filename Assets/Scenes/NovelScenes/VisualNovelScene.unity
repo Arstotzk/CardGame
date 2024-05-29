@@ -2046,7 +2046,7 @@ MonoBehaviour:
   secondsLoadDelay: 0.05
   novelManager: {fileID: 429315636}
   saveSerializer: {fileID: 372506718}
-  deck: {fileID: 0}
+  deck: {fileID: 1369922801}
 --- !u!4 &1526458566
 Transform:
   m_ObjectHideFlags: 0
