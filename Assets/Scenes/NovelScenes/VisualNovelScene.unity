@@ -408,6 +408,9 @@ MonoBehaviour:
   darkForest: {fileID: 21300000, guid: e608ec787f8651f42bc01cd45ea38640, type: 3}
   darkForestReptilian: {fileID: 21300000, guid: ae23fa42df856e4469d4b47d65fcbf5d, type: 3}
   mainCard: {fileID: 4371725919733010733, guid: 2242b29ab3b8e3042a3e4be5fb320979, type: 3}
+  oldMaxim: {fileID: 262714615722682753, guid: e8a2d1f8d582df1408a5c0985f5e5480, type: 3}
+  meatPie: {fileID: 1184188009100041611, guid: fd0531dd2cc960d469b07b0515ce707a, type: 3}
+  baikalWater: {fileID: 1553314188325913767, guid: 36ce24bc5cc5a714f828cdae657af49e, type: 3}
 --- !u!114 &429315639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1961,42 +1964,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 337676732}
     m_Modifications:
-    - target: {fileID: 133878788, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
-      propertyPath: m_SortingOrder
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 135894055, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
-      propertyPath: m_SortingOrder
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 510338698, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
-      propertyPath: m_SortingOrder
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 979709213, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
-      propertyPath: m_SortingOrder
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1272057224, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
-      propertyPath: m_SortingOrder
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1325507629, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
-      propertyPath: m_SortingOrder
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502743522, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
-      propertyPath: m_SortingOrder
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1545557832, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
-      propertyPath: m_SortingOrder
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2140263157, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
-      propertyPath: m_SortingOrder
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 7539165377449947700, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2041,17 +2008,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7539165377449947701, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
-      propertyPath: isNovel
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7539165377449947703, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
       propertyPath: m_Name
       value: CardZoom
-      objectReference: {fileID: 0}
-    - target: {fileID: 7539165377449947703, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16daa7169be1612469dee006b9bb8c67, type: 3}
@@ -2087,6 +2046,7 @@ MonoBehaviour:
   secondsLoadDelay: 0.05
   novelManager: {fileID: 429315636}
   saveSerializer: {fileID: 372506718}
+  deck: {fileID: 0}
 --- !u!4 &1526458566
 Transform:
   m_ObjectHideFlags: 0

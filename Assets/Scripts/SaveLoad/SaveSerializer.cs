@@ -15,7 +15,7 @@ public class SaveSerializer : MonoBehaviour
         {
             var saveData = new SaveData();
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Create(Application.persistentDataPath + "/" + saveFile);
+            FileStream file = File.Create(Application.persistentDataPath + "/" + saveFile + ".dat");
             saveData.scene = sceneNameSystem;
             saveData.cards = cardsNameSystem;
             saveData.mainCardProperty = mainCardProperty;
@@ -36,7 +36,7 @@ public class SaveSerializer : MonoBehaviour
     {
         try
         {
-            File.Copy(Application.persistentDataPath + "/" + saveFile, Application.persistentDataPath + "/" + "CurrentScene.dat", true);
+            File.Copy(Application.persistentDataPath + "/" + saveFile + ".dat", Application.persistentDataPath + "/" + "CurrentScene.dat", true);
             return true;
         }
         catch (Exception ex)
@@ -51,16 +51,16 @@ public class SaveSerializer : MonoBehaviour
         SaveData saveData = new SaveData();
         try
         {
-            if (File.Exists(Application.persistentDataPath + "/" + saveFile))
+            if (File.Exists(Application.persistentDataPath + "/" + saveFile + ".dat"))
             {
                 BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Open(Application.persistentDataPath + "/" + saveFile, FileMode.Open);
+                FileStream file = File.Open(Application.persistentDataPath + "/" + saveFile + ".dat", FileMode.Open);
                 saveData = (SaveData)bf.Deserialize(file);
                 file.Close();
-                Debug.Log("Game data loaded! SaveFile: " + saveFile);
+                Debug.Log("Game data loaded! SaveFile: " + saveFile + ".dat");
             }
             else
-                Debug.LogError("There is no save data! SaveFile: " + saveFile);
+                Debug.LogError("There is no save data! SaveFile: " + saveFile + ".dat");
         }
         catch (Exception ex)
         {

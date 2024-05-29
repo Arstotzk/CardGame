@@ -11,11 +11,12 @@ public class NovelSceneLoader : MonoBehaviour
 
     public GameObject novelManager;
     public SaveSerializer saveSerializer;
+    public Deck deck;
     void Start()
     {
         //var saveFile = PlayerPrefs.GetString(prefSave);
         saveSerializer = (SaveSerializer)GameObject.FindObjectOfType(typeof(SaveSerializer));
-        StartCoroutine(LoadAndSet(secondsLoadDelay, "CurrentScene.dat"));
+        StartCoroutine(LoadAndSet(secondsLoadDelay, "CurrentScene"));
     }
     private IEnumerator LoadAndSet(float seconds, string saveFile)
     {
@@ -56,13 +57,19 @@ public class NovelSceneLoader : MonoBehaviour
 
     private List<Card> GetPlayerCards()
     {
-        List<Card> cards = new List<Card>();
+        List<Card> cards = deck.cards;
         return cards;
     }
 
     private List<int> GetMainCardProperty()
     {
         var mainCardProperty = new List<int>();
+        var mainCard = (CardPerson) deck.cards.Where(c => c.name.Contains("Pizdaslav")).FirstOrDefault();
+        var propeties = mainCard.cardProperty.properties.Where(p => !p.isNegative && !p.isLengthProperty).ToList();
+        foreach (var property in propeties)
+        {
+            mainCardProperty.Add((int)property.type);
+        }
         return mainCardProperty;
     }
 }

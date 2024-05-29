@@ -30,7 +30,7 @@ public class SceneLoader : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         //var saveFile = PlayerPrefs.GetString(prefSave);
-        Load("CurrentScene.dat");
+        Load("CurrentScene");
         deck.GetStartedCardToHand();
         enemyDeck.GetStartedCardToHand();
     }

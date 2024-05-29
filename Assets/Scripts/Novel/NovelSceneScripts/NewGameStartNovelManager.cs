@@ -16,6 +16,9 @@ public class NewGameStartNovelManager : NovelManager
     public Sprite darkForestReptilian;
 
     public Card mainCard;
+    public Card oldMaxim;
+    public Card meatPie;
+    public Card baikalWater;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +57,8 @@ public class NewGameStartNovelManager : NovelManager
         scripts.Add(new NovelSay("Бабушка Авдотья", "Да как и всегда. Живем тихо, мирно."));
         scripts.Add(new NovelSay("Бабушка Авдотья", "Вот деду несла пироги. Он как всегда ушел на речку рыбачить рано с утра и ничего с собой не взял, а уже обед."));
         scripts.Add(new NovelSay("Пиздаслав", "Давай я ему отнесу."));
+        scripts.Add(new NovelAddCard(meatPie));
+        scripts.Add(new NovelAddCard(baikalWater));
         scripts.Add(new NovelSay("Бабушка Авдотья", "Давай, а то пока дойду до него уже ужин будет, ты быстро доберешься. И я пока на тебя пироги испеку."));
         scripts.Add(new NovelBackground(river));
         scripts.Add(new NovelMind("Пиздаслав зашел в знакомый с детсва прилесок рядом с речкой."));
@@ -71,6 +76,7 @@ public class NewGameStartNovelManager : NovelManager
         scripts.Add(new NovelSay("Дед Максим", "Ох. Что это было?"));
         scripts.Add(new NovelSay("Пиздаслав", "Упало где-то на востоке. Нужно проверить. Надеюсь это не то о чем я думаю."));
         scripts.Add(new NovelSay("Дед Максим", "Я иду с тобой."));
+        scripts.Add(new NovelAddCard(oldMaxim));
         scripts.Add(new NovelSay("Пиздаслав", "Ну чтож, хорошо. Только не шуми."));
         scripts.Add(new NovelBackground(darkForest));
         scripts.Add(new NovelMusic(LizardMusic));

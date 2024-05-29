@@ -110,7 +110,11 @@ public class MenuManager : MonoBehaviour
     }
     public void Continue()
     {
-        //SceneManager.LoadScene("SampleScene");
+        var saveData = saveSerializer.Load("CurrentScene");
+        if(saveData.sceneType == SceneType.battle)
+            SceneManager.LoadScene("BattleScene");
+        else
+            SceneManager.LoadScene("VisualNovelScene");
     }
 
     public void StartBattleScene(string sceneName)
@@ -121,13 +125,13 @@ public class MenuManager : MonoBehaviour
     }
     private void CreateSaveToLoad(string sceneName, SceneType sceneType)
     {
-        saveSerializer.Save("CurrentScene.dat", sceneName, sceneType, loadTestDatas.Where(ltd => ltd.sceneName.Equals(sceneName)).FirstOrDefault().cards, new List<int>());
+        saveSerializer.Save("CurrentScene", sceneName, sceneType, loadTestDatas.Where(ltd => ltd.sceneName.Equals(sceneName)).FirstOrDefault().cards, new List<int>());
     }
 
     public void NewGame() 
     {
-        saveSerializer.Save("Проснись.dat", "NewGameStart", SceneType.novel, new List<string>(), new List<int>());
-        saveSerializer.CreateCurrentSave("Проснись.dat");
+        saveSerializer.Save("Проснись", "NewGameStart", SceneType.novel, new List<string>(), new List<int>());
+        saveSerializer.CreateCurrentSave("Проснись");
         SceneManager.LoadScene("VisualNovelScene");
     }
     public void MasterValueChanged(float value)
