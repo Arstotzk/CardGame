@@ -18,8 +18,10 @@ public class CardZoomed : MonoBehaviour
     public SpriteRenderer healthIcon;
 
     public CardProperty cardProperty;
+    public AttackPattern attackPattern;
+    public GameObject attackPatternIcon;
 
-    public void FillCardInfo(Sprite sprite, string cardName, int health, int attack, int reinforcement, int initiative, CardProperty cardProperty) 
+    public void FillCardInfo(Sprite sprite, string cardName, int health, int attack, int reinforcement, int initiative, CardProperty cardProperty, AttackPattern attackPattern) 
     {
         spriteRenderer.sprite = sprite;
         cardNameText.text = cardName;
@@ -36,6 +38,22 @@ public class CardZoomed : MonoBehaviour
         this.cardProperty.properties = cardProperty.properties;
         this.cardProperty.SetProperties();
         this.cardProperty.SetPropertiesDescription();
+        this.attackPattern = attackPattern;
+        var pattern = attackPatternIcon.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var point in pattern) 
+        {
+            var coordinates = point.name.Split(".");
+            var columnPattern = int.Parse(coordinates[0]);
+            var rowPattern = int.Parse(coordinates[1]);
+            if (attackPattern.rows[columnPattern - 1].row[rowPattern - 1] == true)
+            {
+                point.color = new Color32(200, 40, 40, 255);
+            }
+            else 
+            {
+                point.color = new Color32(220, 220, 220, 255);
+            }
+        }
     }
 
     public void FillCardInfo(Sprite sprite, string cardName, int health, int attack, int reinforcement, CardProperty cardProperty)
