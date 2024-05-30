@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5422145053495833983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5422145053495833982}
+  - component: {fileID: 5422145053495833953}
+  m_Layer: 0
+  m_Name: CardStore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5422145053495833982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5422145053495833983}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2107.4614, y: 306.98627, z: -4.679469}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5422145053495833953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5422145053495833983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e58d15c7313cc448beac609bfeb90d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 8953623658745741873, guid: dc16095b388fee14b9bfc1544ba7643f, type: 3}
+  - {fileID: 2749412358651432327, guid: e4a1c46143807ad4d83e85d31fad93e6, type: 3}
+  - {fileID: 474137230987009029, guid: c617c6a59cd984c4fa000d89501acbef, type: 3}
+  - {fileID: 262714615722682753, guid: e8a2d1f8d582df1408a5c0985f5e5480, type: 3}
+  - {fileID: 4371725919733010733, guid: 2242b29ab3b8e3042a3e4be5fb320979, type: 3}
+  - {fileID: 7255928416501272281, guid: dbec58823c5d80f42843df36d1af9023, type: 3}
+  - {fileID: 1553314188325913767, guid: 36ce24bc5cc5a714f828cdae657af49e, type: 3}
+  - {fileID: 1184188009100041611, guid: fd0531dd2cc960d469b07b0515ce707a, type: 3}

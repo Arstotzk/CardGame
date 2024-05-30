@@ -22,7 +22,7 @@ public class BattleManager : MonoBehaviour
     public Deck discardSlav;
     public Deck discardEnemy;
     public Objective objective;
-    public SceneLoader sceneLoader;
+    public BattleSceneLoader sceneLoader;
 
     public SoundManager smSlavic;
     public SoundManager smReptilian;
@@ -82,7 +82,8 @@ public class BattleManager : MonoBehaviour
                 deckEnemy.GetRandomCardToHand();
                 break;
             case Objective.ObjectiveState.Win:
-                sceneLoader.SaveAndLoadNextScene();
+                var sceneData = sceneLoader.currentSceneData;
+                sceneLoader.SaveAndLoadNextScene(sceneData.nextSceneNameRu, sceneData.nextSceneName, SceneType.novel);
                 break;
             case Objective.ObjectiveState.Lose:
                 //ui

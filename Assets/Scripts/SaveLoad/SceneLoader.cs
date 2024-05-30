@@ -6,36 +6,25 @@ using System.Linq;
 
 public class SceneLoader : MonoBehaviour
 {
-    const string mainCardName = "Pizdaslav";
-    const string lastSave = "LastSave.dat";
-    const string prefSave = "SaveFile";
+    protected const string mainCardName = "Pizdaslav";
+    protected const string currentFileName = "CurrentScene";
+    public float secondsLoadDelay = 0.05f;
 
     public SaveSerializer saveSerializer;
-    public BattleManager battleManager;
-    public Hand hand;
-    public Deck deck;
-    public Deck enemyDeck;
     public CardStore cardStore;
-    public SceneData currentSceneData;
-    public SceneStore sceneStore;
+    public Deck deck;
 
-    public float secondsLoadDelay = 1f;
-    void Start()
+    protected virtual void Start()
     {
         saveSerializer = (SaveSerializer)GameObject.FindObjectOfType(typeof(SaveSerializer));
-        battleManager = (BattleManager)GameObject.FindObjectOfType(typeof(BattleManager));
-        StartCoroutine(LoadAndSet(secondsLoadDelay));
-    }
-    private IEnumerator LoadAndSet(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        //var saveFile = PlayerPrefs.GetString(prefSave);
-        Load("CurrentScene");
-        deck.GetStartedCardToHand();
-        enemyDeck.GetStartedCardToHand();
     }
 
-    private List<string> GetPlayerCardPrefabNames()
+    protected virtual IEnumerator LoadAndSet(float seconds, string saveFile)
+    {
+        yield return new WaitForSeconds(seconds);
+    }
+
+    protected virtual List<string> GetPlayerCardPrefabNames()
     {
         List<string> cardNames = new List<string>();
         foreach (var card in GetPlayerCards())
@@ -49,59 +38,43 @@ public class SceneLoader : MonoBehaviour
         return cardNames;
     }
 
-    private List<Card> GetPlayerCards()
+    protected virtual List<Card> GetPlayerCards()
     {
         List<Card> cards = new List<Card>();
-        var cardsOnBattle = battleManager.GetCardList().Where(c => !c.isEnemy);
-        cards.AddRange(cardsOnBattle);
-        var cardsOnHand = hand.GetComponentsInChildren<Card>();
-        cards.AddRange(cardsOnHand);
-        var cardsOnDeck = deck.GetComponentsInChildren<Card>();
-        cards.AddRange(cardsOnDeck);
         return cards;
     }
 
-    private List<int> GetMainCardProperty()
+    protected virtual List<int> GetMainCardProperty()
     {
         var mainCardProperty = new List<int>();
         var mainCard = GetPlayerCards().Where(mc => mc.name.Contains(mainCardName)).FirstOrDefault();
-        foreach (var property in mainCard.cardProperty.properties.Where(p => !p.isNegative && !p.isLengthProperty).ToList())
+        var propeties = mainCard.cardProperty.properties.Where(p => !p.isNegative && !p.isLengthProperty).ToList();
+        foreach (var property in propeties)
         {
             mainCardProperty.Add((int)property.type);
         }
         return mainCardProperty;
     }
-
-    public void Load(string saveFile)
+    public void SaveAndLoadNextScene(string nextSceneNameRu, string nextSceneName, SceneType sceneType)
     {
-        SaveData saveData = saveSerializer.Load(saveFile);
-        //Загрузка карт противника
-        var enemyCards = new List<Card>();
-        currentSceneData = sceneStore.GetScene(saveData.scene);
-        if (currentSceneData != null)
-        {
-            foreach (var card in currentSceneData.cards)
-            {
-                var instCard = Instantiate(card, new Vector3(10, 10, 0), Quaternion.identity);
-                enemyCards.Add(instCard);
-                enemyDeck.AddCard(instCard, true);
-            }
-            foreach (var cardOnBattle in currentSceneData.cardsOnBattle)
-            {
-                var place = battleManager.GetPlaceAt(cardOnBattle.column, cardOnBattle.row);
-                var instCard = Instantiate(cardOnBattle.card, new Vector3(10, 10, 0), Quaternion.identity);
-                enemyCards.Add(instCard);
-                instCard.MoveToPlace(place);
-            }
-        }
-        //Загрузка карт игрока
-        Card mainCard = cardStore.GetCard(mainCardName);
-        var playerCards = new List<Card>();
+        saveSerializer.Save(nextSceneNameRu, nextSceneName, sceneType, GetPlayerCardPrefabNames(), GetMainCardProperty());
+        saveSerializer.CreateCurrentSave(nextSceneNameRu);
+        if (sceneType == SceneType.battle)
+            SceneManager.LoadScene("BattleScene");
+        else
+            SceneManager.LoadScene("VisualNovelScene");
+    }
+
+    protected virtual void LoadPlayerCards(SaveData saveData, out List<Card> playerCards, out Card mainCard) 
+    {
+        playerCards = new List<Card>();
+        mainCard = cardStore.GetCard(mainCardName);
+
         foreach (var prefabName in saveData.cards)
         {
             Debug.Log("Load card: " + prefabName);
-            var card = cardStore.GetCard(prefabName);
-            var instCard = Instantiate(card, new Vector3(10, 10, 0), Quaternion.identity);
+            var cardFromStore = cardStore.GetCard(prefabName);
+            var instCard = Instantiate(cardFromStore, new Vector3(10, 10, 0), Quaternion.identity);
             playerCards.Add(instCard);
             deck.AddCard(instCard, true);
 
@@ -115,16 +88,6 @@ public class SceneLoader : MonoBehaviour
                 }
             }
         }
-
-        battleManager.FillCardsArray();
-        battleManager.SetCardsObjective(mainCard, enemyCards, playerCards);
+        return;
     }
-
-    public void SaveAndLoadNextScene() 
-    {
-        saveSerializer.Save(currentSceneData.nextSceneNameRu, currentSceneData.nextSceneName, SceneType.novel, GetPlayerCardPrefabNames(), GetMainCardProperty());
-        saveSerializer.CreateCurrentSave(currentSceneData.nextSceneNameRu);
-        SceneManager.LoadScene("VisualNovelScene");
-    }
-
 }
