@@ -203,7 +203,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         if (isNovel)
             return;
 
-        var hand = currentParent.GetComponentInChildren<Hand>();
+        var hand = currentParent.GetComponent<Hand>();
         if (hand != null)
             hand.OnMouseEnter();
     }

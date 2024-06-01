@@ -485,9 +485,11 @@ public class CardPerson : Card
             var newParent = currentParent;
             foreach (var hit in raycastHits)
             {
-                dctPlace = hit.transform.gameObject.GetComponent<DropCardToPlace>();
-                if (dctPlace != null)
+                var dctPlaceHit = hit.transform.gameObject.GetComponent<DropCardToPlace>();
+                if (dctPlaceHit != null && !dctPlaceHit.isEnemy && dctPlaceHit.GetComponentInChildren<Card>() == null && 
+                    ((dctPlaceHit.GetComponent<Hand>() == null) || (getFrom.GetComponent<Hand>() != null && dctPlaceHit.GetComponent<Hand>() != null)))
                 {
+                    dctPlace = dctPlaceHit;
                     isMoveToDropCardToPlace = true;
                     var placHit = hit.transform.gameObject.GetComponent<Place>();
                     newParent = hit.transform;
@@ -499,7 +501,7 @@ public class CardPerson : Card
                     }
                 }
             }
-            if (isMoveToPlace == false)
+            if (isMoveToPlace == false && getFrom.GetComponent<Place>() == null)
             {
                 place = null;
                 deployManager.PutCardFromBufferToHand(this);
@@ -509,10 +511,17 @@ public class CardPerson : Card
                 if (isMoveToDropCardToPlace == true)
                 {
                     transform.SetParent(newParent);
+                    currentParent = newParent;
                     dctPlace.CardAdded(this);
+                    plac.isCursored = false;
+                    OnDeck();
                 }
-                plac.isCursored = false;
-                OnDeck();
+                else if(!isFromHand)
+                {
+                    transform.SetParent(getFrom.transform);
+                    currentParent = getFrom.transform;
+                    getFrom.GetComponent<DropCardToPlace>().CardAdded(this);
+                }
             }
         }
     }

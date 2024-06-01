@@ -30,6 +30,7 @@ public class Deck : MonoBehaviour
             var random = Random.Range(0, num);
             var card = cards[random];
             card.transform.parent = hand.transform;
+            card.currentParent = hand.transform;
             card.isFromHand = true;
             card.isMoveable = true;
 

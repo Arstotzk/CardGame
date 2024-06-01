@@ -699,6 +699,14 @@ PrefabInstance:
       propertyPath: cardBuffer
       value: 
       objectReference: {fileID: 561989504}
+    - target: {fileID: 6370881782778870139, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370881782824972566, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6370881782824972567, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
       propertyPath: cardBuffer
       value: 
@@ -707,6 +715,10 @@ PrefabInstance:
       propertyPath: cardBuffer
       value: 
       objectReference: {fileID: 561989504}
+    - target: {fileID: 6370881783055188034, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6370881783055188035, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
       propertyPath: cardBuffer
       value: 
@@ -723,6 +735,10 @@ PrefabInstance:
       propertyPath: cardBuffer
       value: 
       objectReference: {fileID: 561989504}
+    - target: {fileID: 6370881783441111112, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6370881783441111113, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
       propertyPath: cardBuffer
       value: 
@@ -731,14 +747,30 @@ PrefabInstance:
       propertyPath: cardBuffer
       value: 
       objectReference: {fileID: 561989504}
+    - target: {fileID: 6370881783458385299, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6370881783522135428, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
       propertyPath: cardBuffer
       value: 
       objectReference: {fileID: 561989504}
+    - target: {fileID: 6370881783522135431, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370881783532990910, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6370881783532990911, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
       propertyPath: cardBuffer
       value: 
       objectReference: {fileID: 561989504}
+    - target: {fileID: 6370881783866615185, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6370881783866615190, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
       propertyPath: cardBuffer
       value: 
@@ -747,10 +779,18 @@ PrefabInstance:
       propertyPath: cardBuffer
       value: 
       objectReference: {fileID: 561989504}
+    - target: {fileID: 6370881783890731389, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6370881784016507957, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
       propertyPath: cardBuffer
       value: 
       objectReference: {fileID: 561989504}
+    - target: {fileID: 6370881784018352208, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6370881784018352209, guid: 259921b0ec43eb54e82f950f376f8d51, type: 3}
       propertyPath: cardBuffer
       value: 
@@ -4725,7 +4765,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12, y: 2.5, z: 0.001}
+  m_Size: {x: 12, y: 2.5, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1655802116
 MonoBehaviour:
