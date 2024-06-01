@@ -479,21 +479,23 @@ public class CardPerson : Card
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit[] raycastHits = Physics.RaycastAll(ray);
             var isMoveToPlace = false;
+            var isMoveToDropCardToPlace = false;
+            var plac = new Place();
+            var dctPlace = new DropCardToPlace();
+            var newParent = currentParent;
             foreach (var hit in raycastHits)
             {
-                var dctPlace = hit.transform.gameObject.GetComponent<DropCardToPlace>();
+                dctPlace = hit.transform.gameObject.GetComponent<DropCardToPlace>();
                 if (dctPlace != null)
                 {
-                    currentParent = hit.transform;
-                    transform.SetParent(currentParent);
-                    dctPlace.CardAdded(this);
-                    var plac = hit.transform.gameObject.GetComponent<Place>();
+                    isMoveToDropCardToPlace = true;
+                    var placHit = hit.transform.gameObject.GetComponent<Place>();
+                    newParent = hit.transform;
                     //Ќе нравитс€, нужно по умному сделать нормально провер€ть что это место под карту\ничего\рука
-                    if (plac != null)
+                    if (placHit != null)
                     {
-                        plac.isCursored = false;
+                        plac = placHit;
                         isMoveToPlace = true;
-                        OnDeck();
                     }
                 }
             }
@@ -501,6 +503,16 @@ public class CardPerson : Card
             {
                 place = null;
                 deployManager.PutCardFromBufferToHand(this);
+            }
+            else
+            {
+                if (isMoveToDropCardToPlace == true)
+                {
+                    transform.SetParent(newParent);
+                    dctPlace.CardAdded(this);
+                }
+                plac.isCursored = false;
+                OnDeck();
             }
         }
     }
