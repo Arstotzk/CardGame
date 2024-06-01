@@ -55,7 +55,7 @@ public class Deck : MonoBehaviour
             card.transform.rotation = rotation;
         }
         card.transform.parent = this.transform;
-        card.CurrentParent = this.transform;
+        card.currentParent = this.transform;
         card.isMoveable = false;
         cards.Add(card);
     }

@@ -11,8 +11,9 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     Vector3 oldPos;
     Vector3 resize = new Vector3(1.5f, 1.5f, 1.5f);
     Vector3 normalSize = new Vector3(1.5f, 1.5f, 1.5f);
-    public Transform DefaultParent;
-    public Transform CurrentParent;
+    public Transform defaultParent;
+    public Transform currentParent;
+    public Transform getFrom;
     public int column;
     public int row;
     public Place _place;
@@ -90,7 +91,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
             return;
         deployManager = (DeployManager) GameObject.FindObjectOfType(typeof(DeployManager));
         battleManager = (BattleManager) GameObject.FindObjectOfType(typeof(BattleManager));
-        DefaultParent = ((DragAndDropCardBuffer) GameObject.FindObjectOfType(typeof(DragAndDropCardBuffer))).transform;
+        defaultParent = ((DragAndDropCardBuffer) GameObject.FindObjectOfType(typeof(DragAndDropCardBuffer))).transform;
     }
 
     public GameObject enterObject;
@@ -135,13 +136,14 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 
         if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
         {
+            getFrom = transform.parent;
             deployManager.isPlayerDrugCard = true;
             animator.Play("OnDragStart");
             var mousePos = Input.mousePosition;
             offset = transform.position - MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
             oldPos = offset;
-            transform.SetParent(DefaultParent);
-            CurrentParent = transform.parent;
+            transform.SetParent(defaultParent);
+            currentParent = transform.parent;
             transform.position = new Vector3(transform.position.x, transform.position.y, -0.01f);
 
             //забрали карту из руки
@@ -201,7 +203,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         if (isNovel)
             return;
 
-        var hand = CurrentParent.GetComponentInChildren<Hand>();
+        var hand = currentParent.GetComponentInChildren<Hand>();
         if (hand != null)
             hand.OnMouseEnter();
     }
@@ -210,7 +212,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         if (isNovel)
             return;
 
-        var hand = CurrentParent.GetComponent<Hand>();
+        var hand = currentParent.GetComponent<Hand>();
         if (hand != null)
             hand.OnMouseExit();
     }
@@ -223,7 +225,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         var enemyHand = this.GetComponentInParent<DropCardToPlace>();
 
         transform.SetParent(dctPlace.transform);
-        CurrentParent = setPlace.transform;
+        currentParent = setPlace.transform;
         sound.audioSourcePerson.clip = sound.GetOnDeckSoundClip();
         sound.audioSourcePerson.Play();
         dctPlace.CardAdded(this);
@@ -237,7 +239,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         row = movePlace.row;
         column = movePlace.column;
         transform.SetParent(dctPlace.transform);
-        CurrentParent = movePlace.transform;
+        currentParent = movePlace.transform;
         dctPlace.CardAdded(this);
     }
     public void PlayDieSfx()

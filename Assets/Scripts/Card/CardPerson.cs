@@ -291,11 +291,11 @@ public class CardPerson : Card
     }
     public void SetDefaultParent() 
     {
-        transform.SetParent(DefaultParent);
+        transform.SetParent(defaultParent);
     }
     public void SetCurrentParent()
     {
-        transform.SetParent(CurrentParent);
+        transform.SetParent(currentParent);
     }
 
     public float GetClipLength(string name) 
@@ -484,8 +484,8 @@ public class CardPerson : Card
                 var dctPlace = hit.transform.gameObject.GetComponent<DropCardToPlace>();
                 if (dctPlace != null)
                 {
-                    CurrentParent = hit.transform;
-                    transform.SetParent(CurrentParent);
+                    currentParent = hit.transform;
+                    transform.SetParent(currentParent);
                     dctPlace.CardAdded(this);
                     var plac = hit.transform.gameObject.GetComponent<Place>();
                     //Ќе нравитс€, нужно по умному сделать нормально провер€ть что это место под карту\ничего\рука

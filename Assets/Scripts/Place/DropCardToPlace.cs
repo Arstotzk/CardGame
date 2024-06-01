@@ -42,7 +42,7 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
                 {
                     if (card.deployManager.Reinforcement < 0)
                         return;
-                    card.CurrentParent = transform;
+                    card.currentParent = transform;
                     if (!isHand)
                     {
                         card.deployManager.Reinforcement -= card.reinforcement;
@@ -64,7 +64,7 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
     public void CardAddedFromProperty(Card card)
     {
         card.transform.SetParent(this.transform);
-        card.CurrentParent = this.transform;
+        card.currentParent = this.transform;
         card.place = this.GetComponent<Place>();
         CardAdded(card);
     }
@@ -86,7 +86,7 @@ public class DropCardToPlace : MonoBehaviour, IDropHandler
                 mainPositions[i] = movedCards[i].transform.position;
             }
         }
-        if (isHand == false && !card.isEnemy && !card.isNovel)
+        if (isHand == false && !card.isEnemy && !card.isNovel && card.getFrom.GetComponent<DropCardToPlace>() != this)
         {
             card.deployManager.Reinforcement -= card.reinforcement;
         }
