@@ -34,6 +34,7 @@ public class CardItem : Card
     }
     public override void Action()
     {
+        OrderLayerUp(20);
         isMoveable = false;
         cardInteract.health += health;
         cardInteract.attack += attack;

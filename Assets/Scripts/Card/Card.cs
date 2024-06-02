@@ -134,8 +134,9 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
             return;
         }
 
-        if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
+        if (deployManager.Reinforcement >= reinforcement && isMoveable == true && !isEnemy)
         {
+            OrderLayerUp(20);
             getFrom = transform.parent;
             deployManager.isPlayerDrugCard = true;
             animator.Play("OnDragStart");
@@ -168,8 +169,9 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
             return;
         }
 
-        if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
+        if (deployManager.Reinforcement >= reinforcement && isMoveable == true && !isEnemy)
         {
+            OrderLayerDown(20);
             Debug.Log("OnMouseUp");
             deployManager.isPlayerDrugCard = false;
             var posit = transform.position;
@@ -183,7 +185,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         if (isNovel)
             return;
 
-        if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
+        if (deployManager.Reinforcement >= reinforcement && isMoveable == true && !isEnemy)
         {
             var mousePos = Input.mousePosition;
             Vector3 newPos = MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));

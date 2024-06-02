@@ -1043,7 +1043,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 15302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fc9601fb9ed2aba43924e6b33928b9c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1308,8 +1308,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a890772ca9544ed48a605c83aacf122c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultParent: {fileID: 0}
-  CurrentParent: {fileID: 0}
+  defaultParent: {fileID: 0}
+  currentParent: {fileID: 0}
+  getFrom: {fileID: 0}
   column: 0
   row: 0
   _place: {fileID: 0}
@@ -1326,6 +1327,9 @@ MonoBehaviour:
   isEnemy: 0
   isFromHand: 0
   isAction: 0
+  isNovel: 0
+  isCanChoose: 0
+  isChoosen: 0
   animator: {fileID: 0}
   sound: {fileID: 0}
   cardProperty: {fileID: 0}
@@ -3371,7 +3375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7231342750940507645
 Transform:
   m_ObjectHideFlags: 0
@@ -3394,7 +3398,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8086801294521689878}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

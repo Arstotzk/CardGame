@@ -449,7 +449,7 @@ public class CardPerson : Card
 
         base.OnMouseDrag();
 
-        if (deployManager.Reinforcement > 0 && isMoveable == true)
+        if (deployManager.Reinforcement > 0 && isMoveable == true && !isEnemy)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit[] raycastHits = Physics.RaycastAll(ray);
@@ -474,7 +474,7 @@ public class CardPerson : Card
 
         base.OnMouseUp();
 
-        if (deployManager.Reinforcement >= reinforcement && isMoveable == true)
+        if (deployManager.Reinforcement >= reinforcement && isMoveable == true && !isEnemy)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit[] raycastHits = Physics.RaycastAll(ray);
