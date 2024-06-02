@@ -11,6 +11,7 @@ public class SceneData
     public List<SceneCard> cardsOnBattle;
     public string nextSceneName;
     public string nextSceneNameRu;
+    public AudioClip music;
 }
 
 [System.Serializable]

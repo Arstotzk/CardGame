@@ -11,12 +11,14 @@ public class BattleSceneLoader : SceneLoader
     public Deck enemyDeck;
     public SceneData currentSceneData;
     public SceneStore sceneStore;
+    public MusicManager musicManager;
 
     protected override void Start()
     {
         base.Start();
         saveSerializer = (SaveSerializer)GameObject.FindObjectOfType(typeof(SaveSerializer));
         battleManager = (BattleManager)GameObject.FindObjectOfType(typeof(BattleManager));
+        musicManager = (MusicManager)GameObject.FindObjectOfType(typeof(MusicManager));
         StartCoroutine(LoadAndSet(secondsLoadDelay, currentFileName));
     }
     protected override IEnumerator LoadAndSet(float seconds, string saveFile)
@@ -66,5 +68,8 @@ public class BattleSceneLoader : SceneLoader
 
         battleManager.FillCardsArray();
         battleManager.SetCardsObjective(mainCard, enemyCards, playerCards);
+
+        musicManager.audioSource.clip = currentSceneData.music;
+        musicManager.PlayMusic();
     }
 }
