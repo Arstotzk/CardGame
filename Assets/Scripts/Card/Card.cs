@@ -142,8 +142,8 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
             deployManager.isPlayerDrugCard = true;
             animator.Play("OnDragStart");
             var mousePos = Input.mousePosition;
-            offset = transform.position - MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
-            oldPos = offset;
+            oldPos = MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
+            offset = transform.position - oldPos;
             transform.SetParent(defaultParent);
             currentParent = transform.parent;
             transform.position = new Vector3(transform.position.x, transform.position.y, -0.01f);
@@ -172,7 +172,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 
         if (deployManager.Reinforcement >= reinforcement && isMoveable == true && !isEnemy)
         {
-            OrderLayerDown(20, 0.5f);
+            StartCoroutine(OrderLayerDown(20, 0.5f));
             Debug.Log("OnMouseUp");
             deployManager.isPlayerDrugCard = false;
             var posit = transform.position;
@@ -191,6 +191,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
             var mousePos = Input.mousePosition;
             Vector3 newPos = MainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z + transform.position.z));
             Vector3 difference = newPos - oldPos;
+            Debug.Log(difference.ToString());
             Quaternion target = Quaternion.Euler(difference.y * 15, -difference.x * 15, 0);
             transform.rotation = target;
 
