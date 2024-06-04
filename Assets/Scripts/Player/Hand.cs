@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Hand : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class Hand : MonoBehaviour
 {
     //public GameObject hand;
     public Vector3 mainPosititon;
@@ -17,33 +16,7 @@ public class Hand : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public GameObject hand;
     private Vector3 positionApper = new Vector3(0, (float)0.6, 0);
     public SoundManager smSlavic;
-    public void OnPointerEnter (PointerEventData eventData)
-    {
-         //Debug.Log("Work " + interpolationRatio);
-        // oldPosititon = transform.position;
-        //Vector3 newPos = new Vector3(0,1,0);
-        //transform.position = oldPosititon + newPos;
-        pointerOnHand = true;
-        isFinished = false;
 
-    }
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        //Debug.Log("Work-Exit " + interpolationRatio);
-        //oldPosititon = transform.position;
-        //Vector3 newPos = new Vector3(0, -1, 0);
-        //transform.position = oldPosititon + newPos;
-        // float interpolationRatio = (float)elapsedFrames / interpolationFramesCount;
-        //Vector3.Lerp(Vector3.up, Vector3.forward, interpolationRatio);
-        //elapsedFrames = (elapsedFrames + 1) % (interpolationFramesCount + 1);
-        //isFinished = false;
-        pointerOnHand = false;
-        isFinished = false;
-        if (elapsedFrames == interpolationFramesCount) 
-        {
-            elapsedFrames = elapsedFrames - 1;
-        }
-    }
     public void Update()
     {
         if(pointerOnHand == true && isFinished == false) 
@@ -82,7 +55,6 @@ public class Hand : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void Start() 
     {
         mainPosititon = hand.transform.position;
-        FillCardsSounds(GetComponentsInChildren<CardPerson>());
     }
     public bool CheckPointerOnHand(bool _pointerEnter, bool _pointerExit) 
     {
@@ -90,25 +62,15 @@ public class Hand : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         return true;
     }
 
-    public void FillCardsSounds(CardPerson[] cards)
-    {
-        foreach (var card in cards)
-        {
-                //if (!card.isuniqueattack)
-                //    card.soundonattack.clip = smslavic.getonattacksoundclip();
-                //card.soundondeck.clip = smslavic.getondecksoundclip();
-                //card.soundondeath.clip = smslavic.getondiesoundclip();
-        }
-    }
-
-    public void OnMouseEnter()
+    public void OnMouseEnterHand()
     {
         Debug.Log("HandMouseEnter");
         pointerOnHand = true;
         isFinished = false;
     }
-    public void OnMouseExit()
+    public void OnMouseExitHand()
     {
+        Debug.Log("HandMouseExit");
         pointerOnHand = false;
         isFinished = false;
         if (elapsedFrames == interpolationFramesCount)

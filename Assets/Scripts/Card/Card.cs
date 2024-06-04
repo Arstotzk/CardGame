@@ -136,6 +136,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 
         if (deployManager.Reinforcement >= reinforcement && isMoveable == true && !isEnemy)
         {
+            OnMouseExit();
             OrderLayerUp(20);
             getFrom = transform.parent;
             deployManager.isPlayerDrugCard = true;
@@ -171,7 +172,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 
         if (deployManager.Reinforcement >= reinforcement && isMoveable == true && !isEnemy)
         {
-            OrderLayerDown(20);
+            OrderLayerDown(20, 0.5f);
             Debug.Log("OnMouseUp");
             deployManager.isPlayerDrugCard = false;
             var posit = transform.position;
@@ -207,7 +208,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 
         var hand = currentParent.GetComponent<Hand>();
         if (hand != null)
-            hand.OnMouseEnter();
+            hand.OnMouseEnterHand();
     }
     public virtual void OnMouseExit()
     {
@@ -216,7 +217,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 
         var hand = currentParent.GetComponent<Hand>();
         if (hand != null)
-            hand.OnMouseExit();
+            hand.OnMouseExitHand();
     }
     public void SetToPlace(Place setPlace)
     {
@@ -281,5 +282,16 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         {
             text.sortingOrder = text.sortingOrder - num;
         }
+    }
+
+    public IEnumerator OrderLayerUp(int nums, float seconds) 
+    {
+        yield return new WaitForSeconds(seconds);
+        OrderLayerUp(20);
+    }
+    public IEnumerator OrderLayerDown(int nums, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        OrderLayerDown(20);
     }
 }
