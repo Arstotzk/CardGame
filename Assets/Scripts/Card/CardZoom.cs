@@ -66,7 +66,7 @@ public class CardZoom : MonoBehaviour
             deckShowClick.DeckShow();
             return;
         }
-        if (card != null)
+        if (card != null && ((!card.isEnemy) || (card.isEnemy && !card.isFromHand)))
         {
             cardZoomed.FillCardInfo(card.spriteRenderer.sprite, card.cardName, card.health, card.attack, card.reinforcement, card.initiative, card.cardProperty, card.attackPattern);
             GetComponent<Animator>().Play("ToBlack");
@@ -76,7 +76,7 @@ public class CardZoom : MonoBehaviour
                 deployManager.SetAllMovable(false);
             StartCoroutine(CardZoomedChange(0.8f, true));
         }
-        else if (cardItem != null)
+        else if (cardItem != null && ((!card.isEnemy) || (card.isEnemy && !card.isFromHand)))
         {
             cardZoomed.FillCardInfo(cardItem.spriteRenderer.sprite, cardItem.cardName, cardItem.health, cardItem.attack, cardItem.reinforcement, cardItem.cardProperty);
             GetComponent<Animator>().Play("ToBlack");

@@ -224,6 +224,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     {
         place = setPlace;
         var dctPlace = setPlace.GetComponent<DropCardToPlace>();
+        isFromHand = false;
         //Для вражеской карты из руки
         animator.Play("Rotate");
         var enemyHand = this.GetComponentInParent<DropCardToPlace>();
