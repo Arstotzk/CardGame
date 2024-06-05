@@ -115,12 +115,14 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     public void Death()
     {
         animator.Play("Death");
+        battleManager.isCardSoundPlaying = false;
         Invoke("ToDiscard", 1f); //Переделать на сброс карты в стопку сброса
     }
 
     public void Death(float time)
     {
         animator.Play("Death");
+        battleManager.isCardSoundPlaying = false;
         Invoke("ToDiscard", time); //Переделать на сброс карты в стопку сброса
     }
 

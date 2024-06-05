@@ -30,6 +30,7 @@ public class BattleManager : MonoBehaviour
 
     public bool isBattleActive;
     public bool isAnyoneDied;
+    public bool isCardSoundPlaying;
 
     public void Start()
     {
@@ -41,6 +42,7 @@ public class BattleManager : MonoBehaviour
         FillCardsArray();
         isAnyoneDied = false;
         objective = GetComponent<Objective>();
+        isCardSoundPlaying = false;
     }
 
     public void BattleStart()

@@ -58,12 +58,19 @@ public class CardPerson : Card
                 {
                     HealthText.text = "0";
                     HealthText.color = (new Color32(245, 155, 155, 255));
-                    sound.audioSourcePerson.clip = sound.GetOnDieSoundClip();
                     sound.audioSourceSfx.clip = sound.GetOnDieSfxSoundClip();
-                    sound.audioSourcePerson.Play();
-                    //animator.Play("OnDrugStart");
+                    sound.audioSourcePerson.clip = sound.GetOnDieSoundClip();
                     isDead = true;
-                    Invoke("Death", sound.audioSourcePerson.clip.length); //Переделать на сброс карты в стопку сброса
+                    if (!battleManager.isCardSoundPlaying)
+                    {
+                        sound.audioSourcePerson.Play();
+                        battleManager.isCardSoundPlaying = true;
+                        Invoke("Death", sound.audioSourcePerson.clip.length); //Переделать на сброс карты в стопку сброса
+                    }
+                    else 
+                    {
+                        Invoke("Death", 0f); //Переделать на сброс карты в стопку сброса
+                    }
                 }
                 else
                 {
