@@ -454,6 +454,11 @@ public class CardPerson : Card
         if (isNovel)
             return;
 
+        if (gameMenu.menuActive)
+        {
+            return;
+        }
+
         base.OnMouseDrag();
 
         if (deployManager.Reinforcement > 0 && isMoveable == true && !isEnemy)
@@ -478,6 +483,11 @@ public class CardPerson : Card
     {
         if (isNovel)
             return;
+
+        if (gameMenu.menuActive)
+        {
+            return;
+        }
 
         base.OnMouseUp();
 

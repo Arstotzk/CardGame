@@ -60,6 +60,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
 
     public DeployManager deployManager;
     public BattleManager battleManager;
+    public GameMenu gameMenu;
 
     public bool isMoveable;
     public bool isDead;
@@ -92,6 +93,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         deployManager = (DeployManager) GameObject.FindObjectOfType(typeof(DeployManager));
         battleManager = (BattleManager) GameObject.FindObjectOfType(typeof(BattleManager));
         defaultParent = ((DragAndDropCardBuffer) GameObject.FindObjectOfType(typeof(DragAndDropCardBuffer))).transform;
+        gameMenu = (GameMenu)GameObject.FindObjectOfType(typeof(GameMenu));
     }
 
     public GameObject enterObject;
@@ -136,6 +138,11 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
             return;
         }
 
+        if (gameMenu.menuActive)
+        {
+            return;
+        }
+
         if (deployManager.Reinforcement >= reinforcement && isMoveable == true && !isEnemy)
         {
             OnMouseExit();
@@ -172,6 +179,11 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
             return;
         }
 
+        if (gameMenu.menuActive)
+        {
+            return;
+        }
+
         if (deployManager.Reinforcement >= reinforcement && isMoveable == true && !isEnemy)
         {
             StartCoroutine(OrderLayerDown(20, 0.5f));
@@ -187,6 +199,11 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     {
         if (isNovel)
             return;
+
+        if (gameMenu.menuActive)
+        {
+            return;
+        }
 
         if (deployManager.Reinforcement >= reinforcement && isMoveable == true && !isEnemy)
         {
@@ -209,6 +226,11 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
         if (isNovel)
             return;
 
+        if (gameMenu.menuActive)
+        {
+            return;
+        }
+
         var hand = currentParent.GetComponent<Hand>();
         if (hand != null)
             hand.OnMouseEnterHand();
@@ -217,6 +239,11 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     {
         if (isNovel)
             return;
+
+        if (gameMenu.menuActive)
+        {
+            return;
+        }
 
         var hand = currentParent.GetComponent<Hand>();
         if (hand != null)

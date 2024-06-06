@@ -48,6 +48,14 @@ public class CardItem : Card
     }
     public override void OnMouseUp()
     {
+        if (isNovel)
+            return;
+
+        if (gameMenu.menuActive)
+        {
+            return;
+        }
+
         base.OnMouseUp();
         if (deployManager.Reinforcement > 0 && isMoveable == true)
         {

@@ -76,7 +76,7 @@ public class CardZoom : MonoBehaviour
                 deployManager.SetAllMovable(false);
             StartCoroutine(CardZoomedChange(0.8f, true));
         }
-        else if (cardItem != null && ((!card.isEnemy) || (card.isEnemy && !card.isFromHand)))
+        else if (cardItem != null && ((!cardItem.isEnemy) || (cardItem.isEnemy && !cardItem.isFromHand)))
         {
             cardZoomed.FillCardInfo(cardItem.spriteRenderer.sprite, cardItem.cardName, cardItem.health, cardItem.attack, cardItem.reinforcement, cardItem.cardProperty);
             GetComponent<Animator>().Play("ToBlack");

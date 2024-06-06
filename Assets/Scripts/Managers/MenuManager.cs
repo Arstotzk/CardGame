@@ -20,6 +20,7 @@ public class MenuManager : MonoBehaviour
     public AudioMixer audioMixer;
     public GameObject settings;
     public GameObject saves;
+    public Instruction instruction;
 
     public Scrollbar master;
     public Scrollbar music;
@@ -255,5 +256,9 @@ public class MenuManager : MonoBehaviour
 
         resolutionSetting.value = Screen.resolutions.ToList().IndexOf(Screen.currentResolution);
         isValueFromSetting = true;
+    }
+    public void ShowInstruction()
+    {
+        instruction.ShowInstuction();
     }
 }
