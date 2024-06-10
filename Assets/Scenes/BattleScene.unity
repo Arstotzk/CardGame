@@ -4271,6 +4271,42 @@ PrefabInstance:
       propertyPath: saveSerializer
       value: 
       objectReference: {fileID: 883847804}
+    - target: {fileID: 8168618377758684452, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
+      propertyPath: instructionScreens.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168618377758684452, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
+      propertyPath: instructionScreens.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: e59902638a732d94f9a606a89493c976, type: 3}
+    - target: {fileID: 8168618377758684452, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
+      propertyPath: instructionScreens.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5240982497af49d469078d7835c13d17, type: 3}
+    - target: {fileID: 8168618377758684452, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
+      propertyPath: instructionScreens.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 21665e6cf5d58234f8030dc5fffe976c, type: 3}
+    - target: {fileID: 8168618377758684452, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
+      propertyPath: instructionScreens.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: f44bc8577a5d8574885c64a40d8bde31, type: 3}
+    - target: {fileID: 8168618377758684452, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
+      propertyPath: instructionScreens.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 91d67057ca2acf644bdf06c67e4bd882, type: 3}
+    - target: {fileID: 8168618377758684452, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
+      propertyPath: instructionScreens.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: faf7a8d32073db845ba006288d148bc5, type: 3}
+    - target: {fileID: 8168618377758684452, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
+      propertyPath: instructionScreens.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2e7a526741651c344b126518cc0e39d0, type: 3}
+    - target: {fileID: 8168618377758684452, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
+      propertyPath: instructionScreens.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8fbb015257c9d7543945cb658a546403, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
 --- !u!1 &1382216943
