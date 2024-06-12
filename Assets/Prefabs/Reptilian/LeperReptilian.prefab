@@ -25,11 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalRotation.y
@@ -41,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 139989445015694915, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -62,7 +62,7 @@ PrefabInstance:
     - target: {fileID: 4145067827271622073, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8dfd4e5bbeeaa8c4ebaaa041cd849b91, type: 3}
+      objectReference: {fileID: 21300000, guid: 958edb9a7b442004194cdf3b2bb98730, type: 3}
     - target: {fileID: 4145067827271622073, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 5290676149614184844, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5a2b97a6dc45908489f794783f7650bd, type: 3}
+      objectReference: {fileID: 21300000, guid: 5d88615b725ab984d9daeb9269c04ed3, type: 3}
     - target: {fileID: 5290676149614184844, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -126,7 +126,7 @@ PrefabInstance:
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: spriteQueueUI
       value: 
-      objectReference: {fileID: 21300000, guid: a6f97b0b7f80a9c4eb04793bcadf3d23, type: 3}
+      objectReference: {fileID: 21300000, guid: 744af0e737c1b9e4ba2139d54cdec6bf, type: 3}
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: _reinforcement
       value: 2
@@ -146,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 8532652931823534968, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 71a082af0fe866e4fa4bcaff9e5ded16, type: 3}
+      objectReference: {fileID: 21300000, guid: 7b6feb04dfcd6004e826da1519856cd2, type: 3}
     - target: {fileID: 8532652931823534968, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1

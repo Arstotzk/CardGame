@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 264583084461740348, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Name
-      value: PoisonSpitter Variant
+      value: PoisonSpitter
       objectReference: {fileID: 0}
     - target: {fileID: 1621895609204716102, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_audioClip
@@ -74,7 +74,7 @@ PrefabInstance:
     - target: {fileID: 4145067827271622073, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8dfd4e5bbeeaa8c4ebaaa041cd849b91, type: 3}
+      objectReference: {fileID: 21300000, guid: dd646b87174d5594d9023762cd19be2a, type: 3}
     - target: {fileID: 4145067827271622073, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -82,7 +82,7 @@ PrefabInstance:
     - target: {fileID: 5290676149614184844, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5a2b97a6dc45908489f794783f7650bd, type: 3}
+      objectReference: {fileID: 21300000, guid: 19efa8ef7386b9645ab29731ef504ed7, type: 3}
     - target: {fileID: 5290676149614184844, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -126,7 +126,7 @@ PrefabInstance:
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: spriteQueueUI
       value: 
-      objectReference: {fileID: 21300000, guid: a6f97b0b7f80a9c4eb04793bcadf3d23, type: 3}
+      objectReference: {fileID: 21300000, guid: b53b1479e31bf0544a1f164bf908605f, type: 3}
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: _reinforcement
       value: 2
@@ -150,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 8532652931823534968, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 71a082af0fe866e4fa4bcaff9e5ded16, type: 3}
+      objectReference: {fileID: 21300000, guid: 26a16a5d55f64a0488095a1dd5ad9aff, type: 3}
     - target: {fileID: 8532652931823534968, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
