@@ -81,23 +81,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5412191977070745338, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: properties.Array.data[0].type
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5412191977070745338, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
-      propertyPath: properties.Array.data[1].type
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5412191977070745338, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
-      propertyPath: properties.Array.data[1]._length
+      propertyPath: properties.Array.data[1].type
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5412191977070745338, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
+      propertyPath: properties.Array.data[0]._length
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412191977070745338, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
+      propertyPath: properties.Array.data[1]._length
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412191977070745338, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
+      propertyPath: properties.Array.data[0].isNegative
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412191977070745338, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: properties.Array.data[1].isNegative
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412191977070745338, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
+      propertyPath: properties.Array.data[0].isLengthProperty
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5412191977070745338, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: properties.Array.data[1].isLengthProperty
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6450815599820144677, guid: d7f27935b66d40548b7d4d1dc48cce6c, type: 3}
       propertyPath: _attack

@@ -36,8 +36,9 @@ public class CardZoomed : MonoBehaviour
         attackText.enabled = true;
         attackIcon.enabled = true;
         this.cardProperty.properties = cardProperty.properties;
-        this.cardProperty.SetProperties();
+        //this.cardProperty.SetProperties();
         this.cardProperty.SetPropertiesDescription();
+        attackPatternIcon.SetActive(true);
         this.attackPattern = attackPattern;
         var pattern = attackPatternIcon.GetComponentsInChildren<SpriteRenderer>();
         foreach (var point in pattern) 
@@ -65,6 +66,7 @@ public class CardZoomed : MonoBehaviour
         reinforcementText.text = reinforcement.ToString();
         initiativeText.enabled = false;
         initiativeIcon.enabled = false;
+        attackPatternIcon.SetActive(false);
         if (health == 0)
         {
             healthText.enabled = false;
@@ -86,7 +88,7 @@ public class CardZoomed : MonoBehaviour
             attackIcon.enabled = true;
         }
         this.cardProperty.properties = cardProperty.properties;
-        this.cardProperty.SetProperties();
+        //this.cardProperty.SetProperties();
         this.cardProperty.SetPropertiesDescription();
     }
 }

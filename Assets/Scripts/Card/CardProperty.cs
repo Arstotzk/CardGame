@@ -122,7 +122,7 @@ public class CardProperty : MonoBehaviour
             //TODO Сделать чтобы через при создании через инспектор описание генерилось сразу
             if (property.description == null)
                 property.SetSettings();
-            descriprion.text = property.description;
+            descriprion.text = property.description + (property.isLengthProperty ? " x" + property.length : "" );
             switch (property.type)
             {
                 case Property.Type.Berserk:
