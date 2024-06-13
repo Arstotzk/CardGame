@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 4020387763847371118, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f4386eff2ef4a7e4685822d92b1935bf, type: 3}
+      objectReference: {fileID: 21300000, guid: de118ad03dd43b043a010aa23db61fab, type: 3}
     - target: {fileID: 4020387763847371118, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -86,7 +86,7 @@ PrefabInstance:
     - target: {fileID: 5125436716579900763, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a16d5025ae9439343bb4b53bcffeb6ac, type: 3}
+      objectReference: {fileID: 21300000, guid: 07ebd2d5ab31abb4aa6f90e3b7bda7d1, type: 3}
     - target: {fileID: 5125436716579900763, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -110,7 +110,7 @@ PrefabInstance:
     - target: {fileID: 6325467273977644274, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: spriteQueueUI
       value: 
-      objectReference: {fileID: 21300000, guid: 72ad227fcd0c9fb48ba6d343c1535a85, type: 3}
+      objectReference: {fileID: 21300000, guid: 066741a9caca25d42bb31c5fbc55dd81, type: 3}
     - target: {fileID: 6325467273977644274, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: _reinforcement
       value: 1
@@ -126,7 +126,7 @@ PrefabInstance:
     - target: {fileID: 8658001812656637871, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a01446d2da5e3d144a8ab49ec970ae34, type: 3}
+      objectReference: {fileID: 21300000, guid: 2a1190e03a9f3214a82be988d64e4d5d, type: 3}
     - target: {fileID: 8658001812656637871, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
