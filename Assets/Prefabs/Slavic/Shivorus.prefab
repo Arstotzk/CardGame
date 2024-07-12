@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3709469156374170155
+--- !u!1001 &6083742378722585971
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1001638106978620907, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_Name
-      value: Travokur
+      value: Shivorus
       objectReference: {fileID: 0}
     - target: {fileID: 1133820567072877204, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_RootOrder
@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1133820567072877204, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 6.53
       objectReference: {fileID: 0}
     - target: {fileID: 1133820567072877204, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.96
+      value: 2.49
       objectReference: {fileID: 0}
     - target: {fileID: 1133820567072877204, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29,11 +29,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1133820567072877204, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.00000017146512
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1133820567072877204, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 1
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1133820567072877204, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_LocalRotation.y
@@ -55,14 +55,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1787741114438416017, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
-      propertyPath: m_audioClip
+    - target: {fileID: 1272731025716054631, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
+      propertyPath: SoundOnAttack.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272731025716054631, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
+      propertyPath: SoundOnAttack.Array.data[14]
       value: 
-      objectReference: {fileID: 8300000, guid: 1e93ae7c291791d43bea08dfbc189527, type: 3}
+      objectReference: {fileID: 8300000, guid: 965687ffb44b47144949ec751534b133, type: 3}
+    - target: {fileID: 1272731025716054631, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
+      propertyPath: SoundOnAttack.Array.data[15]
+      value: 
+      objectReference: {fileID: 8300000, guid: e0e18119657607b4c915a285eccef256, type: 3}
     - target: {fileID: 3310496322040238133, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 1e93ae7c291791d43bea08dfbc189527, type: 3}
+      objectReference: {fileID: 8300000, guid: 783a1a55866df35459b61a52af9c6e99, type: 3}
     - target: {fileID: 4020387763847371118, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_Size.x
       value: 6.6
@@ -74,7 +82,7 @@ PrefabInstance:
     - target: {fileID: 4020387763847371118, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: de118ad03dd43b043a010aa23db61fab, type: 3}
+      objectReference: {fileID: 21300000, guid: 196d47b8bcee8be409e070998b822083, type: 3}
     - target: {fileID: 4020387763847371118, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -85,12 +93,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4996325462735753773, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: properties.Array.data[0].type
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5125436716579900763, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 07ebd2d5ab31abb4aa6f90e3b7bda7d1, type: 3}
+      objectReference: {fileID: 21300000, guid: 398ce1842d1e6a34c84c38452800ba7b, type: 3}
     - target: {fileID: 5125436716579900763, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -101,11 +109,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6325467273977644274, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: _health
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6325467273977644274, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: cardName
-      value: "\u0422\u0440\u0430\u0432\u043E\u043A\u0443\u0440 \u041C\u0438\u0440\u043E\u043B\u044E\u0431\u0441\u043A\u0438\u0439"
+      value: "\u0416\u0438\u0432\u043E\u0440\u0443\u0441"
       objectReference: {fileID: 0}
     - target: {fileID: 6325467273977644274, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: initiative
@@ -114,23 +122,31 @@ PrefabInstance:
     - target: {fileID: 6325467273977644274, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: spriteQueueUI
       value: 
-      objectReference: {fileID: 21300000, guid: 066741a9caca25d42bb31c5fbc55dd81, type: 3}
+      objectReference: {fileID: 21300000, guid: c8d5739b092abb04b981a73a8ef6f5bd, type: 3}
     - target: {fileID: 6325467273977644274, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: _reinforcement
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6325467273977644274, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
+      propertyPath: attackPattern.rows.Array.data[0].row.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325467273977644274, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: attackPattern.rows.Array.data[1].row.Array.data[0]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6325467273977644274, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: attackPattern.rows.Array.data[1].row.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325467273977644274, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
+      propertyPath: attackPattern.rows.Array.data[2].row.Array.data[1]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8658001812656637871, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2a1190e03a9f3214a82be988d64e4d5d, type: 3}
+      objectReference: {fileID: 21300000, guid: a8a97022fca1572478b8f55eead52912, type: 3}
     - target: {fileID: 8658001812656637871, guid: e16ad1451f524124c87b7ba0f1d96bb2, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1

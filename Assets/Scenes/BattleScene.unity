@@ -4381,7 +4381,6 @@ MonoBehaviour:
     - {fileID: 1986932949338302696, guid: d3d247ccf2ce40243badc8fd3b3ebf92, type: 3}
     - {fileID: 199119861462950108, guid: 2783ec6ce93f0df459c3ae9a4b04ba36, type: 3}
     - {fileID: 377038895548511804, guid: fbf3d54018490fc4eb8f2cf6dbac29dc, type: 3}
-    - {fileID: 246847593175750691, guid: 2affcfc6e0e4b984181342639864774d, type: 3}
     cardsOnBattle:
     - card: {fileID: 3697732180453455019, guid: aa02e4314dadd334c88c82398bd72d7f, type: 3}
       row: 0
@@ -4392,16 +4391,14 @@ MonoBehaviour:
     - card: {fileID: 199119861462950108, guid: 2783ec6ce93f0df459c3ae9a4b04ba36, type: 3}
       row: 1
       column: 1
-    nextSceneName: 
-    nextSceneNameRu: 
+    nextSceneName: ChildhoodDream
+    nextSceneNameRu: "\u0421\u043E\u043D \u043E \u0434\u0435\u0442\u0441\u0442\u0432\u0435"
     music: {fileID: 8300000, guid: 2cfc574c641f4c64da20a311fe7dc654, type: 3}
   - Name: SecondVillageBattle
     NameRu: "\u041E\u0447\u0435\u0440\u0435\u0434\u043D\u0430\u044F \u043F\u043E\u0434\u043B\u0430\u044F
       \u0430\u0442\u0430\u043A\u0430 \u044F\u0449\u0435\u0440\u043E\u0432 \u043D\u0430
       \u0434\u0435\u0440\u0435\u0432\u043D\u044E"
     cards:
-    - {fileID: 4602411226652721839, guid: 11f4a7fa818ddaf4d9f0f0b5c7d091a0, type: 3}
-    - {fileID: 6136188814823340469, guid: 236581d256688b946a13f37821bc1bdf, type: 3}
     - {fileID: 3355190905077789568, guid: a54cb7f27aab89745b0c50b134b1ab03, type: 3}
     - {fileID: 7347759463163578660, guid: 689d677b6df9dfd45af00f77f9e7594c, type: 3}
     - {fileID: 1986932949338302696, guid: d3d247ccf2ce40243badc8fd3b3ebf92, type: 3}
@@ -4417,7 +4414,7 @@ MonoBehaviour:
       column: 3
     nextSceneName: 
     nextSceneNameRu: 
-    music: {fileID: 0}
+    music: {fileID: 8300000, guid: c6117120930b36141b25920b1a93afd4, type: 3}
   - Name: FullCards
     NameRu: TestFullCards
     cards:

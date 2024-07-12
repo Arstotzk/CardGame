@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 429315637}
   - component: {fileID: 429315638}
   - component: {fileID: 429315639}
+  - component: {fileID: 429315640}
   m_Layer: 0
   m_Name: NovelManager
   m_TagString: Untagged
@@ -506,6 +507,34 @@ MonoBehaviour:
   scriptName: RoadToVillage
   novelSceneLoader: {fileID: 1526458565}
   chooseCard: {fileID: 127028425}
+  cardChoose1_1: {fileID: 2749412358651432327, guid: e4a1c46143807ad4d83e85d31fad93e6, type: 3}
+  cardChoose1_2: {fileID: 474137230987009029, guid: c617c6a59cd984c4fa000d89501acbef, type: 3}
+  cardChoose2_1: {fileID: 262714615722682753, guid: 1d77ddb67a9451d4d9f175d71f1fed09, type: 3}
+  cardChoose2_2: {fileID: 7255928416501272281, guid: dbec58823c5d80f42843df36d1af9023, type: 3}
+--- !u!114 &429315640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429315636}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e9611cf299ffe4b8784118a24b33fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptNumber: 0
+  character: {fileID: 829656129}
+  mainText: {fileID: 1153878431}
+  background: {fileID: 1527348356}
+  deck: {fileID: 1369922801}
+  musicManager: {fileID: 2075628962}
+  soundManager: {fileID: 1596831112}
+  scriptName: ChildhoodDream
+  novelSceneLoader: {fileID: 1526458565}
+  chooseCard: {fileID: 127028425}
+  cardChoose1_1: {fileID: 262714615722682753, guid: 3db84ec38f29e824ca500901cfc55a0e, type: 3}
+  cardChoose1_2: {fileID: 8953623658745741873, guid: dc16095b388fee14b9bfc1544ba7643f, type: 3}
 --- !u!4 &597305008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6338070565789232478, guid: bd46f9c15d2891d4db783b399417e160, type: 3}
@@ -608,6 +637,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 429315639}
+        m_TargetAssemblyTypeName: NovelManager, Assembly-CSharp
+        m_MethodName: PlayNextScript
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 429315640}
         m_TargetAssemblyTypeName: NovelManager, Assembly-CSharp
         m_MethodName: PlayNextScript
         m_Mode: 1
