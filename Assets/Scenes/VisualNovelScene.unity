@@ -507,6 +507,11 @@ MonoBehaviour:
   scriptName: RoadToVillage
   novelSceneLoader: {fileID: 1526458565}
   chooseCard: {fileID: 127028425}
+  BeginMusic: {fileID: 8300000, guid: 52932a0fa2f91be41915ff08b3906682, type: 3}
+  OutOfBreathSound: {fileID: 8300000, guid: 791a3474f3677d040ac3b3dd2cda8bce, type: 3}
+  village: {fileID: 21300000, guid: 3c68e6f75b77e4f489ce1b8eaea8084c, type: 3}
+  villagePlace: {fileID: 21300000, guid: f643ea5ef4277ba41bec0703552e694e, type: 3}
+  river: {fileID: 21300000, guid: 2682469e19a4a9d4385881d130ab725a, type: 3}
   cardChoose1_1: {fileID: 2749412358651432327, guid: e4a1c46143807ad4d83e85d31fad93e6, type: 3}
   cardChoose1_2: {fileID: 474137230987009029, guid: c617c6a59cd984c4fa000d89501acbef, type: 3}
   cardChoose2_1: {fileID: 262714615722682753, guid: 1d77ddb67a9451d4d9f175d71f1fed09, type: 3}
@@ -533,6 +538,10 @@ MonoBehaviour:
   scriptName: ChildhoodDream
   novelSceneLoader: {fileID: 1526458565}
   chooseCard: {fileID: 127028425}
+  BeginMusic: {fileID: 8300000, guid: 52932a0fa2f91be41915ff08b3906682, type: 3}
+  village: {fileID: 21300000, guid: 3c68e6f75b77e4f489ce1b8eaea8084c, type: 3}
+  villagePlace: {fileID: 21300000, guid: f643ea5ef4277ba41bec0703552e694e, type: 3}
+  river: {fileID: 21300000, guid: 2682469e19a4a9d4385881d130ab725a, type: 3}
   cardChoose1_1: {fileID: 262714615722682753, guid: 3db84ec38f29e824ca500901cfc55a0e, type: 3}
   cardChoose1_2: {fileID: 8953623658745741873, guid: dc16095b388fee14b9bfc1544ba7643f, type: 3}
 --- !u!4 &597305008 stripped
