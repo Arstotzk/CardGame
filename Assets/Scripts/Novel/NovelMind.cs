@@ -13,5 +13,6 @@ public class NovelMind : NovelScript
     {
         scriptType = ScriptType.mind;
         _text = inputText;
+        isCanAutoPlay = true;
     }
 }

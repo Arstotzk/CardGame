@@ -20,10 +20,14 @@ public class NovelManager : MonoBehaviour
     public NovelSceneLoader novelSceneLoader;
 
     public ChooseCard chooseCard;
+
+    private bool isAutoPlay;
+    private float autoPlaySpeed = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
         scriptNumber = 0;
+        isAutoPlay = false;
     }
 
     public virtual void PlayNextScript()
@@ -110,7 +114,29 @@ public class NovelManager : MonoBehaviour
                 break;
         }
 
+        if (!currentScript.isAutoNext && !currentScript.isCanAutoPlay)
+            isAutoPlay = false;
+
         if (currentScript.isAutoNext)
             PlayNextScript();
+    }
+    public virtual void SetIsAutoPlay() 
+    {
+        isAutoPlay = !isAutoPlay;
+        StartCoroutine(AutoPlay());
+    }
+    private IEnumerator AutoPlay() 
+    {
+        if (!this.isActiveAndEnabled)
+            yield break;
+
+        yield return new WaitForSeconds(autoPlaySpeed);
+        Debug.Log(scriptNumber);
+        Debug.Log(scripts[scriptNumber]);
+        if (scripts[scriptNumber].isCanAutoPlay && isAutoPlay)
+        {
+            PlayNextScript();
+            StartCoroutine(AutoPlay());
+        }
     }
 }

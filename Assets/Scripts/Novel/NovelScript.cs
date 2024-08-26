@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class NovelScript
 {
     public bool isAutoNext = false;
+    public bool isCanAutoPlay = false;
     public ScriptType scriptType; 
     public NovelScript()
     {

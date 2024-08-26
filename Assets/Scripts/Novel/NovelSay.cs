@@ -20,6 +20,7 @@ public class NovelSay : NovelScript
         scriptType = ScriptType.say;
         _character = inputCharacter;
         _text = inputText;
+        isCanAutoPlay = true;
     }
     public override void Play()
     {
