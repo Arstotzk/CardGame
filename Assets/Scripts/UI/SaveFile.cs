@@ -5,12 +5,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System;
 
 public class SaveFile : MonoBehaviour, IPointerClickHandler
 { 
     // Start is called before the first frame update
     public string nameSystem;
     public string nameShow;
+    public DateTime creationDate;
 
     public void OnPointerClick(PointerEventData eventData)
     {

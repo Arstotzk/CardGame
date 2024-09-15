@@ -6,6 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 public class SaveSerializer : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class SaveSerializer : MonoBehaviour
         {
             var saveData = new SaveData();
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Create(Application.persistentDataPath + "/" + saveFile + ".dat");
+            FileStream file = File.Create(Application.persistentDataPath + "/" + saveFile + System.DateTime.Now.ToString("yyyyMMddhhmmss") + ".dat");
             saveData.scene = sceneNameSystem;
             saveData.cards = cardsNameSystem;
             saveData.mainCardProperty = mainCardProperty;
@@ -79,10 +80,12 @@ public class SaveSerializer : MonoBehaviour
             {
                 var save = new SaveFile();
                 save.nameSystem = file.FullName;
-                save.nameShow = Path.GetFileNameWithoutExtension(file.Name) + " " + file.CreationTime.ToString("dd.MM.yyyy HH:mm:ss");
+                save.nameShow = Regex.Replace(Path.GetFileNameWithoutExtension(file.Name), "[0-9]", "", RegexOptions.IgnoreCase) + " " + file.CreationTime.ToString("dd.MM.yyyy HH:mm:ss");
+                save.creationDate = file.CreationTime;
                 saveFiles.Add(save);
             }
         }
+        saveFiles = saveFiles.OrderByDescending(sf => sf.creationDate).ToList();
         return saveFiles;
     }
 }
