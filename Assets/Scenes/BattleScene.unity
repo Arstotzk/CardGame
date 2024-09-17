@@ -4179,6 +4179,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1774594302}
     m_Modifications:
+    - target: {fileID: 2138800979, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1939077420}
+    - target: {fileID: 2138800979, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MenuTurn
+      objectReference: {fileID: 0}
     - target: {fileID: 380545226079678481, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4267,10 +4275,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuNew
       objectReference: {fileID: 0}
+    - target: {fileID: 380545226079678486, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7804809504731108910, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
       propertyPath: saveSerializer
       value: 
       objectReference: {fileID: 883847804}
+    - target: {fileID: 7804809506122360291, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8168618377758684452, guid: e785d84125af09647ad2eadc23f74ad0, type: 3}
       propertyPath: instructionScreens.Array.size
       value: 8
