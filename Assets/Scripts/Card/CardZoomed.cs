@@ -21,7 +21,7 @@ public class CardZoomed : MonoBehaviour
     public AttackPattern attackPattern;
     public GameObject attackPatternIcon;
 
-    public void FillCardInfo(Sprite sprite, string cardName, int health, int attack, int reinforcement, int initiative, CardProperty cardProperty, AttackPattern attackPattern) 
+    public void FillCardInfo(Sprite sprite, string cardName, int health, int attack, int reinforcement, int initiative, CardProperty cardProperty, AttackPattern attackPattern, bool isEnemy) 
     {
         spriteRenderer.sprite = sprite;
         cardNameText.text = cardName;
@@ -43,16 +43,30 @@ public class CardZoomed : MonoBehaviour
         var pattern = attackPatternIcon.GetComponentsInChildren<SpriteRenderer>();
         foreach (var point in pattern) 
         {
-            var coordinates = point.name.Split(".");
-            var columnPattern = int.Parse(coordinates[0]);
-            var rowPattern = int.Parse(coordinates[1]);
-            if (attackPattern.rows[columnPattern - 1].row[rowPattern - 1] == true)
+            if (point.name == "EnemyPos" || point.name == "AllyPos")
             {
-                point.color = new Color32(200, 40, 40, 255);
+                if (point.name == "EnemyPos" && isEnemy)
+                    point.color = new Color32(40, 200, 40, 255);
+                else if (point.name == "EnemyPos" && !isEnemy)
+                    point.color = new Color32(40, 200, 40, 0);
+                if (point.name == "AllyPos" && isEnemy)
+                    point.color = new Color32(40, 200, 40, 0);
+                else if (point.name == "AllyPos" && !isEnemy)
+                    point.color = new Color32(40, 200, 40, 255);
             }
-            else 
+            else
             {
-                point.color = new Color32(220, 220, 220, 255);
+                var coordinates = point.name.Split(".");
+                var columnPattern = int.Parse(coordinates[0]);
+                var rowPattern = int.Parse(coordinates[1]);
+                if (attackPattern.rows[columnPattern - 1].row[rowPattern - 1] == true)
+                {
+                    point.color = new Color32(200, 40, 40, 255);
+                }
+                else
+                {
+                    point.color = new Color32(220, 220, 220, 255);
+                }
             }
         }
     }

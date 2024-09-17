@@ -68,7 +68,7 @@ public class CardZoom : MonoBehaviour
         }
         if (card != null && ((!card.isEnemy) || (card.isEnemy && !card.isFromHand)))
         {
-            cardZoomed.FillCardInfo(card.spriteRenderer.sprite, card.cardName, card.health, card.attack, card.reinforcement, card.initiative, card.cardProperty, card.attackPattern);
+            cardZoomed.FillCardInfo(card.spriteRenderer.sprite, card.cardName, card.health, card.attack, card.reinforcement, card.initiative, card.cardProperty, card.attackPattern, card.isEnemy);
             GetComponent<Animator>().Play("ToBlack");
             cardZoomed.GetComponent<Animator>().Play("BeginZoom");
             Debug.Log("Card zoomed: " + card.name);
