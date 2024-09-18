@@ -68,7 +68,7 @@ public class SceneLoader : MonoBehaviour
     protected virtual void LoadPlayerCards(SaveData saveData, out List<Card> playerCards, out Card mainCard) 
     {
         playerCards = new List<Card>();
-        mainCard = cardStore.GetCard(mainCardName);
+        mainCard = null;
 
         foreach (var prefabName in saveData.cards)
         {
@@ -79,7 +79,7 @@ public class SceneLoader : MonoBehaviour
             deck.AddCard(instCard, true);
 
             //TODO пока костыльно передаю свойства карты
-            if (prefabName == mainCardName)
+            if (prefabName.Contains(mainCardName))
             {
                 mainCard = instCard;
                 foreach (var property in saveData.mainCardProperty)
